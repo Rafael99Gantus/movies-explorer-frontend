@@ -1,0 +1,89 @@
+.aboutme {
+    display: block;
+    /* width: 1280p0; */
+    height: 608px;
+    border: 1px solid white;
+    padding-left: 70px;
+    padding-right: 70px;
+    background-color: rgba(32, 32, 32, 1);
+}
+
+.aboutme_title {
+    margin: 110px 0 23px 0;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 26.63px;
+    background-color: rgba(32, 32, 32, 1);
+    color: rgba(255, 255, 255, 1);
+}
+
+.aboutme_line{
+    height: 0px;
+    margin: 0 0 66px;
+    border: 0.5px solid;
+    border-color: rgba(218, 218, 218, 1);
+}
+
+.aboutme_box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 101px;
+    border: 1px solid white;
+}
+
+.aboutme_box_note {
+    border: 1px solid white;
+}
+
+.aboutme_box_note_name{
+    width: 600px;
+    height: 58px;
+    margin: 0 0 18px 0;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    color: rgba(255, 255, 255, 1);
+}
+
+.aboutme_box_note_work {
+    margin: 0 0 26px 0;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    color: rgba(255, 255, 255, 1);
+}
+
+.aboutme_box_note_description {
+    margin: 0 0 99px 0;
+    width: 600px;
+    height: 88px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: rgba(255, 255, 255, 1);
+}
+
+.aboutme_box_note_git{
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16.94px;
+    color: rgba(255, 255, 255, 1);
+}
+
+.aboutme_box_photo {
+    width: 270px;
+    height: 327px;
+    background: url(../../../images/photo.svg) no-repeat center;
+    object-fit: none;
+}

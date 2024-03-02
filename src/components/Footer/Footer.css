@@ -1,0 +1,68 @@
+.footer {
+    height: 172px;
+    display: block;
+    /* width: 1280p0; */
+    border: 1px solid rgb(255, 0, 0);
+    padding-left: 70px;
+    padding-right: 70px;
+    background-color: rgba(32, 32, 32, 1);
+}
+
+.footer_block {
+    height: 36px;
+    margin: 79px 0 20px 0;
+    border-bottom: 1px solid rgba(66, 66, 66, 1);
+}
+
+.footer_block_text {
+    width: 320px;
+    height: 16px;
+    margin: 0 auto 20px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15.73px;
+    color: rgba(139, 139, 139, 1);
+}
+
+.footer_note{
+    display: flex;
+    justify-content: space-between;
+    height: 36px;
+    margin: 0;
+}
+
+.footer_note_year{
+    margin: 0 0 20px 0;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15.73px;
+    color: white;
+}
+
+.footer_note_block{
+    display: flex;
+}
+
+.footer_note_yandex{
+    margin: 0 20px 20px 0;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15.73px;
+    color: white;
+}
+
+.footer_note_git {
+    margin: 0 0 20px 0;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15.73px;
+    color: white;
+}
