@@ -33,8 +33,10 @@ export default function Header(props) {
         navigate("/saved-movies");
         window.location.reload()
     }
-
-    const isLocation = location.pathname === "/movies";
+    const isLocationMain = location.pathname === "/";
+    const isLocationMovies = location.pathname === "/movies";
+    const isLocationSavedMovies = location.pathname === "/saved-movies";
+    const isLocationProfile = location.pathname === "/profile";
 
     return (
         <header className="header">
@@ -51,8 +53,10 @@ export default function Header(props) {
                     </div>
                     <div className='header_account'>
                         <p className='header_text' onClick={goToAccount}>Аккаунт</p>
-                        {!isLocation && <div className='header_account_logo' onClick={goToAccount}></div>}
-                        {isLocation && <div className='header_account_logomov' onClick={goToAccount}></div>}
+                        {isLocationMain && <div className='header_account_logo' onClick={goToAccount}></div>}
+                        {isLocationMovies && <div className='header_account_logomov' onClick={goToAccount}></div>}
+                        {isLocationSavedMovies && <div className='header_account_logomov' onClick={goToAccount}></div>}
+                        {isLocationProfile && <div className='header_account_logomov' onClick={goToAccount}></div>}
                     </div>
                     </div>}
             </div>

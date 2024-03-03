@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, navigate } from 'react';
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 import { CurrentCardInfo } from '../contexts/CurrentCardInfo.js';
 import Main from "../Main/Main.js";
@@ -13,9 +13,11 @@ import Error from "../Error/Error.js";
 import './App.css';
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(false);
+  const [currentUser, setCurrentUser] = useState({name: "Рафаэль"});
+  const [currentEmeil, setCurrentEmail] = useState({email: 'raf@mail.ru'});
+
   const [cards, setCards] = useState([]);
-  // const [loggedIn, setLoggedIn] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(false)
   // const [userEmail, setUserEmail] = useState("");
 
   // useEffect(() => {
@@ -48,6 +50,16 @@ function App() {
   //   }
   // }, [navigate]);
 
+  function logOut() {
+    setLoggedIn(false)
+    navigate('/')
+}
+
+  function editProfile(){
+    setCurrentUser(currentUser);
+    setCurrentEmail(currentEmeil);
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <CurrentCardInfo.Provider value={cards}>
@@ -57,7 +69,13 @@ function App() {
             <Route path="/" element={<Main />} />;
             <Route path="/movies" element={<Movies />} />;
             <Route path="/saved-movies" element={<SavedMovies />} />;
-            <Route path="/profile" element={<Profile />} />;
+            <Route path="/profile" element={
+            <Profile 
+            user={currentUser} 
+            email={currentEmeil}
+            editProfile={editProfile} 
+            logOut={logOut}/>
+            }/>;
 
             <Route path="/sign-up" element={<Register />} />
             <Route path="/sign-in" element={<Login />} />

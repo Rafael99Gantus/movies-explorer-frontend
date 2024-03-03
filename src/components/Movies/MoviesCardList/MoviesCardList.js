@@ -1,14 +1,17 @@
 import React from "react";
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard'
-
-import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
-import { CurrentCardInfo } from '../../contexts/CurrentCardInfo.js';
+import { useLocation } from "react-router-dom";
+// import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
+// import { CurrentCardInfo } from '../../contexts/CurrentCardInfo.js';
 
 export default function MoviesCardList(props) {
+    const location = useLocation();
 
-    const currentUser = React.useContext(CurrentUserContext);
-    const cards = React.useContext(CurrentCardInfo);
+    const isLocationMovies = location.pathname === "/saved-movies";
+
+    // const currentUser = React.useContext(CurrentUserContext);
+    // const cards = React.useContext(CurrentCardInfo);
 
     return (
         <>
@@ -34,9 +37,9 @@ export default function MoviesCardList(props) {
                 )
             })} */}
             </section>
-            <div className="elements__block">
+            {!isLocationMovies && <div className="elements__block">
                 <button className="elements__block-more" type="button">Ещё</button>
-            </div>
+            </div>}
         </>
 
     )
