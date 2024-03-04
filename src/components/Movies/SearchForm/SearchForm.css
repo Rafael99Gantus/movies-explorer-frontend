@@ -55,7 +55,7 @@
 }
 
 .searchform_block {
-    height: 62px;
+    height: 70px;
     border-bottom: 1px solid rgba(170, 170, 170, 0.2);
 }
 
@@ -129,4 +129,16 @@
     font-size: 13px;
     line-height: 18px;
     color: white;
+}
+
+@media (max-width: 1110px){
+    .searchform{
+        height: 250px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .searchform_input{
+        width: 500px;
+    }
 }

@@ -6,14 +6,14 @@
     background-color: rgba(7, 48, 66, 1);
 }
 
-.promo_text{
+.promo__text {
     background-color: rgba(7, 48, 66, 1);
 }
 
-.promo_big_text {
+.promo__big-text {
     width: 640px;
     height: 174px;
-    margin: 0px 0px 36px 70px;
+    margin: 0 0px 36px 70px;
     padding-top: 149px;
     color: white;
     font-family: 'Inter', sans-serif;
@@ -25,7 +25,7 @@
     color: rgba(255, 255, 255, 1);
 }
 
-.promo_small_text {
+.promo__small-text {
     width: 310px;
     height: 32px;
     margin: 0 0 146px 70px;
@@ -39,7 +39,7 @@
     color: rgba(255, 255, 255, 0.5);
 }
 
-.promo_info {
+.promo__info {
     width: 129px;
     height: 36px;
     margin-left: 70px;
@@ -60,7 +60,7 @@
     opacity: 70%;
 }
 
-.promo_image {
+.promo__image {
     width: 310px;
     height: 304px;
     padding-top: 149px;
@@ -68,4 +68,46 @@
     border: 1px solid rgb(203, 34, 34);
     background: url(../../../images/planet.svg) no-repeat bottom;
     object-fit: cover;
+}
+
+@media (max-width: 1110px) {
+    .promo {
+        height: 924px;
+        flex-direction: column-reverse;
+
+    }
+
+    .promo__text{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .promo__big-text {
+        text-align: center;
+        width: 680px;
+        height: 100px;
+        margin: 55px auto 22px;
+        padding-top: 0;
+        font-size: 40px;
+        line-height: 50px;
+    }
+
+    .promo__small-text {
+        width: 260px;
+        height: 32px;
+        margin: 0 auto 92px;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 15.73px;
+    }
+
+    .promo__info {
+        margin: 0 auto 76px;
+    }
+
+    .promo__image{
+        margin: 0 auto 0;
+        padding-top: 214px;
+    }
+
 }

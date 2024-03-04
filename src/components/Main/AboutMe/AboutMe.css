@@ -19,7 +19,7 @@
     color: rgba(255, 255, 255, 1);
 }
 
-.aboutme_line{
+.aboutme_line {
     height: 0px;
     margin: 0 0 66px;
     border: 0.5px solid;
@@ -37,7 +37,7 @@
     border: 1px solid white;
 }
 
-.aboutme_box_note_name{
+.aboutme_box_note_name {
     width: 600px;
     height: 58px;
     margin: 0 0 18px 0;
@@ -71,7 +71,7 @@
     color: rgba(255, 255, 255, 1);
 }
 
-.aboutme_box_note_git{
+.aboutme_box_note_git {
     margin: 0;
     font-family: 'Inter', sans-serif;
     font-style: normal;
@@ -86,4 +86,53 @@
     height: 327px;
     background: url(../../../images/photo.svg) no-repeat center;
     object-fit: none;
+    border-radius: 10px;
+}
+
+@media (max-width: 1110px) {
+    .aboutme {
+        height: 513px;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .aboutme_title {
+        margin: 90px 0 23px 0;
+    }
+
+    .aboutme_box {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 90px;
+        border: 1px solid white;
+    }
+
+    .aboutme_box_note_name {
+        width: 348px;
+        height: 40px;
+        margin: 0 0 16px 0;
+        font-size: 40px;
+        line-height: 40px;
+    }
+
+    .aboutme_box_note_work {
+        margin: 0 0 20px 0;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .aboutme_box_note_description {
+        margin: 0 0 87px 0;
+        width: 364px;
+        height: 108px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .aboutme_box_photo {
+        width: 255px;
+        height: 307px;
+        background: url(../../../images/photo.svg) no-repeat center;
+        object-fit: none;
+    }
 }

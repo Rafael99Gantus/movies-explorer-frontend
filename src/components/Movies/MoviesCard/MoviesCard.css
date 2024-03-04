@@ -4,6 +4,7 @@
     /* border: 1px solid white; */
     border-radius: 6px;
     background-color: rgba(34, 34, 34, 1);
+    z-index: 0;
 }
 
 .movie__block{
@@ -12,6 +13,7 @@
     width: 324px;
     height: 18px;
     margin: 18px;
+    z-index: 0;
     /* border: 1px solid rgb(252, 0, 0); */
 }
 
@@ -77,4 +79,31 @@
 
 .movie__saved:hover{
     opacity: 80%;
+}
+
+@media (max-width:1160px){
+    .movie{
+        width: 342px;
+        height: 309px;
+    }
+
+    .movie__block{
+        width: 306px;
+    }
+
+    .movie__image{
+        height: 190px;
+    }
+
+    .movie__buttton{
+        margin: 0 121px 18px 121px;
+    }
+
+    .movie__saved{
+        margin: 0 121px 18px 121px;
+    }
+    
+    .movie:nth-last-child(-n + 4){
+        display: none;
+    }
 }

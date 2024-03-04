@@ -122,3 +122,21 @@
 .profile__button-save:hover {
     opacity: 80%;
 }
+
+@media (max-width:1110px){
+    .profile {
+        width: 410px;
+        height: 100% - 70px;
+        margin: 0 auto 0;
+        padding-top: 148px;
+        /* border: 1px solid white; */
+    }
+
+    .profile__name {
+        margin: 0 auto 96px;
+    }
+
+    .profile__button-edit {
+        margin: 210px auto 16px;
+    }
+}

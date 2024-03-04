@@ -19,7 +19,7 @@
     color: rgba(255, 255, 255, 1);
 }
 
-.techs_line{
+.techs_line {
     height: 0px;
     margin: 0 0 90px;
     border: 0.5px solid;
@@ -73,4 +73,40 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
+}
+
+@media (max-width: 1110px) {
+    .techs {
+        height: 567px;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .techs_title {
+        margin-top: 90px;
+    }
+
+    .techs_line {
+        margin-bottom: 80px;
+    }
+
+    .techs_text {
+        height: 36px;
+        font-size: 12px;
+        line-height: 18px;
+        margin: 22px auto 83px;
+    }
+
+    .techs_blocks {
+        width: 648px;
+        grid-template-rows: repeat(1, 57px);
+        grid-template-columns: repeat(7, 84px);
+        margin: 0 auto 90px;
+    }
+
+    .techs_block {
+        width: 84px;
+        font-size: 12px;
+        line-height: 14.52px;
+    }
 }

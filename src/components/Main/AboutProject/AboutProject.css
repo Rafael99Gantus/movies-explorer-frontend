@@ -4,11 +4,12 @@
     height: 608px;
     background-color: rgba(32, 32, 32, 1);
     border: 1px solid white;
-    padding-left: 70px;
-    padding-right: 70px;
+    /* padding-left: 70px;
+    padding-right: 70px; */
+    margin: 0 70px;
 }
 
-.aboutproject_title {
+.aboutproject__title {
     margin: 110px 0 23px 0;
     font-family: 'Inter', sans-serif;
     font-style: normal;
@@ -19,25 +20,25 @@
     color: rgba(255, 255, 255, 1);
 }
 
-.aboutproject_line{
+.aboutproject__line{
     height: 0px;
     margin: 0 0 70px;
     border: 0.5px solid;
     border-color: rgba(218, 218, 218, 1);
 }
 
-.aboutproject_box {
+.aboutproject__box {
     display: flex;
     justify-content: space-between;
     margin-bottom: 110px;
     border: 1px solid white;
 }
 
-.aboutproject_box_about{
+.aboutproject__box-about{
     width: 550px;
 }
 
-.aboutproject_title_box{
+.aboutproject__title-box{
     margin: 0 0 26px 0;
     height: 24px;
     font-family: 'Inter', sans-serif;
@@ -49,7 +50,7 @@
     color: rgba(255, 255, 255, 1);
 }
 
-.aboutproject_text_box{
+.aboutproject__text-box{
     margin: 0;
     height: 40px;
     font-family: 'Inter', sans-serif;
@@ -61,7 +62,7 @@
     color: rgba(255, 255, 255, 1);
 }
 
-.aboutproject_info {
+.aboutproject__info {
     height: 36px;
     margin: 0 0 14px 0;
     border: 0.5px solid;
@@ -69,7 +70,7 @@
     display: flex;
 }
 
-.aboutproject_info_green{
+.aboutproject__info-green{
     width: 20%;
     height: 26.5px;
     margin: 0;
@@ -84,7 +85,7 @@
     color: rgba(0, 0, 0, 1);
 }
 
-.aboutproject_info_black{
+.aboutproject__info-black{
     width: 80%;
     height: 26.5px;
     margin: 0;
@@ -99,7 +100,7 @@
     color: rgba(255, 255, 255, 1);
 }
 
-.aboutproject_note_back {
+.aboutproject__note-back {
     width: 20%;
     height: 26.5px;
     margin: 0;
@@ -114,7 +115,7 @@
     color: rgba(139, 139, 139, 1);
 }
 
-.aboutproject_note_front {
+.aboutproject__note-front {
     width: 80%;
     height: 26.5px;
     margin: 0;
@@ -127,4 +128,28 @@
     font-size: 14px;
     line-height: 17px;
     color: rgba(139, 139, 139, 1);
+}
+
+@media (max-width: 1110px){
+    .aboutproject{
+        height: 585px;
+        margin: 0 50px;
+    }
+    .aboutproject__title{
+        margin-top: 90px;
+    }
+    .aboutproject__box{
+        margin-bottom: 93px;
+    }
+    .aboutproject__box-about{
+        width: 319px;
+    }
+    .aboutproject__title-box{
+        height: 48px;
+    }
+    .aboutproject__text-box{
+        font-size: 12px;
+        line-height: 18px;
+        height: 54px;
+    }
 }

@@ -15,6 +15,7 @@
 }
 
 .footer_block_text {
+    text-align: center;
     width: 320px;
     height: 16px;
     margin: 0 auto 20px;
@@ -26,14 +27,14 @@
     color: rgba(139, 139, 139, 1);
 }
 
-.footer_note{
+.footer_note {
     display: flex;
     justify-content: space-between;
     height: 36px;
     margin: 0;
 }
 
-.footer_note_year{
+.footer_note_year {
     margin: 0 0 20px 0;
     font-family: 'Inter', sans-serif;
     font-style: normal;
@@ -43,11 +44,11 @@
     color: white;
 }
 
-.footer_note_block{
+.footer_note_block {
     display: flex;
 }
 
-.footer_note_yandex{
+.footer_note_yandex {
     margin: 0 20px 20px 0;
     font-family: 'Inter', sans-serif;
     font-style: normal;
@@ -65,4 +66,11 @@
     font-size: 13px;
     line-height: 15.73px;
     color: white;
+}
+
+@media (max-width: 1110px) {
+    .footer {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
 }
