@@ -15,16 +15,16 @@ export default function SearchForm() {
     return (
         <searchform className='searchform'>
             <form action="" className="searchform__form">
-                <div className="searchform_input_box">
-                    <input className="searchform_input" placeholder="Фильм" />
-                    <button className="searchform_button" type="submit">Поиск</button>
+                <div className="searchform__input-box">
+                    <input className="searchform__input" placeholder="Фильм" />
+                    <button className="searchform__button" type="submit">Поиск</button>
                 </div>
-                <div className="searchform_block">
-                    <label className="searchform_filter_block">
-                        <div className="searchform_filter">
+                <div className="searchform__block">
+                    <label className="searchform__filter-block">
+                        <div className="searchform__filter">
                             <input type="checkbox" name="Короткометражки" />
                         </div>
-                        <p className="searchform_text">Короткометражки</p>
+                        <p className="searchform__text">Короткометражки</p>
                     </label>
                 </div>
 

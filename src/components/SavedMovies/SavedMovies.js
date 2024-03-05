@@ -7,11 +7,11 @@ import Footer from "../Footer/Footer";
 
 export default function SavedMovies(){
     return(
-        <>
+        <main>
         <Header notLog={true}/>
         <SearchForm />
         <MoviesCardList />
         <Footer />
-        </>
+        </main>
     )
 }

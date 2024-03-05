@@ -65,7 +65,6 @@
     height: 304px;
     padding-top: 149px;
     margin: 0 70px 0 0;
-    border: 1px solid rgb(203, 34, 34);
     background: url(../../../images/planet.svg) no-repeat bottom;
     object-fit: cover;
 }
@@ -110,4 +109,39 @@
         padding-top: 214px;
     }
 
+}
+
+@media (max-width: 720px){
+    .promo {
+        height: 710px;
+    }
+    
+    .promo__big-text {
+        text-align: center;
+        width: 300px;
+        height: 114px;
+        margin: 44px auto 24px;
+        font-size: 29px;
+        line-height: 38px;
+    }
+    
+    .promo__small-text {
+        text-align: center;
+        width: 260px;
+        height: 32px;
+        margin: 0 auto 80px;
+        line-height: 15.73px;
+    }
+    
+    .promo__info {
+        margin: 0 auto 30px;
+    }
+    
+    .promo__image {
+        width: 210px;
+        height: 206px;
+        padding-top: 144px;
+        background-size: contain;
+        object-fit: cover;
+    }
 }

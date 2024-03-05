@@ -2,16 +2,26 @@ import React from 'react';
 import './Footer.css'
 
 export default function Footer(props) {
+
+
+    function ya(){
+        window.open('https://practicum.yandex.ru/', '_blank');
+    }
+    
+    function git(){
+        window.open('https://github.com/Rafael99Gantus', '_blank');
+    }
+
     return (
         <footer className='footer'>
-            <div className='footer_block'>
-                <p className='footer_block_text'>Учебный проект Яндекс.Практикум х BeatFilm.</p>
+            <div className='footer__block'>
+                <p className='footer__block-text'>Учебный проект Яндекс.Практикум х BeatFilm.</p>
             </div>
-            <div className='footer_note'>
-                <p className='footer_note_year'>@2024</p>
-                <div className='footer_note_block'>
-                    <p className='footer_note_yandex'>Яндекс.Практикум</p>
-                    <p className='footer_note_git'>Github</p>
+            <div className='footer__note'>
+                <p className='footer__note-year'>@2024</p>
+                <div className='footer__note-block'>
+                    <p className='footer__note-yandex' onClick={ya}>Яндекс.Практикум</p>
+                    <p className='footer__note-git' onClick={git}>Github</p>
                 </div>
             </div>
         </footer>

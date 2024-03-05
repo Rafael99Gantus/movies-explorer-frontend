@@ -8,7 +8,7 @@
     padding-right: 70px;
 }
 
-.navtab_title {
+.navtab__title {
     margin: 110px 0 23px 0;
     font-family: 'Inter', sans-serif;
     font-style: normal;
@@ -19,25 +19,25 @@
     color: rgba(255, 255, 255, 1);
 }
 
-.navtab_line{
+.navtab__line{
     height: 0px;
     margin: 0 0 70px;
     border: 0.5px solid;
     border-color: rgba(218, 218, 218, 1);
 }
 
-.navtab_box {
+.navtab__box {
     display: flex;
     justify-content: space-between;
     margin-bottom: 110px;
     border: 1px solid white;
 }
 
-.navtab_box_about{
+.navtab__box-about{
     width: 550px;
 }
 
-.navtab_title_box{
+.navtab__title-box{
     margin: 0 0 26px 0;
     height: 24px;
     font-family: 'Inter', sans-serif;
@@ -49,7 +49,7 @@
     color: rgba(255, 255, 255, 1);
 }
 
-.navtab_text_box{
+.navtab__text-box{
     margin: 0;
     height: 40px;
     font-family: 'Inter', sans-serif;
@@ -61,7 +61,7 @@
     color: rgba(255, 255, 255, 1);
 }
 
-.navtab_info {
+.navtab__info {
     height: 36px;
     margin: 0 0 14px 0;
     border: 0.5px solid;
@@ -69,7 +69,7 @@
     display: flex;
 }
 
-.navtab_info_green{
+.navtab__info-green{
     width: 20%;
     height: 26.5px;
     margin: 0;
@@ -84,7 +84,7 @@
     color: rgba(0, 0, 0, 1);
 }
 
-.navtab_info_black{
+.navtab__info-black{
     width: 80%;
     height: 26.5px;
     margin: 0;
@@ -99,7 +99,7 @@
     color: rgba(255, 255, 255, 1);
 }
 
-.navtab_note_back {
+.navtab__note-back {
     width: 20%;
     height: 26.5px;
     margin: 0;
@@ -114,7 +114,7 @@
     color: rgba(139, 139, 139, 1);
 }
 
-.navtab_note_front {
+.navtab__note-front {
     width: 80%;
     height: 26.5px;
     margin: 0;

@@ -13,13 +13,18 @@ export default function Header(props) {
 
     function login() {
         localStorage.removeItem('jwt');
-        navigate("/sign-in");
+        navigate("/signin");
         window.location.reload()
     }
 
     function register() {
         localStorage.removeItem('jwt');
-        navigate("/sign-out");
+        navigate("/signup");
+        window.location.reload()
+    }
+
+    function goToMain(){
+        navigate("/");
         window.location.reload()
     }
 
@@ -49,23 +54,23 @@ export default function Header(props) {
     return (
         <>
             <header className="header">
-                <div className="header__logo" />
+                <div className="header__logo" onClick={ goToMain }/>
                 <div className="header__container">
-                    {!props.notLog && <div className='header_unloged_panel'>
+                    {!props.notLog && <div className='header__unloged-panel'>
                         <button className="header__register" onClick={register} type='button'>Регистрация</button>
                         <button className="header__login" onClick={login} type='button'>Войти</button>
                     </div>}
-                    {props.notLog && <div className='header_loged_panel'>
-                        <div className='header_panel'>
-                            <p className='header_movies' onClick={goToMovies}>Фильмы</p>
-                            <p className='header_saved' onClick={goToSavedMovies}>Сохранённые фильмы</p>
+                    {props.notLog && <div className='header__loged-panel'>
+                        <div className='header__panel'>
+                            <p className='header__movies' onClick={goToMovies}>Фильмы</p>
+                            <p className='header__saved' onClick={goToSavedMovies}>Сохранённые фильмы</p>
                         </div>
-                        <div className='header_account'>
-                            <p className='header_text' onClick={goToAccount}>Аккаунт</p>
-                            {isLocationMain && <div className='header_account_logo' onClick={goToAccount}></div>}
-                            {isLocationMovies && <div className='header_account_logomov' onClick={goToAccount}></div>}
-                            {isLocationSavedMovies && <div className='header_account_logomov' onClick={goToAccount}></div>}
-                            {isLocationProfile && <div className='header_account_logomov' onClick={goToAccount}></div>}
+                        <div className='header__account'>
+                            <p className='header__text' onClick={goToAccount}>Аккаунт</p>
+                            {isLocationMain && <div className='header__account-logo' onClick={goToAccount}></div>}
+                            {isLocationMovies && <div className='header__account-logomov' onClick={goToAccount}></div>}
+                            {isLocationSavedMovies && <div className='header__account-logomov' onClick={goToAccount}></div>}
+                            {isLocationProfile && <div className='header__account-logomov' onClick={goToAccount}></div>}
                         </div>
                     </div>}
                     {props.notLog && <button className='header__burger-button' onClick={handleOpenBurger}>

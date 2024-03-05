@@ -8,11 +8,14 @@ import Footer from "../Footer/Footer.js";
 
 export default function Movies(props) {
     return (
-        <movies className='movies'>
-            <Header notLog={true} />
-            <SearchForm />
-            <MoviesCardList />
-            <Footer />
-        </movies>
+        <main>
+            <movies className='movies'>
+                <Header notLog={true} />
+                <SearchForm />
+                <MoviesCardList />
+                <Footer />
+            </movies>
+        </main>
+
     )
 }

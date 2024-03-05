@@ -2,22 +2,35 @@ import React from 'react';
 import './Portfolio.css';
 
 export default function Portfolio() {
+
+    function staticWeb(){
+        window.open('https://github.com/Rafael99Gantus/russian-travel', '_blank');
+    }
+
+    function adaptivWeb(){
+        window.open('https://github.com/Rafael99Gantus/mesto', '_blank');
+    }
+
+    function web(){
+        window.open('https://github.com/Rafael99Gantus/react-mesto-api-full-gha', '_blank');
+    }
+
     return (
         <portfolio className='portfolio'>
-            <h1 className='portfolio_title'>Портфолио</h1>
-            <div className='portfolio_block'>
-                <a className='portfolio_block_link' href='http://ya'>Статичный сайт</a>
-                <div className='portfolio_block_button'/>
+            <h1 className='portfolio__title'>Портфолио</h1>
+            <div className='portfolio__block' onClick={staticWeb}>
+                <p className='portfolio__block-link' >Статичный сайт</p>
+                <div className='portfolio__block-button'/>
             </div>
 
-            <div className='portfolio_block'>
-                <a className='portfolio_block_link' href='http://ya'>Адаптивный сайт</a>
-                <div className='portfolio_block_button'/>
+            <div className='portfolio__block' onClick={adaptivWeb}>
+                <p className='portfolio__block-link' >Адаптивный сайт</p>
+                <div className='portfolio__block-button'/>
             </div>
 
-            <div className='portfolio_block_last'>
-                <a className='portfolio_block_link' href='http://ya'>Одностраничное приложение</a>
-                <div className='portfolio_block_button'/>
+            <div className='portfolio__block-last' onClick={web}>
+                <p className='portfolio__block-link'>Одностраничное приложение</p>
+                <div className='portfolio__block-button'/>
             </div>
 
         </portfolio>

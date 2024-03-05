@@ -2,13 +2,12 @@
     display: block;
     /* width: 1280p0; */
     height: 608px;
-    border: 1px solid white;
     padding-left: 70px;
     padding-right: 70px;
     background-color: rgba(32, 32, 32, 1);
 }
 
-.aboutme_title {
+.aboutme__title {
     margin: 110px 0 23px 0;
     font-family: 'Inter', sans-serif;
     font-style: normal;
@@ -19,25 +18,20 @@
     color: rgba(255, 255, 255, 1);
 }
 
-.aboutme_line {
+.aboutme__line {
     height: 0px;
     margin: 0 0 66px;
     border: 0.5px solid;
     border-color: rgba(218, 218, 218, 1);
 }
 
-.aboutme_box {
+.aboutme__box {
     display: flex;
     justify-content: space-between;
     margin-bottom: 101px;
-    border: 1px solid white;
 }
 
-.aboutme_box_note {
-    border: 1px solid white;
-}
-
-.aboutme_box_note_name {
+.aboutme__box-name {
     width: 600px;
     height: 58px;
     margin: 0 0 18px 0;
@@ -49,7 +43,7 @@
     color: rgba(255, 255, 255, 1);
 }
 
-.aboutme_box_note_work {
+.aboutme__box-work {
     margin: 0 0 26px 0;
     font-family: 'Inter', sans-serif;
     font-style: normal;
@@ -59,7 +53,7 @@
     color: rgba(255, 255, 255, 1);
 }
 
-.aboutme_box_note_description {
+.aboutme__box-description {
     margin: 0 0 99px 0;
     width: 600px;
     height: 88px;
@@ -71,7 +65,7 @@
     color: rgba(255, 255, 255, 1);
 }
 
-.aboutme_box_note_git {
+.aboutme__box-git {
     margin: 0;
     font-family: 'Inter', sans-serif;
     font-style: normal;
@@ -81,7 +75,7 @@
     color: rgba(255, 255, 255, 1);
 }
 
-.aboutme_box_photo {
+.aboutme__box-photo {
     width: 270px;
     height: 327px;
     background: url(../../../images/photo.svg) no-repeat center;
@@ -96,18 +90,17 @@
         padding-right: 50px;
     }
 
-    .aboutme_title {
+    .aboutme__title {
         margin: 90px 0 23px 0;
     }
 
-    .aboutme_box {
+    .aboutme__box {
         display: flex;
         justify-content: space-between;
         margin-bottom: 90px;
-        border: 1px solid white;
     }
 
-    .aboutme_box_note_name {
+    .aboutme__box-name {
         width: 348px;
         height: 40px;
         margin: 0 0 16px 0;
@@ -115,13 +108,13 @@
         line-height: 40px;
     }
 
-    .aboutme_box_note_work {
+    .aboutme__box-work {
         margin: 0 0 20px 0;
         font-size: 12px;
         line-height: 18px;
     }
 
-    .aboutme_box_note_description {
+    .aboutme__box-description {
         margin: 0 0 87px 0;
         width: 364px;
         height: 108px;
@@ -129,10 +122,79 @@
         line-height: 18px;
     }
 
-    .aboutme_box_photo {
+    .aboutme__box-photo {
         width: 255px;
         height: 307px;
         background: url(../../../images/photo.svg) no-repeat center;
         object-fit: none;
+    }
+}
+
+@media (max-width: 720px) {
+    .aboutme {
+        height: 834px;
+        padding: 0;
+    }
+
+    .aboutme__title {
+        margin: 70px auto 28px;
+        width: 284px;
+        font-size: 18px;
+        line-height: 21.78px;
+    }
+
+    .aboutme__line {
+        margin: 0 auto 60px;
+        width: 284px;
+    }
+
+    .aboutme__box {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        margin-bottom: 70px;
+    }
+    
+    .aboutme__box-name {
+        width: 292px;
+        height: 36px;
+        margin: 40px 0 20px 14px;
+        font-size: 30px;
+        line-height: 36.31px;
+    }
+    
+    .aboutme__box-work {
+        height: 16px;
+        width: 292px;
+        margin: 0 0 20px 14px;
+        font-size: 11px;
+        line-height: 16px;
+    }
+    
+    .aboutme__box-description {
+        margin: 0 0 40px 14px;
+        width: 290px;
+        height: 112px;
+        font-size: 11px;
+        line-height: 16px;
+    }
+    
+    .aboutme__box-git {
+        width: 46px;
+        height: 17px;
+        margin: 0 0 0 14px;
+        font-size: 14px;
+        line-height: 16.94px;
+        color: rgba(255, 255, 255, 1);
+    }
+    
+    .aboutme__box-photo {
+        width: 292px;
+        height: 352px;
+        background: url(../../../images/photo.svg) no-repeat center;
+        object-fit: none;
+        border-radius: 10px;
+        margin: 0 auto 0;
+        background-size: cover;
     }
 }

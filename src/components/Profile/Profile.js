@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import './Profile.css';
 import Header from "../Header/Header";
 
@@ -9,6 +10,8 @@ export default function Profile(props) {
     const [email, setEmail] = useState({ email: props.email.email });
 
     const [edit, setEdit] = useState(false) ;
+
+    const navigate = useNavigate();
 
     const handleEmail = (e) => {
         setEmail(e.target.value)
@@ -27,8 +30,13 @@ export default function Profile(props) {
         props.editProfile(name, email)
     };
 
+    function goToMain(){
+        navigate("/");
+        window.location.reload()
+    };
+
     return (
-        <>
+        <main>
             <Header notLog={true} />
             <div className="profile">
                 <h1 className="profile__name">Привет, {props.user.name}!</h1>
@@ -58,12 +66,12 @@ export default function Profile(props) {
                     </label>
                     {!edit ? (<div className="profile__block">
                         <button className="profile__button-edit" onClick={handleEdit}>Редактировать</button>
-                        <button className="profile__button-exit" onClick={props.logOut}>Выйти из аккаунта</button>
+                        <button className="profile__button-exit" onClick={goToMain}>Выйти из аккаунта</button>
                     </div>) : (
                         <button className="profile__button-save" onClick={handleSaveEdit}>Сохранить</button>
                     )}
                 </form>
             </div>
-        </>
+        </main>
     )
 }

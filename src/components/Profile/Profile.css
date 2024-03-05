@@ -3,6 +3,7 @@
     height: 100% - 70px;
     margin: 0 auto 0;
     padding-top: 148px;
+    z-index: 0;
     /* border: 1px solid white; */
 }
 
@@ -139,4 +140,40 @@
     .profile__button-edit {
         margin: 210px auto 16px;
     }
+}
+
+@media (max-width:730px){
+    .profile {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 292px;
+        height: 100% - 70px;
+        margin: 0 auto 0;
+        padding-top: 148px;
+        /* border: 1px solid white; */
+    }
+
+    .profile__name {
+        margin: 0 auto 80px;
+    }
+
+    .profile__button-edit {
+        margin: 210px auto 16px;
+        font-size: 12px;
+        line-height: 14.52px;
+    }
+    
+    .profile__button-exit {
+        font-size: 12px;
+        line-height: 14.52px;
+    }
+
+    .profile__button-save {
+        width: 260px;
+        font-size: 12px;
+        line-height: 14.52px;
+        margin: 207px 18px 50px 18px;
+    }
+    
 }

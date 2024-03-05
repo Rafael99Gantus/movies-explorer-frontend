@@ -107,3 +107,41 @@
         display: none;
     }
 }
+
+@media (max-width: 730px){
+    .movie{
+        width: 300px;
+        height: 271px;
+    }
+    
+    .movie__block{
+        width: 272px;
+        height: 18px;
+        margin: 14px;
+    }
+    
+    .movie__name{
+        font-size: 12px;
+    }
+    
+    .movie__time{
+        font-size: 10px;
+    }
+    
+    .movie__image{
+        height: 168px;
+        margin-bottom: 14px;
+    }
+    
+    .movie__buttton{
+        margin: 0 100px 14px 100px;
+    }
+    
+    .movie__saved{
+        margin: 0 100px 14px 100px;
+    }
+    
+    .movie:nth-last-child(-n + 7){
+        display: none;
+    }
+}

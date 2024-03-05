@@ -2,7 +2,6 @@
     height: 425px;
     display: block;
     /* width: 1280p0; */
-    border: 1px solid white;
     padding-left: 70px;
     padding-right: 70px;
     background-color: rgba(32, 32, 32, 1);
@@ -12,7 +11,7 @@
     border: none;
 }
 
-.portfolio_title {
+.portfolio__title {
     margin: 0 0 50px 0;
     font-family: 'Inter', sans-serif;
     font-style: normal;
@@ -22,23 +21,33 @@
     color: rgba(139, 139, 139, 1);
 }
 
-.portfolio_block {
+.portfolio__block {
     display: flex;
     justify-content: space-between;
     height: 69px;
     border-bottom: 1px solid rgba(66, 66, 66, 1);
     margin: 0 0 20px 0;
+    cursor: pointer;
 }
 
-.portfolio_block_last {
+.portfolio__block-last {
     display: flex;
     justify-content: space-between;
     height: 69px;
     border: none;
     margin: 0 0 20px 0;
+    cursor: pointer;
 }
 
-.portfolio_block_link {
+.portfolio__block:hover {
+    opacity: 60%;
+}
+
+.portfolio__block_last:hover {
+    opacity: 60%;
+}
+
+.portfolio__block-link {
     height: 50px;
     text-decoration: none;
     font-family: 'Inter', sans-serif;
@@ -47,14 +56,9 @@
     font-size: 30px;
     line-height: 50px;
     color: white;
-    cursor: pointer;
 }
 
-.portfolio_block_link:hover {
-    opacity: 60%;
-}
-
-.portfolio_block_button {
+.portfolio__block-button {
     height: 60px;
     width: 29px;
     background: url(../../../images/arrow.svg) no-repeat center;
@@ -68,11 +72,50 @@
         padding-right: 50px;
     }
 
-    .portfolio_block {
+    .portfolio__block {
         border-bottom: 1px solid rgba(230, 230, 230, 1);
     }
 
-    .portfolio_block_last {
+    .portfolio__block-last {
         margin: 0 0 90px 0;
+    }
+}
+
+@media (max-width:720px) {
+    .portfolio {
+        margin-top: 70px;
+        height: 294px;
+        padding: 0;
+    }
+
+    .portfolio__title {
+        width: 278px;
+        margin: 0 0 40px 14px;
+        font-size: 14px;
+        line-height: 20px;
+    }
+    
+
+    .portfolio__block {
+        height: 47px;
+        margin: 0 14px 20px 14px;
+    }
+
+    .portfolio__block-last {
+        height: 47px;
+        margin: 0 14px 70px 14px;
+    }
+
+    .portfolio__block-link {
+        height: 28px;
+        width: 270px;
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .portfolio__block-button {
+        height: 28px;
+        width: 18px;
+        background: url(../../../images/arrow.svg) no-repeat center;
     }
 }

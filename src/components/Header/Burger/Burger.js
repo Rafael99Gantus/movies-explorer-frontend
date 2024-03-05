@@ -42,8 +42,8 @@ export default function Burger(props) {
                 <p className='burger__link' onClick={goToMovies}>Фильмы</p>
                 <p className='burger__link' onClick={goToSavedMovies}>Сохраненные фильмы</p>
                 <div className='burger__account'>
-                    <p className='header_text' onClick={goToAccount}>Аккаунт</p>
-                    <div className='header_account_logomov' onClick={goToAccount}></div>
+                    <p className='header__text' onClick={goToAccount}>Аккаунт</p>
+                    <div className='header__account-logomov' onClick={goToAccount}></div>
                 </div>
             </div>}
 
@@ -53,8 +53,8 @@ export default function Burger(props) {
                 <p className='burger__movies'>Фильмы</p>
                 <p className='burger__link' onClick={goToSavedMovies}>Сохраненные фильмы</p>
                 <div className='burger__account'>
-                    <p className='header_text' onClick={goToAccount}>Аккаунт</p>
-                    <div className='header_account_logomov' onClick={goToAccount}></div>
+                    <p className='header__text' onClick={goToAccount}>Аккаунт</p>
+                    <div className='header__account-logomov' onClick={goToAccount}></div>
                 </div>
             </div>}
 
@@ -64,8 +64,8 @@ export default function Burger(props) {
                 <p className='burger__link' onClick={goToMovies}>Фильмы</p>
                 <p className='burger__saved-movies'>Сохраненные фильмы</p>
                 <div className='burger__account'>
-                    <p className='header_text' onClick={goToAccount}>Аккаунт</p>
-                    <div className='header_account_logomov' onClick={goToAccount}></div>
+                    <p className='header__text' onClick={goToAccount}>Аккаунт</p>
+                    <div className='header__account-logomov' onClick={goToAccount}></div>
                 </div>
             </div>}
         </burger>

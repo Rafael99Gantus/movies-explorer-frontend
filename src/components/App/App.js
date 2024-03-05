@@ -77,8 +77,8 @@ function App() {
             logOut={logOut}/>
             }/>;
 
-            <Route path="/sign-up" element={<Register />} />
-            <Route path="/sign-in" element={<Login />} />
+            <Route path="/signup" element={<Register />} />
+            <Route path="/signin" element={<Login />} />
             <Route path="*" element={(<Error />)} />
           </Routes>
         </div>
