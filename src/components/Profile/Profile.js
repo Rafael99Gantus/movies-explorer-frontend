@@ -47,6 +47,9 @@ export default function Profile(props) {
                             className="profile__input-name"
                             type="text"
                             required
+                            placeholder="Введите имя"
+                            minLength="2"
+                            maxLength="30"
                             disabled={!edit}
                             onChange={handleName}
                             value={name.name || ''}>
@@ -59,16 +62,19 @@ export default function Profile(props) {
                             className="profile__input-name"
                             type="email"
                             required
+                            placeholder="Введите E-mail"
+                            minLength="2"
+                            maxLength="30"
                             disabled={!edit}
                             onChange={handleEmail}
                             value={email.email || ''}>
                         </input>
                     </label>
                     {!edit ? (<div className="profile__block">
-                        <button className="profile__button-edit" onClick={handleEdit}>Редактировать</button>
-                        <button className="profile__button-exit" onClick={goToMain}>Выйти из аккаунта</button>
+                        <button className="profile__button-edit" onClick={handleEdit} type="button">Редактировать</button>
+                        <button className="profile__button-exit" onClick={goToMain} type="button">Выйти из аккаунта</button>
                     </div>) : (
-                        <button className="profile__button-save" onClick={handleSaveEdit}>Сохранить</button>
+                        <button className="profile__button-save" onClick={handleSaveEdit} type="button">Сохранить</button>
                     )}
                 </form>
             </div>

@@ -11,7 +11,7 @@ import Footer from "../Footer/Footer.js";
 export default function Main(props){
     return(
         <>
-        <Header notLog={true}/>
+        <Header notLog={false}/>
         <main className='main'>
             <Promo />
             <AboutProject />

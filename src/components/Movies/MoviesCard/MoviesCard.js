@@ -1,6 +1,6 @@
 import React from "react";
 import './MoviesCard.css';
-import image from '../../../images/stub_movie.jpg';
+import image from '../../../images/stub_movie-opt.jpg';
 import logo from '../../../images/save_button.svg';
 import logoX from '../../../images/logoX.svg';
 

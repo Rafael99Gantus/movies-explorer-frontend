@@ -23,7 +23,7 @@ export default function Header(props) {
         window.location.reload()
     }
 
-    function goToMain(){
+    function goToMain() {
         navigate("/");
         window.location.reload()
     }
@@ -54,17 +54,23 @@ export default function Header(props) {
     return (
         <>
             <header className="header">
-                <div className="header__logo" onClick={ goToMain }/>
+                <div className="header__logo" onClick={goToMain} />
                 <div className="header__container">
                     {!props.notLog && <div className='header__unloged-panel'>
                         <button className="header__register" onClick={register} type='button'>Регистрация</button>
                         <button className="header__login" onClick={login} type='button'>Войти</button>
                     </div>}
                     {props.notLog && <div className='header__loged-panel'>
-                        <div className='header__panel'>
-                            <p className='header__movies' onClick={goToMovies}>Фильмы</p>
+                        {isLocationMovies && <div className='header__panel'>
+                            <p className='header__movies-yes'>Фильмы</p>
                             <p className='header__saved' onClick={goToSavedMovies}>Сохранённые фильмы</p>
-                        </div>
+                        </div>}
+
+                        {isLocationSavedMovies && <div className='header__panel'>
+                            <p className='header__movies' onClick={goToMovies}>Фильмы</p>
+                            <p className='header__saved-yes'>Сохранённые фильмы</p>
+                        </div>}
+
                         <div className='header__account'>
                             <p className='header__text' onClick={goToAccount}>Аккаунт</p>
                             {isLocationMain && <div className='header__account-logo' onClick={goToAccount}></div>}
@@ -73,7 +79,7 @@ export default function Header(props) {
                             {isLocationProfile && <div className='header__account-logomov' onClick={goToAccount}></div>}
                         </div>
                     </div>}
-                    {props.notLog && <button className='header__burger-button' onClick={handleOpenBurger}>
+                    {props.notLog && <button className='header__burger-button' onClick={handleOpenBurger} type="button">
                         <img className='header__burger-icon' src={burgerLogo} alt='Открытие бургера' />
                     </button>}
                 </div>

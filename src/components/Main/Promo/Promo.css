@@ -2,7 +2,6 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    height: 618px;
     background-color: rgba(7, 48, 66, 1);
 }
 
@@ -43,6 +42,7 @@
     width: 129px;
     height: 36px;
     margin-left: 70px;
+    margin-bottom: 75px;
     color: rgba(255, 255, 255, 1);
     font-family: 'Inter', sans-serif;
     font-style: normal;
@@ -56,7 +56,7 @@
     cursor: pointer;
 }
 
-.promo_info:hover {
+.promo__info:hover {
     opacity: 70%;
 }
 
@@ -71,7 +71,6 @@
 
 @media (max-width: 1110px) {
     .promo {
-        height: 924px;
         flex-direction: column-reverse;
 
     }
@@ -112,9 +111,6 @@
 }
 
 @media (max-width: 720px){
-    .promo {
-        height: 710px;
-    }
     
     .promo__big-text {
         text-align: center;

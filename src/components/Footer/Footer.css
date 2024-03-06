@@ -78,9 +78,17 @@
 
 @media (max-width: 1110px) {
     .footer {
-        padding-left: 50px;
-        padding-right: 50px;
+        padding-left: 0;
+        padding-right: 0;
+        margin: 0 30px 0;
     }
+
+    .footer__block {
+        height: 36px;
+        margin: 79px 30px 20px;
+        border-bottom: 1px solid rgba(66, 66, 66, 1);
+    }
+
 }
 
 @media (max-width: 720px) {
@@ -123,7 +131,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        margin: 0 14px;
+        margin: 0 14px 30px;
     }
 
     .footer__note-yandex {

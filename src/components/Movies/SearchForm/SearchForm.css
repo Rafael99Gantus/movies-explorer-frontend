@@ -76,6 +76,10 @@
     -o-transition: all 0.3s ease 0s;
 }
 
+.searchform__filter:hover{
+    opacity: 70%;
+}
+
 .searchform__filter.active {
     color: #000;
 }
@@ -183,5 +187,9 @@
     
     .searchform__text{
         font-size: 11px;
+    }
+
+    .searchform__filter-block{
+        width: 148px;
     }
 }

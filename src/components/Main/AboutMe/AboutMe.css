@@ -1,7 +1,6 @@
 .aboutme {
     display: block;
     /* width: 1280p0; */
-    height: 608px;
     padding-left: 70px;
     padding-right: 70px;
     background-color: rgba(32, 32, 32, 1);
@@ -73,6 +72,11 @@
     font-size: 14px;
     line-height: 16.94px;
     color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+}
+
+.aboutme__box-git:hover{
+    opacity: 70%;
 }
 
 .aboutme__box-photo {
@@ -85,7 +89,6 @@
 
 @media (max-width: 1110px) {
     .aboutme {
-        height: 513px;
         padding-left: 50px;
         padding-right: 50px;
     }
@@ -132,7 +135,6 @@
 
 @media (max-width: 720px) {
     .aboutme {
-        height: 834px;
         padding: 0;
     }
 

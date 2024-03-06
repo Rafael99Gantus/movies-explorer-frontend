@@ -34,6 +34,8 @@ export default function Login(props) {
                             type="email"
                             required
                             placeholder="Введите E-mail"
+                            minLength="2"
+                            maxLength="30"
                             onChange={handleEmail}
                             value={email.email || ''}>
                         </input>
@@ -46,6 +48,8 @@ export default function Login(props) {
                             type="password"
                             required
                             placeholder="Введите пароль"
+                            minLength="2"
+                            maxLength="30"
                             onChange={handlePassword}
                             value={password.password || ''}>
                         </input>

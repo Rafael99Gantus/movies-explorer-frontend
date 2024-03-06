@@ -1,6 +1,5 @@
 .aboutproject {
     display: block;
-    height: 608px;
     background-color: rgba(32, 32, 32, 1);
     margin: 0 70px;
 }
@@ -19,7 +18,7 @@
 .aboutproject__line {
     height: 0px;
     margin: 0 0 70px;
-    border: 0.5px solid;
+    border: 0.5px solid rgba(218, 218, 218, 1);
 }
 
 .aboutproject__box {
@@ -60,6 +59,10 @@
     height: 36px;
     margin: 0 0 14px 0;
     display: flex;
+}
+
+.aboutproject__info:last-of-type{
+    margin: 0 0 100px 0;
 }
 
 .aboutproject__info-green {
@@ -124,7 +127,6 @@
 
 @media (max-width: 1110px) {
     .aboutproject {
-        height: 585px;
         margin: 0 50px;
     }
 
@@ -149,11 +151,14 @@
         line-height: 18px;
         height: 54px;
     }
+    
+    .aboutproject__info:last-of-type{
+        margin-bottom: 70px;
+    }
 }
 
 @media (max-width: 720px) {
     .aboutproject {
-        height: 641px;
         margin: 0 18px;
     }
 

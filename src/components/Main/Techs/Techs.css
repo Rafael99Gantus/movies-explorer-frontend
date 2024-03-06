@@ -1,7 +1,6 @@
 .techs {
     display: block;
     /* width: 1280p0; */
-    height: 525px;
     padding-top: 100px;
     padding-left: 70px;
     padding-right: 70px;
@@ -55,10 +54,11 @@
 .techs__blocks {
     width: 690px;
     display: grid;
+    padding-bottom: 100px;
     grid-template-rows: repeat(1, 60px);
     grid-template-columns: repeat(7, 90px);
     gap: 10px;
-    margin: 0 auto 100px;
+    margin: 0 auto 0;
 }
 
 .techs__block {
@@ -79,12 +79,25 @@
     .techs {
         height: 477px;
         padding-top: 90px;
-        padding-left: 50px;
-        padding-right: 50px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .techs__title {
+        width: 668px;
+        margin: 0 auto 23px;
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 26.63px;
+        background-color: rgba(39, 39, 39, 1);
+        color: rgba(255, 255, 255, 1);
     }
 
     .techs__line {
-        margin-bottom: 80px;
+        width: 668px;
+        margin: 0 auto 80px;
     }
 
     .techs__text {
