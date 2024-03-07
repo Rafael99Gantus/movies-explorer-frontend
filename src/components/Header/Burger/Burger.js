@@ -11,6 +11,7 @@ export default function Burger(props) {
     const isLocationMain = location.pathname === "/";
     const isLocationMovies = location.pathname === "/movies";
     const isLocationSavedMovies = location.pathname === "/saved-movies";
+    const isLocationProfile = location.pathname === "/profile";
 
     const opened = props.openBurger ? 'burger__opened' : 'burger__closed';
 
@@ -36,16 +37,16 @@ export default function Burger(props) {
 
     return (
         <main>
-            <burger className={opened}>
+            <section className={opened}>
                 <div className='burger__overlay' />
                 {isLocationMain && <div className='burger__menu'>
                     <button className='burger__button-closed' type='button' onClick={props.closeBurger}></button>
                     <p className='burger__main'>Главная</p>
                     <p className='burger__link' onClick={goToMovies}>Фильмы</p>
                     <p className='burger__link' onClick={goToSavedMovies}>Сохраненные фильмы</p>
-                    <div className='burger__account'>
-                        <p className='header__text' onClick={goToAccount}>Аккаунт</p>
-                        <div className='header__account-logomov' onClick={goToAccount}></div>
+                    <div className='burger__account' onClick={goToAccount}>
+                        <p className='header__text' >Аккаунт</p>
+                        <div className='header__account-logomov'></div>
                     </div>
                 </div>}
 
@@ -54,9 +55,9 @@ export default function Burger(props) {
                     <p className='burger__link' onClick={goToMain}>Главная</p>
                     <p className='burger__movies'>Фильмы</p>
                     <p className='burger__link' onClick={goToSavedMovies}>Сохраненные фильмы</p>
-                    <div className='burger__account'>
-                        <p className='header__text' onClick={goToAccount}>Аккаунт</p>
-                        <div className='header__account-logomov' onClick={goToAccount}></div>
+                    <div className='burger__account' onClick={goToAccount}>
+                        <p className='header__text' >Аккаунт</p>
+                        <div className='header__account-logomov'></div>
                     </div>
                 </div>}
 
@@ -65,12 +66,23 @@ export default function Burger(props) {
                     <p className='burger__link' onClick={goToMain}>Главная</p>
                     <p className='burger__link' onClick={goToMovies}>Фильмы</p>
                     <p className='burger__saved-movies'>Сохраненные фильмы</p>
-                    <div className='burger__account'>
-                        <p className='header__text' onClick={goToAccount}>Аккаунт</p>
-                        <div className='header__account-logomov' onClick={goToAccount}></div>
+                    <div className='burger__account' onClick={goToAccount}>
+                        <p className='header__text'>Аккаунт</p>
+                        <div className='header__account-logomov'></div>
                     </div>
                 </div>}
-            </burger>
+
+                {isLocationProfile && <div className='burger__menu'>
+                    <button className='burger__button-closed' type='button' onClick={props.closeBurger}></button>
+                    <p className='burger__link' onClick={goToMain}>Главная</p>
+                    <p className='burger__link' onClick={goToMovies}>Фильмы</p>
+                    <p className='burger__link' onClick={goToSavedMovies}>Сохраненные фильмы</p>
+                    <div className='burger__account-this'>
+                        <p className='header__text'>Аккаунт</p>
+                        <div className='header__account-logomov'></div>
+                    </div>
+                </div>}
+            </section>
         </main>
     )
 }

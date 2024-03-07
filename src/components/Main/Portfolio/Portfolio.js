@@ -16,8 +16,8 @@ export default function Portfolio() {
     }
 
     return (
-        <portfolio className='portfolio'>
-            <h1 className='portfolio__title'>Портфолио</h1>
+        <section className='portfolio'>
+            <h2 className='portfolio__title'>Портфолио</h2>
             <div className='portfolio__block' onClick={staticWeb}>
                 <p className='portfolio__block-link' >Статичный сайт</p>
                 <div className='portfolio__block-button'/>
@@ -33,6 +33,6 @@ export default function Portfolio() {
                 <div className='portfolio__block-button'/>
             </div>
 
-        </portfolio>
+        </section>
     )
 }

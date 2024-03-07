@@ -79,7 +79,7 @@ export default function Register(props){
                     </label>
                 </form>
                 <button className="register__button" type="submit" onClick={handleSubmit}>Зарегистрироваться</button>
-                <p className="register__text">Уже зарегистрированы? <Link to="/sign-in" className="register__link">Войти</Link></p>
+                <p className="register__text">Уже зарегистрированы? <Link to="/signin" className="register__link">Войти</Link></p>
             </main>
         </>
     )

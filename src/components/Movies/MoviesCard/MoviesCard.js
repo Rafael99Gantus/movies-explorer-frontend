@@ -30,7 +30,7 @@ export default function MoviesCard(props) {
 
     return (
         <>
-            <article className="movie">
+            <li className="movie">
                 <div className="movie__block">
                     <h2 className="movie__name">В погоне за Бенкси</h2>
                     <div className="movie__time">0ч 47м</div>
@@ -40,9 +40,9 @@ export default function MoviesCard(props) {
                 {isLocationSavedMovies && <button className="movie__buttton" type="button">
                         <img src={logoX} alt="Убрать из сохраненных"/>
                     </button>}
-            </article>
+            </li>
 
-            <article className="movie">
+            <li className="movie">
                 <div className="movie__block">
                     <h2 className="movie__name">В погоне за Бенкси</h2>
                     <div className="movie__time">0ч 47м</div>
@@ -52,9 +52,9 @@ export default function MoviesCard(props) {
                 {isLocationSavedMovies && <button className="movie__buttton" type="button">
                         <img src={logoX} alt="Убрать из сохраненных"/>
                     </button>}
-            </article>
+            </li>
 
-            <article className="movie">
+            <li className="movie">
                 <div className="movie__block">
                     <h2 className="movie__name">В погоне за Бенкси</h2>
                     <div className="movie__time">0ч 47м</div>
@@ -66,9 +66,9 @@ export default function MoviesCard(props) {
                 {isLocationSavedMovies && <button className="movie__buttton" type="button">
                         <img src={logoX} alt="Убрать из сохраненных"/>
                     </button>}
-            </article>
+            </li>
 
-            <article className="movie">
+            <li className="movie">
                 <div className="movie__block">
                     <h2 className="movie__name">В погоне за Бенкси</h2>
                     <div className="movie__time">0ч 47м</div>
@@ -78,9 +78,9 @@ export default function MoviesCard(props) {
                 {isLocationSavedMovies && <button className="movie__buttton" type="button">
                         <img src={logoX} alt="Убрать из сохраненных"/>
                     </button>}
-            </article>
+            </li>
 
-            <article className="movie">
+            <li className="movie">
                 <div className="movie__block">
                     <h2 className="movie__name">В погоне за Бенкси</h2>
                     <div className="movie__time">0ч 47м</div>
@@ -92,9 +92,9 @@ export default function MoviesCard(props) {
                 {isLocationSavedMovies && <button className="movie__buttton" type="button">
                         <img src={logoX} alt="Убрать из сохраненных"/>
                     </button>}
-            </article>
+            </li>
 
-            <article className="movie">
+            <li className="movie">
                 <div className="movie__block">
                     <h2 className="movie__name">В погоне за Бенкси</h2>
                     <div className="movie__time">0ч 47м</div>
@@ -106,9 +106,9 @@ export default function MoviesCard(props) {
                 {isLocationSavedMovies && <button className="movie__buttton" type="button">
                         <img src={logoX} alt="Убрать из сохраненных"/>
                     </button>}
-            </article>
+            </li>
 
-            <article className="movie">
+            <li className="movie">
                 <div className="movie__block">
                     <h2 className="movie__name">В погоне за Бенкси</h2>
                     <div className="movie__time">0ч 47м</div>
@@ -120,9 +120,9 @@ export default function MoviesCard(props) {
                 {isLocationSavedMovies && <button className="movie__buttton" type="button">
                         <img src={logoX} alt="Убрать из сохраненных"/>
                     </button>}
-            </article>
+            </li>
 
-            <article className="movie">
+            <li className="movie">
                 <div className="movie__block">
                     <h2 className="movie__name">В погоне за Бенкси</h2>
                     <div className="movie__time">0ч 47м</div>
@@ -134,9 +134,9 @@ export default function MoviesCard(props) {
                 {isLocationSavedMovies && <button className="movie__buttton" type="button">
                         <img src={logoX} alt="Убрать из сохраненных"/>
                     </button>}
-            </article>
+            </li>
 
-            <article className="movie">
+            <li className="movie">
                 <div className="movie__block">
                     <h2 className="movie__name">В погоне за Бенкси</h2>
                     <div className="movie__time">0ч 47м</div>
@@ -148,9 +148,9 @@ export default function MoviesCard(props) {
                 {isLocationSavedMovies && <button className="movie__buttton" type="button">
                         <img src={logoX} alt="Убрать из сохраненных"/>
                     </button>}
-            </article>
+            </li>
 
-            <article className="movie">
+            <li className="movie">
                 <div className="movie__block">
                     <h2 className="movie__name">В погоне за Бенкси</h2>
                     <div className="movie__time">0ч 47м</div>
@@ -162,9 +162,9 @@ export default function MoviesCard(props) {
                 {isLocationSavedMovies && <button className="movie__buttton" type="button">
                         <img src={logoX} alt="Убрать из сохраненных"/>
                     </button>}
-            </article>
+            </li>
 
-            <article className="movie">
+            <li className="movie">
                 <div className="movie__block">
                     <h2 className="movie__name">В погоне за Бенкси</h2>
                     <div className="movie__time">0ч 47м</div>
@@ -176,9 +176,9 @@ export default function MoviesCard(props) {
                 {isLocationSavedMovies && <button className="movie__buttton" type="button">
                         <img src={logoX} alt="Убрать из сохраненных"/>
                     </button>}
-            </article>
+            </li>
 
-            <article className="movie">
+            <li className="movie">
                 <div className="movie__block">
                     <h2 className="movie__name">В погоне за Бенкси</h2>
                     <div className="movie__time">0ч 47м</div>
@@ -190,7 +190,7 @@ export default function MoviesCard(props) {
                 {isLocationSavedMovies && <button className="movie__buttton" type="button">
                         <img src={logoX} alt="Убрать из сохраненных"/>
                     </button>}
-            </article>
+            </li>
         </>
     )
 }

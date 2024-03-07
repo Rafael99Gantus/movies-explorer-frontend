@@ -12,12 +12,14 @@ import Login from "../Login/Login.js";
 import Error from "../Error/Error.js";
 import './App.css';
 
+
+
 function App() {
   const [currentUser, setCurrentUser] = useState({name: "Рафаэль"});
   const [currentEmeil, setCurrentEmail] = useState({email: 'raf@mail.ru'});
 
   const [cards, setCards] = useState([]);
-  const [loggedIn, setLoggedIn] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(false);
   // const [userEmail, setUserEmail] = useState("");
 
   // useEffect(() => {

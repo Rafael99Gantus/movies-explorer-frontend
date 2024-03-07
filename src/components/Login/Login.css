@@ -68,6 +68,7 @@
 }
 
 .login__input-name:focus{
+    color: rgba(52, 86, 243, 1);
     border-bottom: 1px solid rgba(66, 133, 244, 1);
 }
 

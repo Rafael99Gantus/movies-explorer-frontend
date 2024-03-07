@@ -13,7 +13,7 @@ export default function SearchForm() {
     // }
 
     return (
-        <searchform className='searchform'>
+        <main className='searchform'>
             <form action="" className="searchform__form">
                 <div className="searchform__input-box">
                     <input className="searchform__input" placeholder="Фильм" />
@@ -29,6 +29,6 @@ export default function SearchForm() {
                 </div>
 
             </form>
-        </searchform>
+        </main>
     )
 }

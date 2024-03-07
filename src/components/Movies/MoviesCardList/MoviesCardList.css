@@ -10,6 +10,7 @@
     background-color: rgba(32, 32, 32, 1);
     position: relative;
     z-index: 0;
+    padding: 0;
 }
 
 .elements__block{

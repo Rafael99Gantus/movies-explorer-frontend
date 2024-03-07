@@ -13,7 +13,7 @@ export default function Footer(props) {
     }
 
     return (
-        <footer className='footer'>
+        <main className='footer'>
             <div className='footer__block'>
                 <p className='footer__block-text'>Учебный проект Яндекс.Практикум х BeatFilm.</p>
             </div>
@@ -24,6 +24,6 @@ export default function Footer(props) {
                     <p className='footer__note-git' onClick={git}>Github</p>
                 </div>
             </div>
-        </footer>
+        </main>
     )
 }

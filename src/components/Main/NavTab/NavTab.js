@@ -3,7 +3,7 @@ import './NavTab.css';
 
 export default function NavTab() {
     return (
-        <navtab className='navtab'>
+        <main className='navtab'>
             <h1 className='navtab__title'>О проекте</h1>
             <div className='navtab__line' />
             <div className='navtab__box'>
@@ -25,6 +25,6 @@ export default function NavTab() {
                 <p className='navtab__note-front'>Front-end</p>
             </div>
 
-        </navtab>
+        </main>
     )
 }

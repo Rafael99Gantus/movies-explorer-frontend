@@ -7,12 +7,15 @@
 }
 
 .aboutme__title {
-    margin: 110px 0 23px 0;
+    margin: 110px 0 66px 0;
+    padding-bottom: 23px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 22px;
     line-height: 26.63px;
+    border-bottom: 1px solid;
+    border-color: rgba(218, 218, 218, 1);
     background-color: rgba(32, 32, 32, 1);
     color: rgba(255, 255, 255, 1);
 }
@@ -94,7 +97,7 @@
     }
 
     .aboutme__title {
-        margin: 90px 0 23px 0;
+        margin: 90px 0 66px 0;
     }
 
     .aboutme__box {
@@ -139,7 +142,8 @@
     }
 
     .aboutme__title {
-        margin: 70px auto 28px;
+        margin: 70px auto 60px;
+        padding-bottom: 28px;
         width: 284px;
         font-size: 18px;
         line-height: 21.78px;

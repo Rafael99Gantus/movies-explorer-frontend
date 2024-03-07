@@ -107,6 +107,25 @@
     width: 100px;
     height: 30px;
     margin: 300px auto 0;
+    cursor: pointer;
+}
+
+.burger__account:hover{
+    opacity: 70%;
+}
+
+.burger__account-this{
+    display: flex;
+    justify-content: space-between;
+    width: 100px;
+    height: 30px;
+    margin: 300px auto 0;
+    border-bottom: 1px solid white;
+    cursor: pointer;
+}
+
+.burger__account-this:hover{
+    opacity: 70%;
 }
 
 .burger__overlay{

@@ -53,7 +53,7 @@ export default function Header(props) {
 
     return (
         <>
-            <header className="header">
+            <main className={isLocationMain? "header__main": "header"}>
                 <div className="header__logo" onClick={goToMain} />
                 <div className="header__container">
                     {!props.notLog && <div className='header__unloged-panel'>
@@ -61,6 +61,16 @@ export default function Header(props) {
                         <button className="header__login" onClick={login} type='button'>Войти</button>
                     </div>}
                     {props.notLog && <div className='header__loged-panel'>
+                        {isLocationMain && <div className='header__panel'>
+                            <p className='header__movies' onClick={goToMovies}>Фильмы</p>
+                            <p className='header__saved' onClick={goToSavedMovies}>Сохранённые фильмы</p>
+                        </div>}
+
+                        {isLocationProfile && <div className='header__panel'>
+                            <p className='header__movies' onClick={goToMovies}>Фильмы</p>
+                            <p className='header__saved' onClick={goToSavedMovies}>Сохранённые фильмы</p>
+                        </div>}
+
                         {isLocationMovies && <div className='header__panel'>
                             <p className='header__movies-yes'>Фильмы</p>
                             <p className='header__saved' onClick={goToSavedMovies}>Сохранённые фильмы</p>
@@ -83,7 +93,7 @@ export default function Header(props) {
                         <img className='header__burger-icon' src={burgerLogo} alt='Открытие бургера' />
                     </button>}
                 </div>
-            </header>
+            </main>
             {props.notLog && <Burger openBurger={openBurger} closeBurger={handleOpenBurger} />}
         </>
     )

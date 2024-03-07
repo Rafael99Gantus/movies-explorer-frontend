@@ -15,7 +15,7 @@ export default function MoviesCardList(props) {
 
     return (
         <>
-            <section className='elements'>
+            <ul className='elements'>
                 <MoviesCard />
                 {/* {cards.map((card) => {
                 return (
@@ -36,7 +36,7 @@ export default function MoviesCardList(props) {
                     />
                 )
             })} */}
-            </section>
+            </ul>
             {!isLocationMovies && <div className="elements__block">
                 <button className="elements__block-more" type="button">Ещё</button>
             </div>}

@@ -2,7 +2,7 @@
     width: 410px;
     height: 100% - 70px;
     margin: 0 auto 0;
-    padding-top: 148px;
+    padding-top: 74px;
     z-index: 0;
     /* border: 1px solid white; */
 }
@@ -54,6 +54,10 @@
     font-weight: 400;
     font-size: 11px;
     line-height: 13.31px;
+}
+
+.profile__input-name:focus{
+    border-bottom: 1px solid rgba(66, 133, 244, 1);
 }
 
 .profile__block {
@@ -129,7 +133,7 @@
         width: 410px;
         height: 100% - 70px;
         margin: 0 auto 0;
-        padding-top: 310px;
+        padding-top: 236px;
         /* border: 1px solid white; */
     }
 
@@ -150,7 +154,7 @@
         justify-content: center;
         height: 100% - 70px;
         margin: 0 auto 0;
-        padding-top: 148px;
+        padding-top: 70px;
         /* border: 1px solid white; */
     }
 

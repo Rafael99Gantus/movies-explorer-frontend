@@ -1,7 +1,6 @@
 .searchform{
     display: block;
     height: 242px;
-    padding-top: 74px;
     padding-left: 70px;
     padding-right: 70px;
     background-color: rgba(32, 32, 32, 1);
@@ -31,6 +30,10 @@
     line-height: 20px;
     border: none;
     outline:none;
+}
+
+.searchform__input:focus{
+    border-bottom: 1px solid rgba(66, 133, 244, 1);
 }
 
 .searchform__button {

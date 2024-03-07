@@ -3,10 +3,10 @@ import './Techs.css';
 
 export default function Techs(){
     return(
-        <techs className='techs'>
-            <h1 className='techs__title'>Технологии</h1>
-            <div className='techs__line' />
-            <h2 className='techs__subtitle'>7 технологий</h2>
+        <section className='techs'>
+            <h2 className='techs__title'>Технологии</h2>
+            {/* <div className='techs__line' /> */}
+            <p className='techs__subtitle'>7 технологий</p>
             <p className='techs__text'>На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
             <div className='techs__blocks'>
                 <div className='techs__block'>HTML</div>
@@ -17,6 +17,6 @@ export default function Techs(){
                 <div className='techs__block'>Express.js</div>
                 <div className='techs__block'>mongoDB</div>
             </div>
-        </techs>
+        </section>
     )
 }

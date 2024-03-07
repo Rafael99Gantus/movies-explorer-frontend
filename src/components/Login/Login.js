@@ -60,7 +60,7 @@ export default function Login(props) {
                     </label>
                 </form>
                 <button className="login__button" type="submit" onClick={handleSubmit}>Войти</button>
-                <p className="login__text">Ещё не зарегистрированы? <Link to="/sign-in" className="login__link">Войти</Link></p>
+                <p className="login__text">Ещё не зарегистрированы? <Link to="/signup" className="login__link">Зарегистрироваться</Link></p>
             </main>
         </>
     )
