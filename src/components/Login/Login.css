@@ -12,6 +12,11 @@
     margin-bottom: 40px;
     background: url(../../images/logo_header.svg) no-repeat center;
     object-fit: cover;
+    cursor: pointer;
+}
+
+.login__logo:hover{
+    opacity: 70%;
 }
 
 .login__title{

@@ -35,39 +35,42 @@ export default function Burger(props) {
     }
 
     return (
-        <burger className={opened}>
-            {isLocationMain && <div className='burger__menu'>
-                <button className='burger__button-closed' type='button' onClick={props.closeBurger}></button>
-                <p className='burger__main'>Главная</p>
-                <p className='burger__link' onClick={goToMovies}>Фильмы</p>
-                <p className='burger__link' onClick={goToSavedMovies}>Сохраненные фильмы</p>
-                <div className='burger__account'>
-                    <p className='header__text' onClick={goToAccount}>Аккаунт</p>
-                    <div className='header__account-logomov' onClick={goToAccount}></div>
-                </div>
-            </div>}
+        <main>
+            <burger className={opened}>
+                <div className='burger__overlay' />
+                {isLocationMain && <div className='burger__menu'>
+                    <button className='burger__button-closed' type='button' onClick={props.closeBurger}></button>
+                    <p className='burger__main'>Главная</p>
+                    <p className='burger__link' onClick={goToMovies}>Фильмы</p>
+                    <p className='burger__link' onClick={goToSavedMovies}>Сохраненные фильмы</p>
+                    <div className='burger__account'>
+                        <p className='header__text' onClick={goToAccount}>Аккаунт</p>
+                        <div className='header__account-logomov' onClick={goToAccount}></div>
+                    </div>
+                </div>}
 
-            {isLocationMovies && <div className='burger__menu'>
-                <button className='burger__button-closed' type='button' onClick={props.closeBurger}></button>
-                <p className='burger__link' onClick={goToMain}>Главная</p>
-                <p className='burger__movies'>Фильмы</p>
-                <p className='burger__link' onClick={goToSavedMovies}>Сохраненные фильмы</p>
-                <div className='burger__account'>
-                    <p className='header__text' onClick={goToAccount}>Аккаунт</p>
-                    <div className='header__account-logomov' onClick={goToAccount}></div>
-                </div>
-            </div>}
+                {isLocationMovies && <div className='burger__menu'>
+                    <button className='burger__button-closed' type='button' onClick={props.closeBurger}></button>
+                    <p className='burger__link' onClick={goToMain}>Главная</p>
+                    <p className='burger__movies'>Фильмы</p>
+                    <p className='burger__link' onClick={goToSavedMovies}>Сохраненные фильмы</p>
+                    <div className='burger__account'>
+                        <p className='header__text' onClick={goToAccount}>Аккаунт</p>
+                        <div className='header__account-logomov' onClick={goToAccount}></div>
+                    </div>
+                </div>}
 
-            {isLocationSavedMovies && <div className='burger__menu'>
-                <button className='burger__button-closed' type='button' onClick={props.closeBurger}></button>
-                <p className='burger__link' onClick={goToMain}>Главная</p>
-                <p className='burger__link' onClick={goToMovies}>Фильмы</p>
-                <p className='burger__saved-movies'>Сохраненные фильмы</p>
-                <div className='burger__account'>
-                    <p className='header__text' onClick={goToAccount}>Аккаунт</p>
-                    <div className='header__account-logomov' onClick={goToAccount}></div>
-                </div>
-            </div>}
-        </burger>
+                {isLocationSavedMovies && <div className='burger__menu'>
+                    <button className='burger__button-closed' type='button' onClick={props.closeBurger}></button>
+                    <p className='burger__link' onClick={goToMain}>Главная</p>
+                    <p className='burger__link' onClick={goToMovies}>Фильмы</p>
+                    <p className='burger__saved-movies'>Сохраненные фильмы</p>
+                    <div className='burger__account'>
+                        <p className='header__text' onClick={goToAccount}>Аккаунт</p>
+                        <div className='header__account-logomov' onClick={goToAccount}></div>
+                    </div>
+                </div>}
+            </burger>
+        </main>
     )
 }

@@ -21,10 +21,14 @@ export default function Login(props) {
         navigate('/movies', {replace: true});
     }
 
+    function handleMain(){
+        navigate('/', {replace: true});
+    }
+
     return (
         <>
              <main className="login">
-                <div className="login__logo"/>
+                <div className="login__logo" onClick={handleMain}/>
                 <h1 className="login__title">Рады видеть!</h1>
                 <form className="login__form">
                     <label className="login__input">

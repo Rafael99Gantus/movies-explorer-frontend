@@ -25,10 +25,15 @@ export default function Register(props){
         navigate('/sign-in', {replace: true});
     }
 
+    function handleMain(e){
+        e.preventDefault();
+        navigate('/', {replace: true});
+    }
+
     return(
         <>
             <main className="register">
-                <div className="register__logo"/>
+                <div className="register__logo" onClick={handleMain}/>
                 <h1 className="register__title">Добро пожаловать!</h1>
                 <form className="register__form">
                     <label className="register__input">

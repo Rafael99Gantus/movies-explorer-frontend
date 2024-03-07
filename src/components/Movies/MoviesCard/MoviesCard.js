@@ -1,6 +1,6 @@
 import React from "react";
 import './MoviesCard.css';
-import image from '../../../images/stub_movie-opt.jpg';
+import image from '../../../images/movie.png';
 import logo from '../../../images/save_button.svg';
 import logoX from '../../../images/logoX.svg';
 
@@ -11,7 +11,6 @@ import { useLocation } from "react-router-dom";
 export default function MoviesCard(props) {
 
     const location = useLocation();
-
     // const currentUser = React.useContext(CurrentUserContext);
     // const button = document.querySelector('.movie__buttton')
 

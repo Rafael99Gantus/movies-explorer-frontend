@@ -62,7 +62,7 @@
 .portfolio__block-button {
     height: 60px;
     width: 29px;
-    background: url(../../../images/arrow.svg) no-repeat center;
+    background: url(../../../images/arrow-opt.svg) no-repeat center;
 }
 
 @media (max-width:1110px) {
@@ -117,6 +117,6 @@
     .portfolio__block-button {
         height: 28px;
         width: 18px;
-        background: url(../../../images/arrow.svg) no-repeat center;
+        background: url(../../../images/arrow-opt.svg) no-repeat center;
     }
 }

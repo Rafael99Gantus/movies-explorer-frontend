@@ -10,8 +10,8 @@ import Footer from "../Footer/Footer.js";
 
 export default function Main(props){
     return(
-        <>
-        <Header notLog={false}/>
+        <main>
+        <Header notLog={true}/>
         <main className='main'>
             <Promo />
             <AboutProject />
@@ -20,6 +20,6 @@ export default function Main(props){
             <Portfolio />
         </main>
         <Footer />
-        </>
+        </main>
     )
 }
