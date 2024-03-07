@@ -1,0 +1,206 @@
+.aboutme {
+    display: block;
+    /* width: 1280p0; */
+    padding-left: 70px;
+    padding-right: 70px;
+    background-color: rgba(32, 32, 32, 1);
+}
+
+.aboutme__title {
+    margin: 110px 0 66px 0;
+    padding-bottom: 23px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 26.63px;
+    border-bottom: 1px solid;
+    border-color: rgba(218, 218, 218, 1);
+    background-color: rgba(32, 32, 32, 1);
+    color: rgba(255, 255, 255, 1);
+}
+
+.aboutme__line {
+    height: 0px;
+    margin: 0 0 66px;
+    border: 0.5px solid;
+    border-color: rgba(218, 218, 218, 1);
+}
+
+.aboutme__box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 101px;
+}
+
+.aboutme__box-name {
+    width: 600px;
+    height: 58px;
+    margin: 0 0 18px 0;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    color: rgba(255, 255, 255, 1);
+}
+
+.aboutme__box-work {
+    margin: 0 0 26px 0;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    color: rgba(255, 255, 255, 1);
+}
+
+.aboutme__box-description {
+    margin: 0 0 99px 0;
+    width: 600px;
+    height: 88px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: rgba(255, 255, 255, 1);
+}
+
+.aboutme__box-git {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16.94px;
+    color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+}
+
+.aboutme__box-git:hover{
+    opacity: 70%;
+}
+
+.aboutme__box-photo {
+    width: 100%;
+    height: 327px;
+    background: url(../../../images/photo.png) no-repeat center;
+    object-fit: none;
+    border-radius: 10px;
+}
+
+@media (max-width: 1110px) {
+    .aboutme {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .aboutme__title {
+        margin: 90px 0 66px 0;
+    }
+
+    .aboutme__box {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 90px;
+    }
+
+    .aboutme__box-name {
+        width: 348px;
+        height: 40px;
+        margin: 0 0 16px 0;
+        font-size: 40px;
+        line-height: 40px;
+    }
+
+    .aboutme__box-work {
+        margin: 0 0 20px 0;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .aboutme__box-description {
+        margin: 0 0 87px 0;
+        width: 364px;
+        height: 108px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .aboutme__box-photo {
+        width: 255px;
+        height: 307px;
+        background: url(../../../images/photo.png) no-repeat center;
+        object-fit: none;
+    }
+}
+
+@media (max-width: 720px) {
+    .aboutme {
+        padding: 0;
+    }
+
+    .aboutme__title {
+        margin: 70px auto 60px;
+        padding-bottom: 28px;
+        width: 284px;
+        font-size: 18px;
+        line-height: 21.78px;
+    }
+
+    .aboutme__line {
+        margin: 0 auto 60px;
+        width: 284px;
+    }
+
+    .aboutme__box {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        margin-bottom: 70px;
+    }
+    
+    .aboutme__box-name {
+        width: 250px;
+        height: 36px;
+        margin: 40px 0 20px 14px;
+        font-size: 30px;
+        line-height: 36.31px;
+    }
+    
+    .aboutme__box-work {
+        height: 16px;
+        width: 250px;
+        margin: 0 0 20px 14px;
+        font-size: 11px;
+        line-height: 16px;
+    }
+    
+    .aboutme__box-description {
+        margin: 0 0 40px 14px;
+        width: 280px;
+        height: 112px;
+        font-size: 11px;
+        line-height: 16px;
+    }
+    
+    .aboutme__box-git {
+        width: 46px;
+        height: 17px;
+        margin: 0 0 0 14px;
+        font-size: 14px;
+        line-height: 16.94px;
+        color: rgba(255, 255, 255, 1);
+    }
+    
+    .aboutme__box-photo {
+        width: 292px;
+        height: 352px;
+        background: url(../../../images/photo.png) no-repeat center;
+        object-fit: none;
+        border-radius: 10px;
+        margin: 0 auto 0;
+        background-size: cover;
+    }
+}
