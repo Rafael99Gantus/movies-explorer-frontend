@@ -68,8 +68,16 @@
 }
 
 .login__input-name:focus{
-    color: rgba(52, 86, 243, 1);
     border-bottom: 1px solid rgba(66, 133, 244, 1);
+}
+
+.login__error{
+    color: red;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13.31px;
 }
 
 .login__button{
@@ -93,6 +101,24 @@
 
 .login__button:hover{
     opacity: 80%;
+}
+
+.login__button-disabled{
+    width: 396px;
+    height: 45px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16.94px;
+    letter-spacing: 0em;
+    color: white;
+    border: none;
+    outline: none;
+    background-color: rgba(139, 139, 139, 1);
+    border-radius: 3px;
+    padding: 0;
+    margin: 0 0 16px 0;
 }
 
 .login__text{

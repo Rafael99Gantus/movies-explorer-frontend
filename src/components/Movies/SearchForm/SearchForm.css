@@ -36,6 +36,10 @@
     border-bottom: 1px solid rgba(66, 133, 244, 1);
 }
 
+.searchform__input_error::placeholder{
+    color: red;
+}
+
 .searchform__button {
     margin: 10px 10px 10px 0;
     width: 100px;

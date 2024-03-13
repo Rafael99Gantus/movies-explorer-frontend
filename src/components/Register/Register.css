@@ -90,6 +90,24 @@
     margin: 0 0 16px 0;
 }
 
+.register__button-disabled{
+    background-color: rgba(139, 139, 139, 1);
+    width: 396px;
+    height: 45px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16.94px;
+    letter-spacing: 0em;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    padding: 0;
+    margin: 0 0 16px 0;
+}
+
 .register__button:hover{
     opacity: 80%;
 }
@@ -118,6 +136,15 @@
 
 .register__link:hover{
     opacity: 70%;
+}
+
+.register__error{
+    color: red;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13.31px;
 }
 
 @media (max-width:768px){
@@ -163,6 +190,15 @@
     }
 
     .register__button{
+        align-self: center;
+        width: 260px;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 14.52px;
+        margin: 0 auto 14px;
+    }
+
+    .register__button-disabled{
         align-self: center;
         width: 260px;
         font-size: 12px;

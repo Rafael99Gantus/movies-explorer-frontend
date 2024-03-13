@@ -1,46 +1,71 @@
 import React from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import './Profile.css';
 import Header from "../Header/Header";
 
 export default function Profile(props) {
 
-    const [name, setName] = useState({ name: props.user.name });
-    const [email, setEmail] = useState({ email: props.email.email });
 
-    const [edit, setEdit] = useState(false) ;
+    const [name, setName] = useState(props.user.name);
+    const [email, setEmail] = useState(props.user.email);
 
-    const navigate = useNavigate();
+    const [nameError, setNameError] = useState('');
+    const [emailError, setEmailError] = useState('');
+
+    const [valid, setValid] = useState(false)
+    const emailValidation = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const [edit, setEdit] = useState(false);
 
     const handleEmail = (e) => {
-        setEmail(e.target.value)
+        setEmail(e.target.value);
+        validateInput();
     };
     const handleName = (e) => {
-        setName(e.target.value)
+        setName(e.target.value);
+        validateInput();
     };
 
     function handleEdit() {
         setEdit(true);
     };
 
+    const validateInput = () => {
+        setEmailError('');
+        setNameError('');
+        setValid(true);
+
+        if (!email) {
+            setEmailError('Поле "E-mail" обязательно для заполнения');
+            setValid(false);
+        } else if (email.length < 2) {
+            setEmailError('E-mail должен содержать не менее 2 символов');
+            setValid(false);
+        } else if (!emailValidation.test(email)) {
+            setEmailError('Проверьте что поле "E-mail" записано верно');
+            setValid(false);
+        }
+
+        if (!name) {
+            setNameError('Поле "Имя" обязательно для заполнения');
+            setValid(false);
+        } else if (name.length < 2) {
+            setEmailError('Имя должно содержать не менее 2 символов');
+            setValid(false);
+        }
+    };
+
     function handleSaveEdit(e) {
         e.preventDefault()
         setEdit(false)
-        props.editProfile(name, email)
-    };
-
-    function goToMain(){
-        navigate("/");
-        window.location.reload()
+        props.editProfile({ name, email })
     };
 
     return (
         <main>
-            <Header notLog={true} />
+            <Header loggedIn={props.loggedIn} />
             <div className="profile">
                 <h1 className="profile__name">Привет, {props.user.name}!</h1>
-                <form className="profile__form">
+                <form className="profile__form" onSubmit={handleSaveEdit}>
                     <label className="profile__input">
                         Имя
                         <input
@@ -52,7 +77,7 @@ export default function Profile(props) {
                             maxLength="30"
                             disabled={!edit}
                             onChange={handleName}
-                            value={name.name || ''}>
+                            value={name}>
                         </input>
                     </label>
 
@@ -67,15 +92,25 @@ export default function Profile(props) {
                             maxLength="30"
                             disabled={!edit}
                             onChange={handleEmail}
-                            value={email.email || ''}>
+                            value={email}>
                         </input>
                     </label>
+                    {nameError && <span className="profile__error">{nameError}</span>}
+                    {emailError && <span className="profile__error">{emailError}</span>}
                     {!edit ? (<div className="profile__block">
                         <button className="profile__button-edit" onClick={handleEdit} type="button">Редактировать</button>
-                        <button className="profile__button-exit" onClick={goToMain} type="button">Выйти из аккаунта</button>
-                    </div>) : (
-                        <button className="profile__button-save" onClick={handleSaveEdit} type="button">Сохранить</button>
-                    )}
+                        <button className="profile__button-exit" onClick={props.logOut} type="button">Выйти из аккаунта</button>
+                    </div>) : <button className={valid ? "profile__button-save" : "profile__button-save_disabled"} onClick={handleSaveEdit} type="submit">Сохранить</button>}
+
+                    {/* {!edit && valid ? (<div className="profile__block">
+                        <button className="profile__button-edit" onClick={handleEdit} type="button">Редактировать</button>
+                        <button className="profile__button-exit" onClick={props.logOut} type="button">Выйти из аккаунта</button>
+                    </div>) : <button className="profile__button-save" onClick={handleSaveEdit} type="submit">Сохранить</button>} */}
+
+                    {/* {!edit && !valid ? (<div className="profile__block">
+                        <button className="profile__button-edit_disabled" disabled type="button">Редактировать</button>
+                        <button className="profile__button-exit" onClick={props.logOut} type="button">Выйти из аккаунта</button>
+                    </div>) : <button className="profile__button-save_disabled" disabled type="button">Сохранить</button>} */}
                 </form>
             </div>
         </main>

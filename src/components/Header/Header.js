@@ -5,7 +5,7 @@ import "./Header.css"
 import Burger from './Burger/Burger';
 import burgerLogo from '../../images/burger-logo.svg';
 
-export default function Header(props) {
+export default function Header({loggedIn}) {
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -14,33 +14,27 @@ export default function Header(props) {
     function login() {
         localStorage.removeItem('jwt');
         navigate("/signin");
-        window.location.reload()
     }
 
     function register() {
         localStorage.removeItem('jwt');
         navigate("/signup");
-        window.location.reload()
     }
 
     function goToMain() {
         navigate("/");
-        window.location.reload()
     }
 
     function goToAccount() {
         navigate("/profile");
-        window.location.reload()
     }
 
     function goToMovies() {
         navigate("/movies");
-        window.location.reload()
     }
 
     function goToSavedMovies() {
         navigate("/saved-movies");
-        window.location.reload()
     }
     const isLocationMain = location.pathname === "/";
     const isLocationMovies = location.pathname === "/movies";
@@ -56,11 +50,11 @@ export default function Header(props) {
             <main className={isLocationMain? "header__main": "header"}>
                 <div className="header__logo" onClick={goToMain} />
                 <div className="header__container">
-                    {!props.notLog && <div className='header__unloged-panel'>
+                    {!loggedIn && <div className='header__unloged-panel'>
                         <button className="header__register" onClick={register} type='button'>Регистрация</button>
                         <button className="header__login" onClick={login} type='button'>Войти</button>
                     </div>}
-                    {props.notLog && <div className='header__loged-panel'>
+                    {loggedIn && <div className='header__loged-panel'>
                         {isLocationMain && <div className='header__panel'>
                             <p className='header__movies' onClick={goToMovies}>Фильмы</p>
                             <p className='header__saved' onClick={goToSavedMovies}>Сохранённые фильмы</p>
@@ -89,12 +83,12 @@ export default function Header(props) {
                             {isLocationProfile && <div className='header__account-logomov' onClick={goToAccount}></div>}
                         </div>
                     </div>}
-                    {props.notLog && <button className='header__burger-button' onClick={handleOpenBurger} type="button">
+                    {loggedIn && <button className='header__burger-button' onClick={handleOpenBurger} type="button">
                         <img className='header__burger-icon' src={burgerLogo} alt='Открытие бургера' />
                     </button>}
                 </div>
             </main>
-            {props.notLog && <Burger openBurger={openBurger} closeBurger={handleOpenBurger} />}
+            {loggedIn && <Burger openBurger={openBurger} closeBurger={handleOpenBurger} />}
         </>
     )
 }
