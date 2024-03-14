@@ -14,7 +14,8 @@ export default function Movies(props) {
     const navigate = useNavigate();
     const movies = React.useContext(CurrentMovieInfo);
     const [value, setValue] = useState('');
-    const [filtredMovies, setFiltredMovies] = useState({})
+
+    const [checkbox, setCheckbox] = useState(false)
 
     useEffect(() => {
         apiMov.getMovies()
@@ -25,14 +26,23 @@ export default function Movies(props) {
     }, [navigate])
 
 
-    function getMovies(movies) {
+    function getMovies() {
         props.setloading(true);
-        console.log(movies)
-        const filter = movies.filter(function (movie) {
-            return movie.nameRU.toLowerCase().trim().imcludes(value.toLowerCase())
-        });
-        setFiltredMovies(filter);
-        console.log(filter);
+        console.log(movies);
+        // const filter = movies.filter(function (movie) {
+        //     return movie.nameRU.imcludes(value.toLowerCase())
+        // });
+        if(checkbox === true){
+            const shortMovies = movies.filter(function (movie) {
+                return movie.duration <= 40
+            });
+            props.setMovie(shortMovies);
+            console.log(shortMovies);
+        } else {
+            props.setMovie(movies);
+            console.log(movies);
+        }
+        
         props.setloading(false);
     }
 
@@ -40,7 +50,7 @@ export default function Movies(props) {
         <main>
             <movies className='movies'>
                 <Header loggedIn={props.loggedIn} />
-                <SearchForm getMovies={getMovies} setValue={setValue} value={value} />
+                <SearchForm getMovies={getMovies} setValue={setValue} value={value} setCheckbox={setCheckbox}/>
                 <MoviesCardList loading={props.loading}/>
                 <Footer />
             </movies>

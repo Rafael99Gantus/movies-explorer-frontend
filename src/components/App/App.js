@@ -16,6 +16,7 @@ import './App.css';
 import api from "../../utils/MainApi.js"
 import apiMov from "../../utils/MoviesApi.js"
 import { getToken, setToken, removeToken } from "../../utils/token.js"
+import { getSavedMovies, setSavedMovies, removeSavedMovies } from "../../utils/savedMovies.js"
 
 
 
@@ -25,10 +26,11 @@ function App() {
   const [currentUser, setCurrentUser] = useState('');
   //const [email, setEmail] = useState('');
   const [movie, setMovie] = useState([]);
+  const [save, setSaved] = useState(getSavedMovies())
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [isToken, setIsToken] = useState(getToken());
-  const [loading, setloading] = useState(true);
+  const [loading, setloading] = useState(false);
 
   useEffect(() => {
     if (isToken) {

@@ -72,36 +72,24 @@
     height: 20px;
 }
 
-.searchform__filter{
+/* .searchform__filter{
     cursor: pointer;
     position: relative;
+    background-color: rgba(235, 235, 235, 1);
+    border-radius: 20px;
+    width: 36px;
+    height: 20px;
+} */
 
-    transition: all 0.3s ease 0s;
-    -webkit-transition: all 0.3s ease 0s;
-    -moz-transition: all 0.3s ease 0s;
-    -ms-transiotion: all 0.3s ease 0s;
-    -o-transition: all 0.3s ease 0s;
-}
-
-.searchform__filter:hover{
+/* .searchform__filter:hover{
     opacity: 70%;
 }
 
 .searchform__filter.active {
     color: #000;
-}
+} */
 
-.searchform__filter.active::before {
-    background-color: rgba(43, 224, 128, 1);
-}
-
-.searchform__filter.active::after{
-    background-color: rgb(255, 255, 255, 1);
-    left: 22px;
-    
-}
-
-.searchform__filter::before{
+/* .searchform__filter::before{
     content: '';
     width: 36px;
     height: 20px;
@@ -111,7 +99,11 @@
     left: 0;
     top: 0;
     -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.searchform__filter.active::before {
+    background-color: rgba(43, 224, 128, 1);
 }
 
 .searchform__filter::after{
@@ -127,8 +119,66 @@
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);;
 }
 
+.searchform__filter.active::after{
+    background-color: rgb(255, 255, 255, 1);
+    left: 22px;
+    
+} */
+
+.searchfrom__filter_input:checked + .searchform__slider::before {
+    background-color: rgba(43, 224, 128, 1);;
+}
+
+.searchfrom__filter_input:checked + .searchform__slider::after {
+    background-color: rgba(255, 255, 255, 1);
+    left: 22px;
+}
+
+.searchform__slider{
+    position: relative;
+}
+
+.searchform__slider:hover{
+    opacity: 70%;
+}
+
+.searchform__slider::before{
+    content: '';
+    width: 36px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: rgba(235, 235, 235, 1);
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: background-color .5s;
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.searchform__slider::after{
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 20px;
+    background-color: rgba(245, 245, 245, 1);
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    transition: background-color .5s, left .5s;
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
 .searchform__filter input{
-    display: none;
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    appearance: none;
+    /* display: none; */
 }
 
 .searchform__text{

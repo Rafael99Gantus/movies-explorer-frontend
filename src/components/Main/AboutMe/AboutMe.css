@@ -83,7 +83,7 @@
 }
 
 .aboutme__box-photo {
-    width: 100%;
+    width: 270px;
     height: 327px;
     background: url(../../../images/photo.png) no-repeat center;
     object-fit: none;
