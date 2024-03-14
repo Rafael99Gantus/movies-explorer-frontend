@@ -18,3 +18,7 @@ Frontend https://movie.rafael.nomoredomainsmonster.ru
 Backend https://api.movie.rafael.nomoredomainsmonster.ru
 
 Pull Request https://github.com/Rafael99Gantus/movies-explorer-frontend/pull/2
+
+## Комментарий для ревюера
+
+Ссылка весит больше 10мБ
