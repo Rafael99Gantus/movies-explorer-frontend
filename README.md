@@ -16,3 +16,5 @@ IP-адрес 51.250.6.105
 Frontend https://movie.rafael.nomoredomainsmonster.ru
 
 Backend https://api.movie.rafael.nomoredomainsmonster.ru
+
+Pull Request https://github.com/Rafael99Gantus/movies-explorer-frontend/pull/2
