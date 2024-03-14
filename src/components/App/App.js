@@ -28,9 +28,11 @@ function App() {
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [isToken, setIsToken] = useState(getToken());
+  const [loading, setloading] = useState(true);
 
   useEffect(() => {
     if (isToken) {
+      setloading(true);
       api.checkToken(isToken)
         .then((res) => {
           if (res) {
@@ -38,9 +40,10 @@ function App() {
             setCurrentUser(res);
           }
         })
-        .catch((err) => console.log(err));
-    } else {
-      setLoggedIn(false);
+        .catch((err) => console.log(err))
+        .finally(() =>{
+          setloading(false);
+        })
     }
   }, [navigate, isToken]);
 
@@ -103,7 +106,9 @@ function App() {
             <Route path="/movies" element={<ProtectedRoute 
             component={Movies} 
             loggedIn={loggedIn}
-            setMovie={setMovie}/>} />;
+            setMovie={setMovie}
+            loading={loading}
+            setloading={setloading}/>} />;
 
             <Route path="/saved-movies" element={<ProtectedRoute
               component={SavedMovies}

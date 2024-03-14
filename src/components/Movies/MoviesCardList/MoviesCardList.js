@@ -1,6 +1,7 @@
 import React from "react";
 import './MoviesCardList.css';
-import MoviesCard from '../MoviesCard/MoviesCard'
+import MoviesCard from '../MoviesCard/MoviesCard';
+import Preloader from '../Preloader/Preloader.js'
 import { useState } from "react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
@@ -30,8 +31,8 @@ export default function MoviesCardList(props) {
 
     return (
         <>
-            <ul className='elements'>
-                {movies.slice(0, quantity).map((movie) => {
+            {props.loading ? <Preloader/> : <ul className='elements'>
+                {/* {movies.slice(0, quantity).map((movie) => {
                     return (
                         <MoviesCard
                             key={movie.id}
@@ -41,8 +42,8 @@ export default function MoviesCardList(props) {
                             image={movie.image}
                         />
                     )
-                })}
-            </ul>
+                })} */}
+            </ul>}
             {movies.length > quantity ? <div className="elements__block">
                 <button className="elements__block-more" type="button">Ещё</button>
             </div> : null}

@@ -20,19 +20,20 @@ export default function Movies(props) {
         apiMov.getMovies()
             .then((res) => {
                 props.setMovie(res);
-                console.log(movies.length)
             })
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [navigate])
 
 
     function getMovies(movies) {
+        props.setloading(true);
         console.log(movies)
-        // let filter = {};
-        // filter = movies.filter(movie => {
-        //     return movie.nameRU.toLowerCase().imcludes(value.toLowerCase())
-        // });
-        // console.log(filter);
+        const filter = movies.filter(function (movie) {
+            return movie.nameRU.toLowerCase().trim().imcludes(value.toLowerCase())
+        });
+        setFiltredMovies(filter);
+        console.log(filter);
+        props.setloading(false);
     }
 
     return (
@@ -40,7 +41,7 @@ export default function Movies(props) {
             <movies className='movies'>
                 <Header loggedIn={props.loggedIn} />
                 <SearchForm getMovies={getMovies} setValue={setValue} value={value} />
-                <MoviesCardList />
+                <MoviesCardList loading={props.loading}/>
                 <Footer />
             </movies>
         </main>
