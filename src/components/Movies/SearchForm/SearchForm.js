@@ -2,9 +2,12 @@ import React from "react";
 import './SearchForm.css';
 import { useState } from 'react';
 
+import { CurrentMovieInfo } from '../../contexts/CurrentMovieInfo.js';
+
 export default function SearchForm(props) {
 
     const [error, setError] = useState("");
+    const movies = React.useContext(CurrentMovieInfo);
 
     function handleSubmit(e){
         e.preventDefault();
@@ -12,7 +15,7 @@ export default function SearchForm(props) {
             setError("Введите что-нибудь");
             return;
         }
-        props.getMovies();
+        props.getMovies(movies);
         
     }
 

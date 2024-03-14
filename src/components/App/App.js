@@ -44,14 +44,6 @@ function App() {
     }
   }, [navigate, isToken]);
 
-  useEffect(() => {
-    apiMov.getMovies()
-      .then((res) => {
-        setMovie(res);
-      })
-      .catch(err => console.log(err));
-  }, []);
-
   function logOut() {
     removeToken();
     localStorage.clear();
@@ -99,15 +91,6 @@ function App() {
       })
       .catch(err => console.log(`Ошибка входа ${err}`));  }
 
-  function getMovies() {
-    apiMov.getMovies()
-      .then((res) => {
-        setMovie(res);
-        console.log(res)
-      })
-      .catch(err => console.log(err));
-  }
-
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <CurrentMovieInfo.Provider value={movie}>
@@ -120,7 +103,7 @@ function App() {
             <Route path="/movies" element={<ProtectedRoute 
             component={Movies} 
             loggedIn={loggedIn}
-            getMovies={getMovies}/>} />;
+            setMovie={setMovie}/>} />;
 
             <Route path="/saved-movies" element={<ProtectedRoute
               component={SavedMovies}
