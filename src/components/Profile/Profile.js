@@ -11,16 +11,20 @@ export default function Profile(props) {
 
     const [nameError, setNameError] = useState('');
     const [emailError, setEmailError] = useState('');
+    const [noneError, setNoneError] = useState('Начните вносить изменения');
+
 
     const [valid, setValid] = useState(false)
     const emailValidation = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const [edit, setEdit] = useState(false);
 
     const handleEmail = (e) => {
+        setNoneError('')
         setEmail(e.target.value);
         validateInput();
     };
     const handleName = (e) => {
+        setNoneError('')
         setName(e.target.value);
         validateInput();
     };
@@ -57,6 +61,7 @@ export default function Profile(props) {
     function handleSaveEdit(e) {
         e.preventDefault()
         setEdit(false)
+        console.log({ name: name, email: email })
         props.editProfile({ name, email })
     };
 

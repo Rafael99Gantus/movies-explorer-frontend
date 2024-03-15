@@ -38,7 +38,7 @@ class Api {
             },
             body: JSON.stringify({
                 name: info.name,
-                about: info.about
+                email: info.email
             })
         })
     }
