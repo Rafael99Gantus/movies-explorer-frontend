@@ -4,8 +4,6 @@ import { useState } from 'react';
 
 import { CurrentMovieInfo } from '../../contexts/CurrentMovieInfo.js';
 
-import { getSavedMovies, setSavedMovies, removeSavedMovies } from "../../../utils/savedMovies.js"
-
 export default function SearchForm(props) {
 
     function checkCheckbox(){

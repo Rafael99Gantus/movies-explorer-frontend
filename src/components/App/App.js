@@ -13,10 +13,9 @@ import Login from "../Login/Login.js";
 import Error from "../Error/Error.js";
 import './App.css';
 
-import api from "../../utils/MainApi.js"
-import apiMov from "../../utils/MoviesApi.js"
-import { getToken, setToken, removeToken } from "../../utils/token.js"
-import { getSavedMovies, setSavedMovies, removeSavedMovies } from "../../utils/savedMovies.js"
+import api from "../../utils/MainApi.js";
+import apiMov from "../../utils/MoviesApi.js";
+import { getToken, setToken, removeToken } from "../../utils/token.js";
 
 
 
@@ -26,7 +25,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState('');
   //const [email, setEmail] = useState('');
   const [movie, setMovie] = useState([]);
-  const [save, setSaved] = useState(getSavedMovies())
+  const [save, setSaved] = useState(JSON.parse(localStorage.getItem('myMovies')) || [])
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [isToken, setIsToken] = useState(getToken());
@@ -110,7 +109,9 @@ function App() {
             loggedIn={loggedIn}
             setMovie={setMovie}
             loading={loading}
-            setloading={setloading}/>} />;
+            setloading={setloading}
+            setSaved={setSaved}
+            save={save}/>} />;
 
             <Route path="/saved-movies" element={<ProtectedRoute
               component={SavedMovies}

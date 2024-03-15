@@ -1,47 +1,75 @@
 import React from "react";
 import './MoviesCard.css';
 import logoX from '../../../images/logoX.svg';
+import saveIcon from '../../../images/save_icon.svg';
+import api from '../../../utils/MainApi.js'
 
 import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
-// import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
+import { CurrentMovieInfo } from '../../contexts/CurrentMovieInfo.js';
 
 export default function MoviesCard(props) {
 
+    const [saveButton, setSaveButon] = useState(false);
+    const movies = React.useContext(CurrentMovieInfo);
+
     const location = useLocation();
-    // const currentUser = React.useContext(CurrentUserContext);
-    // const button = document.querySelector('.movie__buttton')
-
-    // const isOwn = props.card.owner[0] === currentUser._id;
-    // const isLiked = props.likes.some(i => i === currentUser._id);
-    // const cardLikeButtonClassName = (`elements__heart ${isLiked ? 'elements__heart_active' : ''}`);
-
-    // function handleClick() {
-    // 	button.className = 'movie__saved';
-    // }
-
-    // function handleLikeClick() { movie__buttton
-    // 	props.onCardLike(props.card)
-    // }
 
     const isLocationSavedMovies = location.pathname === '/saved-movies';
     const duration = `${Math.floor(props.duration / 60)}ч ${props.duration % 60}м`;
 
     let imageUrl = `https://api.nomoreparties.co${props.image.url}`;
 
+    function handleSaved(e){
+        e.preventDefault();
+        if(props.saveMovie){
+            api.postSaveMovies(
+                props.country,
+                props.director,
+                props.duration,
+                props.year,
+                props.description,
+                `https://api.nomoreparties.co${props.image.url}`,
+                props.trailerLink,
+                props.nameRU,
+                props.nameEN,
+                `https://api.nomoreparties.co${props.image.formats.thumbnail.url}`,
+                props.id
+            )
+            .then((res) => {
+                props.setSaved(res);
+            })
+            .catch((err) => {
+                console.log(`Произошла ошибка при сохранении фильма ${err}`)
+            })
+        }
+    }
+
     return (
         <>
-             <li className="movie">
+             {!isLocationSavedMovies && <li className="movie">
                 <div className="movie__block">
-                    <h2 className="movie__name">{props.name}</h2>
+                    <h2 className="movie__name">{props.nameRU}</h2>
                     <div className="movie__time">{duration}</div>
                 </div>
-                <img className='movie__image' src={imageUrl} alt={props.name} />
-                {!isLocationSavedMovies && <button className="movie__buttton" type="button">Сохранить</button>}
-                {isLocationSavedMovies && <button className="movie__buttton" type="button">
-                        <img src={logoX} alt="Убрать из сохраненных"/>
+                <img className='movie__image' src={imageUrl} alt={props.nameRU} />
+                {!saveButton && <button className="movie__buttton_save" type="button" onClick={handleSaved}>Сохранить</button>}
+                {saveButton && <button className="movie__saved" type="button" onClick={handleSaved}>
+                <img src={saveIcon} alt="Убрать из сохраненных"/>
                     </button>}
-            </li>
+            </li>}
+
+            {isLocationSavedMovies && <li className="movie">
+                <div className="movie__block">
+                    <h2 className="movie__name">{props.nameRU}</h2>
+                    <div className="movie__time">{duration}</div>
+                </div>
+                <img className='movie__image' src={imageUrl} alt={props.nameRU} />
+                <button className="movie__buttton" type="button">
+                        <img src={logoX} alt="Убрать из сохраненных"/>
+                    </button>
+            </li>}
         </>
     )
 }

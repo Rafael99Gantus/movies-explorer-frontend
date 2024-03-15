@@ -63,7 +63,28 @@
 }
 
 .movie__buttton:hover{
-    opacity: 80%;
+    opacity: 70%;
+}
+
+.movie__buttton_save{
+    border-radius: 30px;
+    width: 100px;
+    height: 29px;
+    margin: 0 130px 18px 130px;
+    background-color: rgba(49, 49, 49, 1);
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 11px;
+    color: white;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+}
+
+.movie__buttton_save:hover{
+    opacity: 70%;
 }
 
 .movie__saved{
@@ -96,6 +117,10 @@
     }
 
     .movie__buttton{
+        margin: 0 121px 18px 121px;
+    }
+
+    .movie__buttton_save{
         margin: 0 121px 18px 121px;
     }
 
@@ -134,6 +159,10 @@
     }
     
     .movie__buttton{
+        margin: 0 100px 14px 100px;
+    }
+
+    .movie__buttton_save{
         margin: 0 100px 14px 100px;
     }
     

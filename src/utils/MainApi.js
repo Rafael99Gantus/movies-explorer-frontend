@@ -84,6 +84,44 @@ class Api{
             }
           })
       }
+
+      postSaveMovies = (
+        country,
+        director,
+        duration,
+        year,
+        description,
+        image,
+        trailerLink,
+        nameRU,
+        nameEN,
+        thumbnail,
+        movieId
+    ) => {
+        const token = localStorage.getItem("jwt");
+        return this._sendRequest(`${this._url}/movies`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': token
+            },
+            body: JSON.stringify(
+                {
+                    country,
+                    director,
+                    duration,
+                    year,
+                    description,
+                    image,
+                    trailerLink,
+                    nameRU,
+                    nameEN,
+                    thumbnail,
+                    movieId
+                })
+          })
+      }
 }
 
 const api = new Api({

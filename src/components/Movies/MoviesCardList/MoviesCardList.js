@@ -30,6 +30,7 @@ export default function MoviesCardList(filtredMovies, ...props) {
     }, [movies]);
 
     function handleMore(){
+        props.loading = true;
         const more = document.querySelector('.elements__block-more')
         if (window.innerWidth > 1160) {
             more.style.display = "none";
@@ -55,13 +56,23 @@ export default function MoviesCardList(filtredMovies, ...props) {
         <>
             {props.loading ? <Preloader/> : <ul className='elements'>
                 {movies.slice(0, quantity).map((movie) => {
+                    const saveMovie = props.save.some(saved => saved.movieId === movie.id);
                     return (
                         <MoviesCard
-                            key={movie.id}
-
-                            name={movie.nameRU}
+                            id={movie.id}
+                            country={movie.country}
+                            director={movie.director}
                             duration={movie.duration}
+                            year={movie.year}
+                            description={movie.description}
+                            trailerLink={movie.trailerLink}
+                            nameRU={movie.nameRU}
+                            nameEN={movie.nameEN}
+                            
                             image={movie.image}
+                            setSaved={props.setSaved}
+                            save={props.save}
+                            saveMovie={saveMovie}
                         />
                     )
                 })}
