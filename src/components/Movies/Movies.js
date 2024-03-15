@@ -5,16 +5,16 @@ import SearchForm from "./SearchForm/SearchForm";
 import MoviesCardList from './MoviesCardList/MoviesCardList';
 import Footer from "../Footer/Footer.js";
 import Preloader from "./Preloader/Preloader.js";
-import { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from "react-router-dom";
-import { CurrentMovieInfo } from '../contexts/CurrentMovieInfo.js';
+import { useState } from 'react';
+// import { useNavigate, useLocation } from "react-router-dom";
+// import { CurrentMovieInfo } from '../contexts/CurrentMovieInfo.js';
 
 import apiMov from "../../utils/MoviesApi.js";
 
 export default function Movies(props) {
-    const navigate = useNavigate();
-    const location = useLocation();
-    const movies = React.useContext(CurrentMovieInfo);
+    // const navigate = useNavigate();
+    // const location = useLocation();
+    // const movies = React.useContext(CurrentMovieInfo);
     const [value, setValue] = useState('');
     const [err, setErr] = useState('');
 

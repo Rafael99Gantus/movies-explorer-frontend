@@ -12,11 +12,11 @@ export default function MoviesCardList(filtredMovies, ...props) {
     const user = React.useContext(CurrentUserContext);
     const movies = React.useContext(CurrentMovieInfo);
     const location = useLocation();
-    const [quantity, setQuantity] = useState(16);
+    const [quantity, setQuantity] = useState(0);
 
     useEffect(() => {
         if (window.innerWidth > 1160) {
-            setQuantity(16);
+            setQuantity(12);
             return;
         }
         if (window.innerWidth <= 1160) {
@@ -27,7 +27,48 @@ export default function MoviesCardList(filtredMovies, ...props) {
             setQuantity(9);
             return;
         }
-    }, [movies]);
+
+        
+    }, [movies.length]);
+
+    window.addEventListener('resize', handleResize);
+
+    function handleResize(){
+        const more = document.querySelector('.elements__block-more');
+        if(movies.length + 4 > quantity){
+            if (window.innerWidth > 1160) {
+                more.style.display = "block";
+                setQuantity(12);
+                return;
+            }
+            if (window.innerWidth <= 1160) {
+                more.style.display = "block";
+                setQuantity(12);
+                return;
+            }
+            if (window.innerWidth <= 730) {
+                more.style.display = "block";
+                setQuantity(9);
+                return;
+            }
+        }else{
+            if (window.innerWidth > 1160) {
+                more.style.display = "none";
+                setQuantity(15);
+                return;
+            }
+            if (window.innerWidth <= 1160) {
+                more.style.display = "none";
+                setQuantity(10);
+                return;
+            }
+            if (window.innerWidth <= 730) {
+                more.style.display = "none";
+                setQuantity(7);
+                return;
+            }
+        }
+    }
 
     function handleMore(){
         props.loading = true;
@@ -44,7 +85,7 @@ export default function MoviesCardList(filtredMovies, ...props) {
         }
         if (window.innerWidth <= 730) {
             more.style.display = "none";
-            setQuantity(11);
+            setQuantity(9);
             return;
         }
     }
@@ -56,9 +97,8 @@ export default function MoviesCardList(filtredMovies, ...props) {
         <>
             {props.loading ? <Preloader/> : <ul className='elements'>
                 {movies.slice(0, quantity).map((movie) => {
-                    const saveMovie = props.save.some(saved => saved.movieId === movie.id);
                     return (
-                        <MoviesCard
+                        <MoviesCard key={movie.id}
                             id={movie.id}
                             country={movie.country}
                             director={movie.director}
@@ -72,7 +112,7 @@ export default function MoviesCardList(filtredMovies, ...props) {
                             image={movie.image}
                             setSaved={props.setSaved}
                             save={props.save}
-                            saveMovie={saveMovie}
+                            // saveMovie={saveMovie}
                         />
                     )
                 })}

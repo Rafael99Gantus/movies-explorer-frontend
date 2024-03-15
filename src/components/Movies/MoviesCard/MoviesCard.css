@@ -26,6 +26,8 @@
     font-weight: 500;
     font-size: 15px;
     line-height: 18px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .movie__time{
@@ -150,6 +152,7 @@
     }
     
     .movie__time{
+        width: 35px;
         font-size: 10px;
     }
     
