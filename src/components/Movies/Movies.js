@@ -17,33 +17,41 @@ export default function Movies(props) {
 
     const [checkbox, setCheckbox] = useState(false)
 
-    useEffect(() => {
-        apiMov.getMovies()
-            .then((res) => {
-                props.setMovie(res);
-            })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [navigate])
+    // useEffect(() => {
+    //     apiMov.getMovies()
+    //         .then((res) => {
+    //             props.setMovie(res);
+    //         })
+    // // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [navigate])
 
 
     function getMovies() {
         props.setloading(true);
         console.log(movies);
-        // const filter = movies.filter(function (movie) {
-        //     return movie.nameRU.imcludes(value.toLowerCase())
-        // });
-        if(checkbox === true){
-            const shortMovies = movies.filter(function (movie) {
-                return movie.duration <= 40
+        apiMov.getMovies()
+        .then((res) => {
+            const filterMovies = res.filter(function (movie) {
+                return movie.nameRU.toLowerCase().trim().includes(value.toLowerCase())
             });
-            props.setMovie(shortMovies);
-            console.log(shortMovies);
-        } else {
-            props.setMovie(movies);
-            console.log(movies);
-        }
-        
-        props.setloading(false);
+            console.log(filterMovies);
+            if(checkbox === true){
+                const shortMovies = filterMovies.filter(function (movie) {
+                    return movie.duration <= 40
+                });
+                props.setMovie(shortMovies);
+                console.log(shortMovies);
+            } else {
+                props.setMovie(filterMovies);
+                console.log(filterMovies);
+            }
+        })
+        .catch((err) => {
+            console.log(`Пhоизошла ошибка при фильтрации фильмов ${err.message}`);
+        })
+        .finally(()=>{
+            props.setloading(false);
+        })
     }
 
     return (
