@@ -16,12 +16,14 @@ export default function Movies(props) {
     const location = useLocation();
     const movies = React.useContext(CurrentMovieInfo);
     const [value, setValue] = useState('');
+    const [err, setErr] = useState('');
 
     const [checkbox, setCheckbox] = useState(false)
 
     function getMovies() {
         props.setloading(true);
-        console.log(movies);
+        setErr('');
+
         apiMov.getMovies()
         .then((res) => {
             const filterMovies = res.filter(function (movie) {
@@ -40,7 +42,8 @@ export default function Movies(props) {
             }
         })
         .catch((err) => {
-            console.log(`Пhоизошла ошибка при фильтрации фильмов ${err.message}`);
+            console.log(`Произошла ошибка при фильтрации фильмов ${err.message}`);
+            setErr('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
         })
         .finally(()=>{
             props.setloading(false);
@@ -52,7 +55,13 @@ export default function Movies(props) {
             <movies className='movies'>
                 <Header loggedIn={props.loggedIn} />
                 <SearchForm getMovies={getMovies} setValue={setValue} value={value} setCheckbox={setCheckbox}/>
-                {props.loading ? <Preloader/> :<MoviesCardList loading={props.loading} setSaved={props.setSaved} save={props.save}/>}
+                {props.loading && <Preloader/>}
+                {err && <p className="movies__err">{err}</p>}
+                
+                {(!props.loading && !err) && <MoviesCardList 
+                loading={props.loading} 
+                setSaved={props.setSaved}/>}
+
                 <Footer />
             </movies>
         </main>

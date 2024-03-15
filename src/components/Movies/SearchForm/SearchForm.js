@@ -24,7 +24,7 @@ export default function SearchForm(props) {
     function handleSubmit(e) {
         e.preventDefault();
         if (props.value === '') {
-            setError("Введите что-нибудь");
+            setError("Нужно ввести ключевое слово");
             return;
         }
         props.getMovies();
