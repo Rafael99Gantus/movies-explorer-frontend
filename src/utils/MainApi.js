@@ -1,4 +1,4 @@
-class Api{
+class Api {
     constructor({ url, headers }) {
         this._url = url;
         this._headers = headers;
@@ -45,26 +45,28 @@ class Api{
 
     signUp = (name, email, password) => {
         return this._sendRequest(`${this._url}/signup`, {
-          method: 'POST',
-          headers: {
-              "Content-Type": "application/json" 
-          },
-          body: JSON.stringify({name: name, email: email, password: password})
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ name: name, email: email, password: password })
         })
-      }; 
-      
-      
-      signIn = (email, password) => {
-        return this._sendRequest(`${this._url}/signin`, {
-          method: 'POST',
-          headers: {
-              "Content-Type": "application/json" 
-          },
-          body: JSON.stringify({email: email, password: password})
-        })
-      }; 
+    };
 
-      checkToken = (token) => {
+
+    signIn = (email, password) => {
+        return this._sendRequest(`${this._url}/signin`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ email: email, password: password })
+        })
+    };
+
+    checkToken = (token) => {
         return this._sendRequest(`${this._url}/users/me`, {
             method: "GET",
             headers: {
@@ -72,9 +74,9 @@ class Api{
                 'Authorization': token
             }
         })
-      };
+    };
 
-      getSaveMovies = (token) => {
+    getSaveMovies = (token) => {
         return this._sendRequest(`${this._url}/movies`, {
             method: 'GET',
             headers: {
@@ -82,10 +84,10 @@ class Api{
                 'Content-Type': 'application/json',
                 'Authorization': token
             }
-          })
-      }
+        })
+    }
 
-      postSaveMovies = (
+    postSaveMovies = (
         country,
         director,
         duration,
@@ -120,8 +122,8 @@ class Api{
                     thumbnail,
                     movieId
                 })
-          })
-      }
+        })
+    }
 }
 
 const api = new Api({
