@@ -66,9 +66,9 @@ export default function Profile(props) {
         <main>
             <Header loggedIn={props.loggedIn} />
             <div className="profile">
+            <p className={props.sucsess ? "profile__sucsess_opened" : "profile__sucsess"}>Данные пользователя успешно изменены</p>
                 <h1 className="profile__name">Привет, {props.user.name}!</h1>
                 <form className="profile__form" onSubmit={handleSaveEdit}>
-                    {}
                     <label className="profile__input">
                         Имя
                         <input

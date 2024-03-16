@@ -71,6 +71,7 @@ function App() {
           setloading(false);
         })
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigate]);
 
   function logOut() {
@@ -101,9 +102,11 @@ function App() {
       .then((res) => {
         setCurrentUser(res);
         setSucsess(true);
+        setTimeout(closeSucsessPopup, 2000)
       })
       .catch((err) => {
-        console.log(err)
+        setSucsess(false);
+        console.log(err);
       })
   }
 
@@ -123,6 +126,10 @@ function App() {
       })
   }
 
+  function closeSucsessPopup(){
+    setSucsess(false)
+  }
+
   function onLogin(email, password) {
     api.signIn(email, password)
       .then((data) => {
@@ -136,11 +143,6 @@ function App() {
         }
       })
       .catch(err => console.log(`Ошибка входа ${err}`));  }
-
-
-  function handleSucsess(){
-    
-  }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -171,7 +173,8 @@ function App() {
               user={currentUser}
               editProfile={editProfile}
               logOut={logOut}
-              loggedIn={loggedIn} />
+              loggedIn={loggedIn}
+              sucsess={sucsess}/>
             } />;
 
             <Route path="/signup" element={<Register onRegister={onRegister} />} />
