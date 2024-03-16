@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 import { CurrentMovieInfo } from '../contexts/CurrentMovieInfo.js';
 import ProtectedRoute from "../../utils/ProtectedRoute.jsx";
@@ -21,6 +22,7 @@ import { getSavedMovies, setSavedMovies } from '../../utils/savedMovies.js'
 
 function App() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [currentUser, setCurrentUser] = useState('');
   //const [email, setEmail] = useState('');
@@ -28,18 +30,40 @@ function App() {
   const [save, setSaved] = useState(JSON.parse(getSavedMovies()) || [])
 
   const [loggedIn, setLoggedIn] = useState(false);
-  const [isToken, setIsToken] = useState(getToken());
   const [loading, setloading] = useState(false);
   const [sucsess, setSucsess] = useState(false);
 
+  const isLocationMain = location.pathname === '/';
+  const isLocationMovies = location.pathname === '/movies';
+  const isLocationSavedMovies = location.pathname === '/saved-movies';
+  const isLocationProfile = location.pathname === '/profile';
+  const isLocationSignUp = location.pathname === '/signup';
+  const isLocationSignIn = location.pathname === '/signin';
+
   useEffect(() => {
-    if (isToken) {
+    const JWT = getToken();
+    if (JWT) {
       setloading(true);
-      api.checkToken(isToken)
+      api.checkToken(JWT)
         .then((res) => {
           if (res) {
             setLoggedIn(true);
             setCurrentUser(res);
+            if(isLocationMain){
+              navigate('/', { replace: true });
+            }
+            if(isLocationMovies){
+              navigate('/movies', { replace: true });
+            }
+            if(isLocationSavedMovies){
+              navigate('/saved-movies', { replace: true });
+            }
+            if(isLocationProfile){
+              navigate('/profile', { replace: true });
+            }
+            if(isLocationSignUp || isLocationSignIn){
+              navigate('/', { replace: true });
+            }
           }
         })
         .catch((err) => console.log(err))
@@ -47,14 +71,13 @@ function App() {
           setloading(false);
         })
     }
-  }, [navigate, isToken]);
+  }, [navigate]);
 
   function logOut() {
     removeToken();
     localStorage.clear();
     setLoggedIn(false);
     setCurrentUser({});
-    setIsToken(null);
     navigate('/');
   }
 
@@ -87,6 +110,7 @@ function App() {
   function onRegister(name, email, password) {
     api.signUp(name, email, password)
       .then((data) => {
+        onLogin(data.email, password)
         setLoggedIn(true);
         setCurrentUser(data);
         console.log(currentUser);
