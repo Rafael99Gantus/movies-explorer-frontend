@@ -6,12 +6,9 @@ import saveIcon from '../../../images/save_icon.svg';
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 
-import { CurrentMovieInfo } from '../../contexts/CurrentMovieInfo.js';
-
 export default function MoviesCard(props) {
 
     const [saveButton, setSaveButon] = useState(false);
-    const movies = React.useContext(CurrentMovieInfo);
 
     const location = useLocation();
 

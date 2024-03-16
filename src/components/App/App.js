@@ -15,9 +15,8 @@ import Error from "../Error/Error.js";
 import './App.css';
 
 import api from "../../utils/MainApi.js";
-// import apiMov from "../../utils/MoviesApi.js";
 import { getToken, setToken, removeToken } from "../../utils/token.js";
-import { getSavedMovies, setSavedMovies } from '../../utils/savedMovies.js'
+import { setSavedMovies } from '../../utils/savedMovies.js'
 
 
 function App() {
@@ -25,7 +24,6 @@ function App() {
   const location = useLocation();
 
   const [currentUser, setCurrentUser] = useState('');
-  //const [email, setEmail] = useState('');
   const [movie, setMovie] = useState([]);
   const [save, setSaved] = useState([])
 

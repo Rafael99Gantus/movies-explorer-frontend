@@ -62,9 +62,7 @@ export default function Movies(props) {
                 loading={props.loading} 
                 movies={movies}
                 save={props.save}
-                // setSaved={props.setSaved}
-                // setMovieSaved={props.setMovieSaved}
-                // setSaveMovies={props.setSaveMovies}
+                
                 removeSaveMovies={props.removeSaveMovies}
                 setSaveMovies={props.setSaveMovies}
                 />}
