@@ -27,7 +27,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState('');
   //const [email, setEmail] = useState('');
   const [movie, setMovie] = useState([]);
-  const [save, setSaved] = useState(JSON.parse(getSavedMovies()) || [])
+  const [save, setSaved] = useState([])
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [loading, setloading] = useState(false);
@@ -43,36 +43,32 @@ function App() {
   useEffect(() => {
     const JWT = getToken();
     if (JWT) {
-      setloading(true);
       api.checkToken(JWT)
         .then((res) => {
           if (res) {
             setLoggedIn(true);
             setCurrentUser(res);
-            if(isLocationMain){
+            if (isLocationMain) {
               navigate('/', { replace: true });
             }
-            if(isLocationMovies){
+            if (isLocationMovies) {
               navigate('/movies', { replace: true });
             }
-            if(isLocationSavedMovies){
+            if (isLocationSavedMovies) {
               navigate('/saved-movies', { replace: true });
             }
-            if(isLocationProfile){
+            if (isLocationProfile) {
               navigate('/profile', { replace: true });
             }
-            if(isLocationSignUp || isLocationSignIn){
+            if (isLocationSignUp || isLocationSignIn) {
               navigate('/', { replace: true });
             }
           }
         })
         .catch((err) => console.log(err))
-        .finally(() =>{
-          setloading(false);
-        })
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [navigate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [getToken()]);
 
   function logOut() {
     removeToken();
@@ -80,21 +76,6 @@ function App() {
     setLoggedIn(false);
     setCurrentUser({});
     navigate('/');
-  }
-
-  const setMovieSaved = (movie) => {
-    setSaved(prev => {
-      const newValue = [...prev, movie];
-      setSavedMovies(JSON.stringify(newValue))
-      return newValue;
-    })
-  }
-  const removeMovieSaved = (movieId) => {
-    setSaved(prev => {
-      const newValue = prev.filter(movie => movie.movieId !== movieId);
-      setSavedMovies(JSON.stringify(newValue))
-      return newValue;
-    })
   }
 
   function editProfile({ name, email }) {
@@ -126,7 +107,7 @@ function App() {
       })
   }
 
-  function closeSucsessPopup(){
+  function closeSucsessPopup() {
     setSucsess(false)
   }
 
@@ -138,11 +119,80 @@ function App() {
         if (data.token) {
           setToken(data.token);
           setLoggedIn(true);
-          setCurrentUser(data)
+          setCurrentUser(data);
+          localStorage.setItem("userId", data.id);
           navigate('/movies', { replace: true });
         }
       })
-      .catch(err => console.log(`Ошибка входа ${err}`));  }
+      .catch(err => console.log(`Ошибка входа ${err}`));
+  }
+
+  // const setMovieSaved = (movie) => {
+  //   setSaved(prev => {
+  //     const newValue = [...prev, movie];
+  //     setSavedMovies(JSON.stringify(newValue))
+  //     return newValue;
+  //   })
+  // }
+  // const removeMovieSaved = (movieId) => {
+  //   setSaved(prev => {
+  //     const newValue = prev.filter(movie => movie.movieId !== movieId);
+  //     setSavedMovies(JSON.stringify(newValue))
+  //     return newValue;
+  //   })
+  // }
+
+  function setSaveMovies(
+    country,
+    director,
+    duration,
+    year,
+    description,
+    image,
+    trailerLink,
+    nameRU,
+    nameEN,
+    thumbnail,
+    movieId) {
+
+    if (!save.some(saveMovie => saveMovie.movieId === movieId)) {
+      return api.postSaveMovies(
+        country,
+        director,
+        duration,
+        year,
+        description,
+        image,
+        trailerLink,
+        nameRU,
+        nameEN,
+        thumbnail,
+        movieId
+      )
+        .then((res) => {
+          const statusSave = { ...res, isSaved: true };
+          const setNewMovies = [...save, statusSave];
+          setSaved(setNewMovies);
+          setSavedMovies(JSON.stringify(setNewMovies));
+          console.log(save);
+        })
+        .catch((err) => {
+          console.error(`Фильм не сохранён ${err}`);
+        });
+    }
+  }
+
+  function removeSaveMovies (movieId) {
+    return api.removeSaveMovies(movieId)
+      .then(() => {
+        const setNewMovies = save.filter((movie) => movie._id !== movieId);
+        setSaved(setNewMovies);
+        setSavedMovies(JSON.stringify(setNewMovies));
+      })
+      .catch((err) => {
+        console.error(`Фильм не удалён ${err}`);
+      });
+  };
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -153,20 +203,22 @@ function App() {
             <Route path="/" element={<Main
               loggedIn={loggedIn} />} />;
 
-            <Route path="/movies" element={<ProtectedRoute 
-            component={Movies} 
-            loggedIn={loggedIn}
-            setMovie={setMovie}
-            loading={loading}
-            setloading={setloading}
-            setSaved={setSaved}
-            save={save}
-            setMovieSaved={setMovieSaved}
-            removeMovieSaved={removeMovieSaved}/>} />;
+            <Route path="/movies" element={<ProtectedRoute
+              component={Movies}
+              loggedIn={loggedIn}
+              setMovie={setMovie}
+              loading={loading}
+              setloading={setloading}
+              setSaved={setSaved}
+              save={save}
+              // setMovieSaved={setMovieSaved}
+              removeSaveMovies={removeSaveMovies}
+              setSaveMovies={setSaveMovies} />} />;
 
             <Route path="/saved-movies" element={<ProtectedRoute
               component={SavedMovies}
-              loggedIn={loggedIn} />} />;
+              loggedIn={loggedIn}
+              setSaveMovies={setSaveMovies} />} />;
 
             <Route path="/profile" element={<ProtectedRoute
               component={Profile}
@@ -174,7 +226,7 @@ function App() {
               editProfile={editProfile}
               logOut={logOut}
               loggedIn={loggedIn}
-              sucsess={sucsess}/>
+              sucsess={sucsess} />
             } />;
 
             <Route path="/signup" element={<Register onRegister={onRegister} />} />

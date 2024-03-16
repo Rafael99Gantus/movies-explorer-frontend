@@ -123,6 +123,18 @@ class Api {
                 })
         })
     }
+
+    removeSaveMovies = (movieId) => {
+        const token = localStorage.getItem("jwt");
+        return fetch(`${this._url}/movies/${movieId}`,{
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': token
+            },
+        })
+    }
 }
 
 const api = new Api({

@@ -7,7 +7,9 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { CurrentMovieInfo } from '../../contexts/CurrentMovieInfo.js';
 
-export default function MoviesCardList(save, ...props) {
+import { getSavedMovies, setSavedMovies } from '../../../utils/savedMovies.js'
+
+export default function MoviesCardList(props) {
     const movies = React.useContext(CurrentMovieInfo);
     const location = useLocation();
     const [quantity, setQuantity] = useState(0);
@@ -91,13 +93,19 @@ export default function MoviesCardList(save, ...props) {
     // const isLocationMovies = location.pathname === "/saved-movies";
     // const saveMovie = save.some(saved => saved.movieId === movie.id)
 
+    // const save = getSavedMovies();
+    // function foo (a, movie){
+    //     let saveMovie = [];
+
+    // }
+
     return (
         <>
             {props.loading ? <Preloader /> : <ul className='elements'>
                 {movies.slice(0, quantity).map((movie) => {
-                    
                     return (
                         <MoviesCard key={movie.id}
+                            movie={movie}
                             id={movie.id}
                             country={movie.country}
                             director={movie.director}
@@ -109,12 +117,13 @@ export default function MoviesCardList(save, ...props) {
                             nameEN={movie.nameEN}
 
                             image={movie.image}
-                            setSaved={props.setSaved}
+                            // setSaved={props.setSaved}
                             save={props.save}
                             // saveMovie={saveMovie}
 
-                            setMovieSaved={props.setMovieSaved}
-                            removeMovieSaved={props.removeMovieSaved}
+                            // setMovieSaved={props.setMovieSaved}
+                            removeSaveMovies={props.removeSaveMovies}
+                            setSaveMovies={props.setSaveMovies}
                         />
                     )
                 })}
