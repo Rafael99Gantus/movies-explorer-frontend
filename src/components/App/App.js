@@ -14,9 +14,9 @@ import Error from "../Error/Error.js";
 import './App.css';
 
 import api from "../../utils/MainApi.js";
-import apiMov from "../../utils/MoviesApi.js";
+// import apiMov from "../../utils/MoviesApi.js";
 import { getToken, setToken, removeToken } from "../../utils/token.js";
-
+import { getSavedMovies, setSavedMovies } from '../../utils/savedMovies.js'
 
 
 function App() {
@@ -25,11 +25,12 @@ function App() {
   const [currentUser, setCurrentUser] = useState('');
   //const [email, setEmail] = useState('');
   const [movie, setMovie] = useState([]);
-  const [save, setSaved] = useState(JSON.parse(localStorage.getItem('myMovies')) || [])
+  const [save, setSaved] = useState(JSON.parse(getSavedMovies()) || [])
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [isToken, setIsToken] = useState(getToken());
   const [loading, setloading] = useState(false);
+  const [sucsess, setSucsess] = useState(false);
 
   useEffect(() => {
     if (isToken) {
@@ -57,10 +58,26 @@ function App() {
     navigate('/');
   }
 
+  const setMovieSaved = (movie) => {
+    setSaved(prev => {
+      const newValue = [...prev, movie];
+      setSavedMovies(JSON.stringify(newValue))
+      return newValue;
+    })
+  }
+  const removeMovieSaved = (movieId) => {
+    setSaved(prev => {
+      const newValue = prev.filter(movie => movie.movieId !== movieId);
+      setSavedMovies(JSON.stringify(newValue))
+      return newValue;
+    })
+  }
+
   function editProfile({ name, email }) {
     api.changeUserInfo({ name, email })
       .then((res) => {
-        setCurrentUser(res)
+        setCurrentUser(res);
+        setSucsess(true);
       })
       .catch((err) => {
         console.log(err)
@@ -90,10 +107,16 @@ function App() {
         if (data.token) {
           setToken(data.token);
           setLoggedIn(true);
+          setCurrentUser(data)
           navigate('/movies', { replace: true });
         }
       })
       .catch(err => console.log(`Ошибка входа ${err}`));  }
+
+
+  function handleSucsess(){
+    
+  }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -111,7 +134,9 @@ function App() {
             loading={loading}
             setloading={setloading}
             setSaved={setSaved}
-            save={save}/>} />;
+            save={save}
+            setMovieSaved={setMovieSaved}
+            removeMovieSaved={removeMovieSaved}/>} />;
 
             <Route path="/saved-movies" element={<ProtectedRoute
               component={SavedMovies}

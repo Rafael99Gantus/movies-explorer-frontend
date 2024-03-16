@@ -2,11 +2,11 @@ import React from "react";
 import './SearchForm.css';
 import { useState } from 'react';
 
-import { CurrentMovieInfo } from '../../contexts/CurrentMovieInfo.js';
-
 export default function SearchForm(props) {
 
-    function checkCheckbox(){
+    const [error, setError] = useState("");
+
+    function checkCheckbox() {
         const checkbox = document.querySelector('.searchfrom__filter_input');
         if (checkbox.checked !== true) {
             console.log("false");
@@ -14,12 +14,9 @@ export default function SearchForm(props) {
         } else {
             console.log("Active");
             props.setCheckbox(true)
-            
+
         }
     }
-
-    const [error, setError] = useState("");
-    const movies = React.useContext(CurrentMovieInfo);
 
     function handleSubmit(e) {
         e.preventDefault();

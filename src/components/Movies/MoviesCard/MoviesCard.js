@@ -37,9 +37,10 @@ export default function MoviesCard(props) {
                 `https://api.nomoreparties.co${props.image.formats.thumbnail.url}`,
                 props.id
             )
-            .then(() => {
-                console.log("Карточка сохранена")
-                // props.setSaved();
+            .then((res) => {
+                console.log("Карточка сохранена");
+                props.setMovieSaved(res);
+                setSaveButon(true)
             })
             .catch((err) => {
                 console.log(`Произошла ошибка при сохранении фильма ${err}`)

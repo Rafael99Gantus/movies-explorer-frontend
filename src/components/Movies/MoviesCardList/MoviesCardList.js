@@ -5,11 +5,9 @@ import Preloader from '../Preloader/Preloader.js'
 import { useState } from "react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 import { CurrentMovieInfo } from '../../contexts/CurrentMovieInfo.js';
 
-export default function MoviesCardList(filtredMovies, ...props) {
-    const user = React.useContext(CurrentUserContext);
+export default function MoviesCardList(save, ...props) {
     const movies = React.useContext(CurrentMovieInfo);
     const location = useLocation();
     const [quantity, setQuantity] = useState(0);
@@ -28,14 +26,14 @@ export default function MoviesCardList(filtredMovies, ...props) {
             return;
         }
 
-        
+
     }, [movies.length]);
 
     window.addEventListener('resize', handleResize);
 
-    function handleResize(){
+    function handleResize() {
         const more = document.querySelector('.elements__block-more');
-        if(movies.length + 4 > quantity){
+        if (movies.length + 4 > quantity) {
             if (window.innerWidth > 1160) {
                 more.style.display = "block";
                 setQuantity(12);
@@ -51,7 +49,7 @@ export default function MoviesCardList(filtredMovies, ...props) {
                 setQuantity(9);
                 return;
             }
-        }else{
+        } else {
             if (window.innerWidth > 1160) {
                 more.style.display = "none";
                 setQuantity(15);
@@ -70,7 +68,7 @@ export default function MoviesCardList(filtredMovies, ...props) {
         }
     }
 
-    function handleMore(){
+    function handleMore() {
         props.loading = true;
         const more = document.querySelector('.elements__block-more')
         if (window.innerWidth > 1160) {
@@ -91,12 +89,13 @@ export default function MoviesCardList(filtredMovies, ...props) {
     }
 
     // const isLocationMovies = location.pathname === "/saved-movies";
-
+    // const saveMovie = save.some(saved => saved.movieId === movie.id)
 
     return (
         <>
-            {props.loading ? <Preloader/> : <ul className='elements'>
+            {props.loading ? <Preloader /> : <ul className='elements'>
                 {movies.slice(0, quantity).map((movie) => {
+                    
                     return (
                         <MoviesCard key={movie.id}
                             id={movie.id}
@@ -108,11 +107,14 @@ export default function MoviesCardList(filtredMovies, ...props) {
                             trailerLink={movie.trailerLink}
                             nameRU={movie.nameRU}
                             nameEN={movie.nameEN}
-                            
+
                             image={movie.image}
                             setSaved={props.setSaved}
                             save={props.save}
                             // saveMovie={saveMovie}
+
+                            setMovieSaved={props.setMovieSaved}
+                            removeMovieSaved={props.removeMovieSaved}
                         />
                     )
                 })}

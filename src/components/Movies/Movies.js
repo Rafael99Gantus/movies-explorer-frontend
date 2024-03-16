@@ -60,7 +60,9 @@ export default function Movies(props) {
                 
                 {(!props.loading && !err) && <MoviesCardList 
                 loading={props.loading} 
-                setSaved={props.setSaved}/>}
+                setSaved={props.setSaved}
+                setMovieSaved={props.setMovieSaved}
+                removeMovieSaved={props.removeMovieSaved}/>}
 
                 <Footer />
             </movies>

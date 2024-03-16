@@ -11,7 +11,6 @@ export default function Profile(props) {
 
     const [nameError, setNameError] = useState('');
     const [emailError, setEmailError] = useState('');
-    const [noneError, setNoneError] = useState('Начните вносить изменения');
 
 
     const [valid, setValid] = useState(false)
@@ -19,12 +18,10 @@ export default function Profile(props) {
     const [edit, setEdit] = useState(false);
 
     const handleEmail = (e) => {
-        setNoneError('')
         setEmail(e.target.value);
         validateInput();
     };
     const handleName = (e) => {
-        setNoneError('')
         setName(e.target.value);
         validateInput();
     };
@@ -71,6 +68,7 @@ export default function Profile(props) {
             <div className="profile">
                 <h1 className="profile__name">Привет, {props.user.name}!</h1>
                 <form className="profile__form" onSubmit={handleSaveEdit}>
+                    {}
                     <label className="profile__input">
                         Имя
                         <input

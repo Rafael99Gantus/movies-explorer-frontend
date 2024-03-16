@@ -47,8 +47,6 @@ class Api {
         return this._sendRequest(`${this._url}/signup`, {
             method: 'POST',
             headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Accept': 'application/json',
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({ name: name, email: email, password: password })

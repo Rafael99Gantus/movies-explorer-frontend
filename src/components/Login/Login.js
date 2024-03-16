@@ -5,9 +5,6 @@ import './Login.css';
 
 export default function Login(props) {
     const navigate = useNavigate();
-    function handleMain() {
-        navigate('/', { replace: true });
-    }
 
     const emailValidation = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -46,6 +43,10 @@ export default function Login(props) {
             setValid(false);
         }
     };
+
+    function handleMain() {
+        navigate('/', { replace: true });
+    }
 
     const handleEmail = (e) => {
         setEmail(e.target.value);
