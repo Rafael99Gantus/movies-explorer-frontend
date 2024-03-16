@@ -4,32 +4,31 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 import Preloader from '../Preloader/Preloader.js'
 import { useState } from "react";
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import { CurrentMovieInfo } from '../../contexts/CurrentMovieInfo.js';
 
-import { getSavedMovies, setSavedMovies } from '../../../utils/savedMovies.js'
-
-export default function MoviesCardList(props) {
-    const movies = React.useContext(CurrentMovieInfo);
-    const location = useLocation();
+export default function MoviesCardList(movies, ...props) {
+    
     const [quantity, setQuantity] = useState(0);
+    const [result, setResult] = useState([]);
 
     useEffect(() => {
         if (window.innerWidth > 1160) {
             setQuantity(12);
+            setResult(movies.slice(0, quantity));
             return;
         }
         if (window.innerWidth <= 1160) {
             setQuantity(12);
+            setResult(movies.slice(0, quantity));
             return;
         }
         if (window.innerWidth <= 730) {
             setQuantity(9);
+            setResult(movies.slice(0, quantity));
             return;
         }
 
 
-    }, [movies.length]);
+    }, [movies, movies.length, quantity, result]);
 
     window.addEventListener('resize', handleResize);
 
@@ -90,19 +89,10 @@ export default function MoviesCardList(props) {
         }
     }
 
-    // const isLocationMovies = location.pathname === "/saved-movies";
-    // const saveMovie = save.some(saved => saved.movieId === movie.id)
-
-    // const save = getSavedMovies();
-    // function foo (a, movie){
-    //     let saveMovie = [];
-
-    // }
-
     return (
         <>
             {props.loading ? <Preloader /> : <ul className='elements'>
-                {movies.slice(0, quantity).map((movie) => {
+                {result.map((movie) => {
                     return (
                         <MoviesCard key={movie.id}
                             movie={movie}

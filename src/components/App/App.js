@@ -218,7 +218,10 @@ function App() {
             <Route path="/saved-movies" element={<ProtectedRoute
               component={SavedMovies}
               loggedIn={loggedIn}
-              setSaveMovies={setSaveMovies} />} />;
+              loading={loading}
+              setSaveMovies={setSaveMovies}
+              setloading={setloading}
+              setMovie={setMovie}/>} />;
 
             <Route path="/profile" element={<ProtectedRoute
               component={Profile}

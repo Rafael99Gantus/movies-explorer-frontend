@@ -7,14 +7,14 @@ import Footer from "../Footer/Footer.js";
 import Preloader from "./Preloader/Preloader.js";
 import { useState } from 'react';
 // import { useNavigate, useLocation } from "react-router-dom";
-// import { CurrentMovieInfo } from '../contexts/CurrentMovieInfo.js';
+import { CurrentMovieInfo } from '../contexts/CurrentMovieInfo.js';
 
 import apiMov from "../../utils/MoviesApi.js";
 
 export default function Movies(props) {
     // const navigate = useNavigate();
     // const location = useLocation();
-    // const movies = React.useContext(CurrentMovieInfo);
+    const movies = React.useContext(CurrentMovieInfo);
     const [value, setValue] = useState('');
     const [err, setErr] = useState('');
 
@@ -60,7 +60,7 @@ export default function Movies(props) {
                 
                 {(!props.loading && !err) && <MoviesCardList 
                 loading={props.loading} 
-
+                movies={movies}
                 save={props.save}
                 // setSaved={props.setSaved}
                 // setMovieSaved={props.setMovieSaved}
