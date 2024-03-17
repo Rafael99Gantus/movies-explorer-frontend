@@ -19,6 +19,7 @@
 
 .movie__name{
     margin: 0;
+    width: 250px;
     height: 18px;
     color: white;
     font-family: 'Inter', sans-serif;
@@ -32,12 +33,13 @@
 
 .movie__time{
     margin: 0;
+    width: 45px;
     height: 18px;
     color: rgba(139, 139, 139, 1);
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 13px;
+    font-size: 12px;
     line-height: 18px;
 }
 

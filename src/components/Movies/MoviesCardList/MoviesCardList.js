@@ -6,28 +6,29 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-export default function MoviesCardList(props) {
+export default function MoviesCardList({ movies, loading, save, removeSaveMovies, setSaveMovies }) {
 
     const location = useLocation();
 
     const [quantity, setQuantity] = useState(0);
     const [result, setResult] = useState([]);
+    const [more, setMore] = useState(true)
 
     const isLocationMovies = location.pathname === '/movies';
     const isLocationSavedMovies = location.pathname === '/saved-movies';
 
     useEffect(() => {
         if (isLocationMovies) {
-            if (window.innerWidth > 1160) {
+            if (window.innerWidth > 1160 && more) {
                 setQuantity(12);
             }
-            if (window.innerWidth <= 1160) {
+            if (window.innerWidth <= 1160 && more) {
                 setQuantity(12);
             }
-            if (window.innerWidth <= 730) {
+            if (window.innerWidth <= 730 && more) {
                 setQuantity(9);
             }
-            setResult(props.movies.slice(0, quantity));
+            setResult(movies.slice(0, quantity));
         } else {
             if (window.innerWidth > 1160) {
                 setQuantity(12);
@@ -38,53 +39,52 @@ export default function MoviesCardList(props) {
             if (window.innerWidth <= 730) {
                 setQuantity(9);
             }
-            setResult(props.movies);
+            setResult(movies);
         }
 
 
-    }, [isLocationMovies, props.movies, quantity]);
+    }, [isLocationMovies, movies, quantity]);
 
     window.addEventListener('resize', handleResize);
 
     function handleResize() {
         if (isLocationMovies) {
-            const more = document.querySelector('.elements__block-more');
-            if (props.movies.length + 4 > quantity) {
+            if (movies.length + 4 > quantity) {
                 if (window.innerWidth > 1160) {
-                    more.style.display = "block";
+                    setMore(true);
                     setQuantity(12);
                     return;
                 }
                 if (window.innerWidth <= 1160) {
-                    more.style.display = "block";
+                    setMore(true);
                     setQuantity(12);
                     return;
                 }
                 if (window.innerWidth <= 730) {
-                    more.style.display = "block";
+                    setMore(true);
                     setQuantity(9);
                     return;
                 }
             } else {
                 if (window.innerWidth > 1160) {
-                    more.style.display = "none";
+                    setMore(true);
                     setQuantity(15);
                     return;
                 }
                 if (window.innerWidth <= 1160) {
-                    more.style.display = "none";
+                    setMore(true);
                     setQuantity(10);
                     return;
                 }
                 if (window.innerWidth <= 730) {
-                    more.style.display = "none";
+                    setMore(true);
                     setQuantity(7);
                     return;
                 }
             }
         }
         if (isLocationSavedMovies) {
-            if (props.movies.length + 4 > quantity) {
+            if (movies.length + 4 > quantity) {
                 if (window.innerWidth > 1160) {
                     setQuantity(12);
                     return;
@@ -115,20 +115,18 @@ export default function MoviesCardList(props) {
     }
 
     function handleMore() {
-        props.loading = true;
-        const more = document.querySelector('.elements__block-more')
         if (window.innerWidth > 1160) {
-            more.style.display = "none";
+            setMore(false);
             setQuantity(15);
             return;
         }
         if (window.innerWidth <= 1160) {
-            more.style.display = "none";
+            setMore(false);
             setQuantity(14);
             return;
         }
         if (window.innerWidth <= 730) {
-            more.style.display = "none";
+            setMore(false);
             setQuantity(9);
             return;
         }
@@ -136,7 +134,7 @@ export default function MoviesCardList(props) {
 
     return (
         <>
-            {props.loading ? <Preloader /> : <ul className='elements'>
+            {loading ? <Preloader /> : <ul className='elements'>
                 {result.map((movie) => {
                     return (
                         <MoviesCard key={movie.id}
@@ -153,23 +151,23 @@ export default function MoviesCardList(props) {
 
                             image={movie.image}
                             // setSaved={props.setSaved}
-                            save={props.save}
+                            save={save}
                             // saveMovie={saveMovie}
 
                             // setMovieSaved={props.setMovieSaved}
-                            removeSaveMovies={props.removeSaveMovies}
-                            setSaveMovies={props.setSaveMovies}
+                            removeSaveMovies={removeSaveMovies}
+                            setSaveMovies={setSaveMovies}
                         />
                     )
                 })}
             </ul>}
-            {props.movies.length + 4 > quantity ? <div className="elements__block">
+            {more && <div className="elements__block">
                 <button
                     className={isLocationSavedMovies ? "elements__block_lock" : "elements__block-more"}
                     type="button"
                     onClick={handleMore}
                 >Ещё</button>
-            </div> : null}
+            </div>}
         </>
 
     )

@@ -6,61 +6,139 @@ import MoviesCardList from './MoviesCardList/MoviesCardList';
 import Footer from "../Footer/Footer.js";
 import Preloader from "./Preloader/Preloader.js";
 import { useState } from 'react';
-// import { useNavigate, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { CurrentMovieInfo } from '../contexts/CurrentMovieInfo.js';
 
 import apiMov from "../../utils/MoviesApi.js";
 
 export default function Movies(props) {
-    // const navigate = useNavigate();
-    // const location = useLocation();
+    const navigate = useNavigate();
     const movies = React.useContext(CurrentMovieInfo);
-    const [value, setValue] = useState('');
     const [err, setErr] = useState('');
 
-    const [checkbox, setCheckbox] = useState(false)
+    const [film, setFilm] = useState(() => {
+        const savedFilms = localStorage.getItem('film');
+        return savedFilms ? JSON.parse(savedFilms) : [];
+    });
 
-    function getMovies() {
+    const [value, setValue] = useState(() => {
+        return localStorage.getItem('text') || "";
+    });
+
+    const [filteredMovies, setFilteredMovies] = useState(() => {
+        const savedFilteredMovies = localStorage.getItem('filteredMovies');
+        return savedFilteredMovies ? JSON.parse(savedFilteredMovies) : [];
+    });
+
+    const [checkbox, setCheckbox] = useState(() => {
+        return localStorage.getItem('checkbox') === 'true';
+    });
+
+    useEffect(() => {
+        localStorage.setItem('text', value);
+        localStorage.setItem('checkbox', checkbox);
+        localStorage.setItem('filteredMovies', JSON.stringify(filteredMovies));
+    }, [value, checkbox, filteredMovies]);
+
+    function newValue(text){
+        setValue(text);
+        localStorage.setItem('text', text);
+    }
+
+    const filterMovies = (movies, value, checkbox) => {
+        return movies.filter(movie => {
+            const matchesTerm = movie.nameRU.toLowerCase().includes(value.toLowerCase());
+            const matchesLength = !checkbox || movie.duration <= 40;
+            return matchesTerm && matchesLength;
+        });
+    };
+
+    function getMovies(text, check) {
         props.setloading(true);
         setErr('');
-
-        apiMov.getMovies()
-        .then((res) => {
-            const filterMovies = res.filter(function (movie) {
-                return movie.nameRU.toLowerCase().trim().includes(value.toLowerCase())
-            });
-            console.log(filterMovies);
-            if(checkbox === true){
-                const shortMovies = filterMovies.filter(function (movie) {
-                    return movie.duration <= 40
-                });
-                props.setMovie(shortMovies);
-                console.log(shortMovies);
+        setCheckbox(check);
+        newValue(text);
+        // apiMov.getMovies()
+        // .then((res) => {
+        //     const filterMovies = res.filter(function (movie) {
+        //         return movie.nameRU.toLowerCase().trim().includes(value.toLowerCase())
+        //     });
+        //     console.log(filterMovies);
+        //     if(checkbox === true){
+        //         const shortMovies = filterMovies.filter(function (movie) {
+        //             return movie.duration <= 40
+        //         });
+        //         localStorage.setItem('movies', shortMovies);
+        //         localStorage.setItem('text', value);
+        //         localStorage.setItem('check', checkbox);
+        //         props.setMovie(shortMovies);
+        //         console.log(shortMovies);
+        //     } else {
+        //         localStorage.setItem('movies', filterMovies);
+        //         localStorage.setItem('text', value);
+        //         localStorage.setItem('check', checkbox);
+        //         props.setMovie(filterMovies);
+        //         console.log(filterMovies);
+        //     }
+        // })
+        // .catch((err) => {
+        //     console.log(`Произошла ошибка при фильтрации фильмов ${err.message}`);
+        //     setErr('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
+        // })
+        // .finally(()=>{
+        //     props.setloading(false);
+        // })
+        setTimeout(() => {
+            if (film.length === 0) {
+                apiMov.getMovies()
+                    .then((res) => {
+                        // Используем новые значения для фильтрации
+                        const filtered = filterMovies(res, text, check);
+                        localStorage.setItem('film', JSON.stringify(res));
+                        setFilm(res);
+                        setFilteredMovies(filtered);
+                        if (filtered.length === 0) {
+                            setErr("Ничего не найдено");
+                        }
+                    })
+                    .catch((err) => {
+                        setErr('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
+                    })
+                    .finally(() => {
+                        props.setloading(false);
+                    });
             } else {
-                props.setMovie(filterMovies);
-                console.log(filterMovies);
+                // Используем новые значения для фильтрации среди уже загруженных фильмов
+                const filtered = filterMovies(film, text, check);
+                setFilteredMovies(filtered);
+                if (filtered.length === 0) {
+                    setErr("Ничего не найдено");
+                }
+                props.setloading(false);
             }
-        })
-        .catch((err) => {
-            console.log(`Произошла ошибка при фильтрации фильмов ${err.message}`);
-            setErr('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
-        })
-        .finally(()=>{
-            props.setloading(false);
-        })
+            }, 500)
     }
+
+    const handleCheckbox = () => {
+        const text = !checkbox;
+        setCheckbox(text);
+        if (value) {
+            getMovies(value, text);
+        }
+    };
 
     return (
         <main>
             <movies className='movies'>
                 <Header loggedIn={props.loggedIn} />
-                <SearchForm getMovies={getMovies} setValue={setValue} value={value} setCheckbox={setCheckbox}/>
+                <SearchForm getMovies={getMovies} value={value} setValue={setValue} checkbox={checkbox} handleCheckbox={handleCheckbox}/>
                 {props.loading && <Preloader/>}
                 {err && <p className="movies__err">{err}</p>}
                 
                 {(!props.loading && !err) && <MoviesCardList 
                 loading={props.loading} 
-                movies={movies}
+                movies={filteredMovies}
                 save={props.save}
                 
                 removeSaveMovies={props.removeSaveMovies}
