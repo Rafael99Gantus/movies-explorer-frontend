@@ -51,10 +51,7 @@ export default function Movies(props) {
     const filterMovies = (movies, value, checkbox) => {
         return movies.filter(movie => {
             return movie.nameRU.toLowerCase().includes(value.toLowerCase());
-            // const matchesLength = !checkbox || movie.duration <= 40;
-            // return matchesTerm && matchesLength;
         });
-        
     };
 
     function getMovies(text, check) {

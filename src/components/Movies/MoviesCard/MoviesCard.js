@@ -17,7 +17,9 @@ export default function MoviesCard({ movie, save, removeSaveMovies, setSaveMovie
     const isLocationSavedMovies = location.pathname === '/saved-movies';
     const duration = `${Math.floor(movie.duration / 60)}ч ${movie.duration % 60}м`;
 
-    let imageUrl = `https://api.nomoreparties.co${movie.image.url}`;
+    let imageMovie = `https://api.nomoreparties.co${movie.image.url}`;
+
+    let imageSavedMovie = `${movie.image}`;
 
     useEffect(() => {
         if (save && movie) {
@@ -61,7 +63,7 @@ export default function MoviesCard({ movie, save, removeSaveMovies, setSaveMovie
                 `https://api.nomoreparties.co${movie.image.url}`,
                 movie.id
             ).then(() => {
-                setSaveButon(true);
+                setIsSaved(true);
             }).catch((err) => {
                 console.log(err)
             })
@@ -69,7 +71,7 @@ export default function MoviesCard({ movie, save, removeSaveMovies, setSaveMovie
             const saveMovie = save.some((saved) => { return saved.movieId === movie.id })
             if (saveMovie) {
                 removeSaveMovies(saveMovie.id);
-                setSaveButon(false);
+                setIsSaved(false);
             }
         }
 
@@ -78,6 +80,7 @@ export default function MoviesCard({ movie, save, removeSaveMovies, setSaveMovie
     function handleDelete(e) {
         e.preventDefault();
         console.log('delete movie');
+        removeSaveMovies(movie.movieId);
         setSaveButon(false);
     }
 
@@ -88,9 +91,9 @@ export default function MoviesCard({ movie, save, removeSaveMovies, setSaveMovie
                     <h2 className="movie__name">{movie.nameRU}</h2>
                     <div className="movie__time">{duration}</div>
                 </div>
-                <img className='movie__image' src={imageUrl} alt={movie.nameRU} />
-                {!saveButton && <button className="movie__buttton_save" type="button" onClick={handleSaved}>Сохранить</button>}
-                {saveButton && <button className="movie__saved" type="button" onClick={handleDelete}>
+                <img className='movie__image' src={imageMovie} alt={movie.nameRU} />
+                {!isSaved && <button className="movie__buttton_save" type="button" onClick={handleSaved}>Сохранить</button>}
+                {isSaved && <button className="movie__saved" type="button" onClick={handleSaved}>
                     <img src={saveIcon} alt="Убрать из сохраненных" />
                 </button>}
             </li>}
@@ -100,8 +103,8 @@ export default function MoviesCard({ movie, save, removeSaveMovies, setSaveMovie
                     <h2 className="movie__name">{movie.nameRU}</h2>
                     <div className="movie__time">{duration}</div>
                 </div>
-                <img className='movie__image' src={imageUrl} alt={movie.nameRU} />
-                <button className="movie__buttton" type="button" onClick={movie.removeSaveMovies}>
+                <img className='movie__image' src={imageSavedMovie} alt={movie.nameRU} />
+                <button className="movie__buttton" type="button" onClick={handleDelete}>
                     <img src={logoX} alt="Убрать из сохраненных" />
                 </button>
             </li>}

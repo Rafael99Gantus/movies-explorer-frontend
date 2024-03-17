@@ -1,12 +1,16 @@
 import React from "react";
 import './SearchForm.css';
 import { useState } from 'react';
+import { useLocation } from "react-router-dom";
 
 import { CurrentMovieInfo } from '../../contexts/CurrentMovieInfo';
 
 export default function SearchForm(props) {
 
     const movies = React.useContext(CurrentMovieInfo);
+    const location = useLocation();
+
+    const isLocationSavedMovies = location.pathname === '/saved-movies';
 
     const [value, setValue] = useState(props.value);
     const [error, setError] = useState("");
@@ -36,6 +40,17 @@ export default function SearchForm(props) {
 
     }
 
+    function handleSubmitforSavedPage(e) {
+        e.preventDefault();
+        if (value === '') {
+            setError("Нужно ввести ключевое слово");
+            return;
+        }
+        props.setValue(value)
+        props.handleSearch(value, props.checkbox);
+
+    }
+
     function handleChange(event) {
         setValue(event.target.value);
 
@@ -49,7 +64,7 @@ export default function SearchForm(props) {
 
     return (
         <main className='searchform'>
-            <form action="" className="searchform__form" onSubmit={handleSubmit}>
+            <form action="" className="searchform__form" onSubmit={isLocationSavedMovies ? handleSubmitforSavedPage : handleSubmit}>
                 <div className="searchform__input-box">
                     <input
                         className={`searchform__input ${error ? "searchform__input_error" : ""}`}

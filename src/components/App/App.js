@@ -39,6 +39,11 @@ function App() {
   const isLocationSignIn = location.pathname === '/signin';
 
   useEffect(() => {
+    const save = JSON.parse(localStorage.getItem("save") || "[]");
+    setSaved(save);
+  }, []);
+
+  useEffect(() => {
     const JWT = getToken();
     if (JWT) {
       api.checkToken(JWT)
@@ -182,6 +187,24 @@ function App() {
     }
   }
 
+  // function setSaveMovies(movie) {
+  //   const userId = localStorage.getItem("userId");
+  //   const token = localStorage.getItem("jwt");
+  //   if (!save.some(saveMovie => saveMovie.movieId === movie.movieId)) {
+  //     return api.postSaveMovies(token, {...movie}, userId)
+  //       .then((res) => {
+  //         const statusSave = { ...res, isSaved: true };
+  //         const setNewMovies = [...save, statusSave];
+  //         setSaved(setNewMovies);
+  //         localStorage.setItem("save", JSON.stringify(setNewMovies));
+  //         console.log(save);
+  //       })
+  //       .catch((err) => {
+  //         console.error(`Фильм не сохранён ${err}`);
+  //       });
+  //   }
+  // }
+
   function removeSaveMovies(movieId) {
     return api.removeSaveMovies(movieId)
       .then(() => {
@@ -220,6 +243,7 @@ function App() {
               loggedIn={loggedIn}
               loading={loading}
               setSaveMovies={setSaveMovies}
+              removeSaveMovies={removeSaveMovies}
               setloading={setloading}
               setMovie={setMovie}
               save={save} />} />;

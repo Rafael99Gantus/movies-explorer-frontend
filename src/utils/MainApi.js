@@ -86,47 +86,6 @@ class Api {
         })
     }
 
-    // postSaveMovies(
-    //     country,
-    //     director,
-    //     duration,
-    //     year,
-    //     description,
-    //     image,
-    //     trailerLink,
-    //     nameRU,
-    //     nameEN,
-    //     thumbnail,
-    //     movieId,
-    //     owner
-    // ) {
-    //     const token = localStorage.getItem("jwt");
-
-    //     return this._sendRequest(`${this._url}/movies`, {
-    //         method: "POST",
-    //         headers: {
-    //             'Accept': 'application/json',
-    //             'Content-Type': 'application/json',
-    //             'Authorization': token
-    //         },
-    //         body: JSON.stringify(
-    //             {
-    //                 country,
-    //                 director,
-    //                 duration,
-    //                 year,
-    //                 description,
-    //                 image,
-    //                 trailerLink,
-    //                 nameRU,
-    //                 nameEN,
-    //                 thumbnail,
-    //                 movieId,
-    //                 owner
-    //             }
-    //         )
-    //     })
-    // }
 
     postSaveMovies = (
         country,
@@ -140,7 +99,8 @@ class Api {
         nameEN,
         thumbnail,
         movieId,
-        owner) => {
+        owner,
+        ) => {
         const token = localStorage.getItem("jwt");
         return this._sendRequest(`${this._url}/movies`, {
             method: 'POST',
@@ -161,14 +121,39 @@ class Api {
                 nameEN,
                 thumbnail,
                 movieId,
-                owner
+                owner,
             })
         })
     }
 
-    removeSaveMovies = (movieId) => {
+    // postSaveMovies = (token, movie, userId) => {
+    //     const movieData = {
+    //         country: movie.country,
+    //         director: movie.director,
+    //         duration: movie.duration,
+    //         year: movie.year,
+    //         description: movie.description,
+    //         image: `https://api.nomoreparties.co${movie.image.url}`,
+    //         trailerLink: movie.trailerLink,
+    //         thumbnail: `https://api.nomoreparties.co${movie.image.url}`,
+    //         movieId: movie.id,
+    //         nameRU: movie.nameRU,
+    //         nameEN: movie.nameEN,
+    //         owner: userId
+    //       };
+    //       return this._sendRequest(`${this._url}/movies`, {
+    //         method: "POST",
+    //         headers: {
+    //           "Content-Type": "application/json",
+    //           'Authorization': token
+    //         },
+    //         body: JSON.stringify(movieData)
+    //       })
+    // }
+
+    removeSaveMovies = (moviesId) => {
         const token = localStorage.getItem("jwt");
-        return fetch(`${this._url}/movies/${movieId}`, {
+        return fetch(`${this._url}/movies/${moviesId}`, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
