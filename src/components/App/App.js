@@ -16,7 +16,7 @@ import './App.css';
 
 import api from "../../utils/MainApi.js";
 import { getToken, setToken, removeToken } from "../../utils/token.js";
-import { setSavedMovies } from '../../utils/savedMovies.js'
+import { setSavedMovies, getSavedMovies } from '../../utils/savedMovies.js'
 
 
 function App() {
@@ -125,30 +125,55 @@ function App() {
       .catch(err => console.log(`Ошибка входа ${err}`));
   }
 
-  // const setMovieSaved = (movie) => {
-  //   setSaved(prev => {
+  // const setSaveMovies = (movie) => {
+  //   setSavedMovies(prev => {
   //     const newValue = [...prev, movie];
   //     setSavedMovies(JSON.stringify(newValue))
+  //     console.log(getSavedMovies())
   //     return newValue;
   //   })
   // }
-  // const removeMovieSaved = (movieId) => {
-  //   setSaved(prev => {
+  // const removeSaveMovies = (movieId) => {
+  //   setSavedMovies(prev => {
   //     const newValue = prev.filter(movie => movie.movieId !== movieId);
-  //     setSavedMovies(JSON.stringify(newValue))
+  //     setSavedMovies(JSON.stringify(newValue));
+  //     console.log(getSavedMovies())
   //     return newValue;
   //   })
   // }
 
-  function setSaveMovies(movie) {
-
-    if (!save.some(saveMovie => saveMovie.movieId === movie.id)) {
-      return api.postSaveMovies(movie)
+  function setSaveMovies(
+    country,
+    director,
+    duration,
+    year,
+    description,
+    image,
+    trailerLink,
+    nameRU,
+    nameEN,
+    thumbnail,
+    movieId) {
+    const userId = localStorage.getItem("userId")
+    if (!save.some(saveMovie => saveMovie.movieId === movieId)) {
+      return api.postSaveMovies(
+        country,
+        director,
+        duration,
+        year,
+        description,
+        image,
+        trailerLink,
+        nameRU,
+        nameEN,
+        thumbnail,
+        movieId,
+        userId)
         .then((res) => {
           const statusSave = { ...res, isSaved: true };
           const setNewMovies = [...save, statusSave];
           setSaved(setNewMovies);
-          setSavedMovies(JSON.stringify(setNewMovies));
+          localStorage.setItem("save", JSON.stringify(setNewMovies));
           console.log(save);
         })
         .catch((err) => {
@@ -157,7 +182,7 @@ function App() {
     }
   }
 
-  function removeSaveMovies (movieId) {
+  function removeSaveMovies(movieId) {
     return api.removeSaveMovies(movieId)
       .then(() => {
         const setNewMovies = save.filter((movie) => movie._id !== movieId);
@@ -196,7 +221,8 @@ function App() {
               loading={loading}
               setSaveMovies={setSaveMovies}
               setloading={setloading}
-              setMovie={setMovie}/>} />;
+              setMovie={setMovie}
+              save={save} />} />;
 
             <Route path="/profile" element={<ProtectedRoute
               component={Profile}

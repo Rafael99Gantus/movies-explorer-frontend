@@ -11,19 +11,22 @@ import { useEffect, useState } from "react";
 
 import { CurrentMovieInfo } from '../contexts/CurrentMovieInfo.js';
 
-export default function SavedMovies({ loggedIn, loading, setloading }) {
+export default function SavedMovies({ loggedIn, loading, setloading, save }) {
 
     const movies = React.useContext(CurrentMovieInfo);
 
     const [err, setErr] = useState('');
     const [value, setValue] = useState('');
     const [checkbox, setCheckbox] = useState(false);
-    const [massive, setMassive] = useState([])
+    const [massive, setMassive] = useState(() => {
+        const savedFilteredMovies = localStorage.getItem('save');
+        return savedFilteredMovies ? JSON.parse(savedFilteredMovies) : [];
+    })
 
     useEffect(() => {
         setloading(true);
         setErr('');
-        const filterMovies = movies.filter(function (movie) {
+        const filterMovies = massive.filter(function (movie) {
             return movie.nameRU.toLowerCase().trim().includes(value.toLowerCase())
         });
         if (checkbox === true) {

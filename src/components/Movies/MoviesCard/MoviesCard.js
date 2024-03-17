@@ -5,6 +5,7 @@ import saveIcon from '../../../images/save_icon.svg';
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
+import apiMov from '../../../utils/MainApi';
 
 export default function MoviesCard({ movie, save, removeSaveMovies, setSaveMovies }) {
 
@@ -24,13 +25,42 @@ export default function MoviesCard({ movie, save, removeSaveMovies, setSaveMovie
         }
     }, [save, movie]);
 
-    function handleSaved(e) {
+    // function handleSaved(e) {
+    //     e.preventDefault();
+    //     if (!saveButton) {
+    //         setSaveMovies({
+    //             ...movie,
+    //             movieId: movie.id,
+    //         }).then(() => {
+    //             setSaveButon(true);
+    //         }).catch((err) => {
+    //             console.log(err)
+    //         })
+    // } else {
+    //     const saveMovie = save.some((saved) => { return saved.movieId === movie.id })
+    //     if (saveMovie) {
+    //         removeSaveMovies(saveMovie.id);
+    //         setSaveButon(false);
+    //     }
+    // }
+    // }
+
+    const handleSaved = (e) => {
         e.preventDefault();
         if (!saveButton) {
-            setSaveMovies({
-                ...movie,
-                movieId: movie.id,
-            }).then(() => {
+            setSaveMovies(
+                movie.country,
+                movie.director,
+                movie.duration,
+                movie.year,
+                movie.description,
+                `https://api.nomoreparties.co${movie.image.url}`,
+                movie.trailerLink,
+                movie.nameRU,
+                movie.nameEN,
+                `https://api.nomoreparties.co${movie.image.url}`,
+                movie.id
+            ).then(() => {
                 setSaveButon(true);
             }).catch((err) => {
                 console.log(err)
@@ -42,6 +72,7 @@ export default function MoviesCard({ movie, save, removeSaveMovies, setSaveMovie
                 setSaveButon(false);
             }
         }
+
     }
 
     function handleDelete(e) {

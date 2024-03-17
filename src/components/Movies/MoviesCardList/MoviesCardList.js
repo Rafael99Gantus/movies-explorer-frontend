@@ -144,7 +144,7 @@ export default function MoviesCardList({ movies, loading, save, removeSaveMovies
             {loading ? <Preloader /> : <ul className='elements'>
                 {result.map((movie) => {
                     return (
-                        <MoviesCard key={movie.id}
+                        <MoviesCard key={isLocationMovies ? movie.id : movie.movieId}
                             movie={movie}
                             
                             // setSaved={props.setSaved}

@@ -86,20 +86,61 @@ class Api {
         })
     }
 
-    postSaveMovies = (movie) => {
-        const data = {
-            country: movie.country,
-            director: movie.director,
-            duration: movie.duration,
-            year: movie.year,
-            description: movie.description,
-            image: `https://api.nomoreparties.co${movie.image.url}`,
-            trailerLink: movie.trailerLink,
-            thumbnail: `https://api.nomoreparties.co${movie.image.url}`,
-            movieId: movie.id,
-            nameRU: movie.nameRU,
-            nameEN: movie.nameEN,
-          };
+    // postSaveMovies(
+    //     country,
+    //     director,
+    //     duration,
+    //     year,
+    //     description,
+    //     image,
+    //     trailerLink,
+    //     nameRU,
+    //     nameEN,
+    //     thumbnail,
+    //     movieId,
+    //     owner
+    // ) {
+    //     const token = localStorage.getItem("jwt");
+
+    //     return this._sendRequest(`${this._url}/movies`, {
+    //         method: "POST",
+    //         headers: {
+    //             'Accept': 'application/json',
+    //             'Content-Type': 'application/json',
+    //             'Authorization': token
+    //         },
+    //         body: JSON.stringify(
+    //             {
+    //                 country,
+    //                 director,
+    //                 duration,
+    //                 year,
+    //                 description,
+    //                 image,
+    //                 trailerLink,
+    //                 nameRU,
+    //                 nameEN,
+    //                 thumbnail,
+    //                 movieId,
+    //                 owner
+    //             }
+    //         )
+    //     })
+    // }
+
+    postSaveMovies = (
+        country,
+        director,
+        duration,
+        year,
+        description,
+        image,
+        trailerLink,
+        nameRU,
+        nameEN,
+        thumbnail,
+        movieId,
+        owner) => {
         const token = localStorage.getItem("jwt");
         return this._sendRequest(`${this._url}/movies`, {
             method: 'POST',
@@ -108,13 +149,26 @@ class Api {
                 'Content-Type': 'application/json',
                 'Authorization': token
             },
-            body: JSON.stringify({data})
+            body: JSON.stringify({
+                country,
+                director,
+                duration,
+                year,
+                description,
+                image,
+                trailerLink,
+                nameRU,
+                nameEN,
+                thumbnail,
+                movieId,
+                owner
+            })
         })
     }
 
     removeSaveMovies = (movieId) => {
         const token = localStorage.getItem("jwt");
-        return fetch(`${this._url}/movies/${movieId}`,{
+        return fetch(`${this._url}/movies/${movieId}`, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
