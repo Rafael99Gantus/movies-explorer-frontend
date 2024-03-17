@@ -42,7 +42,10 @@ export default function MoviesCardList({ movies, loading, save, removeSaveMovies
             setResult(movies);
         }
 
-
+        if(movies.length + 4 < quantity){
+            setMore(false);
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isLocationMovies, movies, quantity]);
 
     window.addEventListener('resize', handleResize);
@@ -163,7 +166,7 @@ export default function MoviesCardList({ movies, loading, save, removeSaveMovies
             </ul>}
             {more && <div className="elements__block">
                 <button
-                    className={isLocationSavedMovies ? "elements__block_lock" : "elements__block-more"}
+                    className="elements__block-more"
                     type="button"
                     onClick={handleMore}
                 >Ещё</button>
