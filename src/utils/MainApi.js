@@ -86,19 +86,20 @@ class Api {
         })
     }
 
-    postSaveMovies = (
-        country,
-        director,
-        duration,
-        year,
-        description,
-        image,
-        trailerLink,
-        nameRU,
-        nameEN,
-        thumbnail,
-        movieId
-    ) => {
+    postSaveMovies = (movie) => {
+        const data = {
+            country: movie.country,
+            director: movie.director,
+            duration: movie.duration,
+            year: movie.year,
+            description: movie.description,
+            image: `https://api.nomoreparties.co${movie.image.url}`,
+            trailerLink: movie.trailerLink,
+            thumbnail: `https://api.nomoreparties.co${movie.image.url}`,
+            movieId: movie.id,
+            nameRU: movie.nameRU,
+            nameEN: movie.nameEN,
+          };
         const token = localStorage.getItem("jwt");
         return this._sendRequest(`${this._url}/movies`, {
             method: 'POST',
@@ -107,20 +108,7 @@ class Api {
                 'Content-Type': 'application/json',
                 'Authorization': token
             },
-            body: JSON.stringify(
-                {
-                    country,
-                    director,
-                    duration,
-                    year,
-                    description,
-                    image,
-                    trailerLink,
-                    nameRU,
-                    nameEN,
-                    thumbnail,
-                    movieId
-                })
+            body: JSON.stringify({data})
         })
     }
 

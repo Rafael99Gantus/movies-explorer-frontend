@@ -38,8 +38,13 @@ export default function SearchForm(props) {
 
     function handleChange(event) {
         setValue(event.target.value);
-        
+
         setError(null)
+    }
+
+    function stop(ev) {
+        ev.stopPropagation();
+        console.log('click input');
     }
 
     return (
@@ -54,9 +59,9 @@ export default function SearchForm(props) {
                     <button className="searchform__button" type="submit" >Поиск</button>
                 </div>
                 <div className="searchform__block">
-                    <label className="searchform__filter-block">
-                        <div className="searchform__filter" for="checkbox" onClick={props.handleCheckbox}>
-                            <input className="searchfrom__filter_input" type="checkbox" name="Короткометражки" id="checkbox" />
+                    <label className="searchform__filter-block" onClick={stop}>
+                        <div className="searchform__filter" >
+                            <input isActive={props.checkbox} className="searchfrom__filter_input" type="checkbox" name="Короткометражки" id="checkbox" onClick={props.handleCheckbox}/>
                             <span className="searchform__slider"></span>
                         </div>
                         <p className="searchform__text">Короткометражки</p>

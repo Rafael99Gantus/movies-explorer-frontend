@@ -140,33 +140,10 @@ function App() {
   //   })
   // }
 
-  function setSaveMovies(
-    country,
-    director,
-    duration,
-    year,
-    description,
-    image,
-    trailerLink,
-    nameRU,
-    nameEN,
-    thumbnail,
-    movieId) {
+  function setSaveMovies(movie) {
 
-    if (!save.some(saveMovie => saveMovie.movieId === movieId)) {
-      return api.postSaveMovies(
-        country,
-        director,
-        duration,
-        year,
-        description,
-        image,
-        trailerLink,
-        nameRU,
-        nameEN,
-        thumbnail,
-        movieId
-      )
+    if (!save.some(saveMovie => saveMovie.movieId === movie.id)) {
+      return api.postSaveMovies(movie)
         .then((res) => {
           const statusSave = { ...res, isSaved: true };
           const setNewMovies = [...save, statusSave];

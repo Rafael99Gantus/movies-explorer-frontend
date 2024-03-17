@@ -18,6 +18,12 @@ export default function MoviesCardList({ movies, loading, save, removeSaveMovies
     const isLocationSavedMovies = location.pathname === '/saved-movies';
 
     useEffect(() => {
+        if(movies.length + 4 < quantity){
+            setMore(false);
+        }
+        if(movies.length + 4 > quantity){
+            setMore(true);
+        }
         if (isLocationMovies) {
             if (window.innerWidth > 1160 && more) {
                 setQuantity(12);
@@ -41,14 +47,12 @@ export default function MoviesCardList({ movies, loading, save, removeSaveMovies
             }
             setResult(movies);
         }
-
-        if(movies.length + 4 < quantity){
-            setMore(false);
-        }
+        // window.addEventListener('resize', handleResize);
+        // return () => window.removeEventListener('resize', handleResize);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isLocationMovies, movies, quantity]);
+    }, [isLocationMovies, movies, quantity, window.innerWidth]);
 
-    window.addEventListener('resize', handleResize);
+    // 
 
     function handleResize() {
         if (isLocationMovies) {
@@ -106,11 +110,11 @@ export default function MoviesCardList({ movies, loading, save, removeSaveMovies
                     return;
                 }
                 if (window.innerWidth <= 1160) {
-                    setQuantity(10);
+                    setQuantity(14);
                     return;
                 }
                 if (window.innerWidth <= 730) {
-                    setQuantity(7);
+                    setQuantity(11);
                     return;
                 }
             }
@@ -142,17 +146,7 @@ export default function MoviesCardList({ movies, loading, save, removeSaveMovies
                     return (
                         <MoviesCard key={movie.id}
                             movie={movie}
-                            id={movie.id}
-                            country={movie.country}
-                            director={movie.director}
-                            duration={movie.duration}
-                            year={movie.year}
-                            description={movie.description}
-                            trailerLink={movie.trailerLink}
-                            nameRU={movie.nameRU}
-                            nameEN={movie.nameEN}
-
-                            image={movie.image}
+                            
                             // setSaved={props.setSaved}
                             save={save}
                             // saveMovie={saveMovie}

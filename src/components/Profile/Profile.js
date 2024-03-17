@@ -2,10 +2,11 @@ import React from "react";
 import { useState } from "react";
 import './Profile.css';
 import Header from "../Header/Header";
+import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
 export default function Profile(props) {
 
-
+    const currentUser = React.useContext(CurrentUserContext)
     const [name, setName] = useState(props.user.name);
     const [email, setEmail] = useState(props.user.email);
 
@@ -62,6 +63,8 @@ export default function Profile(props) {
         props.editProfile({ name, email })
     };
 
+    const user = name !== currentUser.name || email !== currentUser.email;
+
     return (
         <main>
             <Header loggedIn={props.loggedIn} />
@@ -103,7 +106,7 @@ export default function Profile(props) {
                     {!edit ? (<div className="profile__block">
                         <button className="profile__button-edit" onClick={handleEdit} type="button">Редактировать</button>
                         <button className="profile__button-exit" onClick={props.logOut} type="button">Выйти из аккаунта</button>
-                    </div>) : <button className={valid ? "profile__button-save" : "profile__button-save_disabled"} onClick={handleSaveEdit} type="submit">Сохранить</button>}
+                    </div>) : <button className={valid && user ? "profile__button-save" : "profile__button-save_disabled"} onClick={handleSaveEdit} type="submit">Сохранить</button>}
 
                     {/* {!edit && valid ? (<div className="profile__block">
                         <button className="profile__button-edit" onClick={handleEdit} type="button">Редактировать</button>
