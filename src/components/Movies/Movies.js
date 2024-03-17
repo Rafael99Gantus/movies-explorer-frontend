@@ -93,7 +93,7 @@ export default function Movies(props) {
             if (film.length === 0) {
                 apiMov.getMovies()
                     .then((res) => {
-                        // Используем новые значения для фильтрации
+                        
                         const filtered = filterMovies(res, text, check);
                         localStorage.setItem('film', JSON.stringify(res));
                         setFilm(res);
@@ -119,7 +119,6 @@ export default function Movies(props) {
                         props.setloading(false);
                     });
             } else {
-                // Используем новые значения для фильтрации среди уже загруженных фильмов
                 const filtered = filterMovies(film, text, check);
                 if (checkbox) {
                     const short = filtered.filter(function (movie) {

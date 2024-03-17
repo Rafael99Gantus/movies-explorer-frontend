@@ -126,8 +126,6 @@ class Api {
         })
     }
 
-    // postSaveMovies = (token, movie, userId) => {
-    //     const movieData = {
     //         country: movie.country,
     //         director: movie.director,
     //         duration: movie.duration,

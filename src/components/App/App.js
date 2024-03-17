@@ -134,12 +134,7 @@ function App() {
   //   setSavedMovies(prev => {
   //     const newValue = [...prev, movie];
   //     setSavedMovies(JSON.stringify(newValue))
-  //     console.log(getSavedMovies())
-  //     return newValue;
-  //   })
-  // }
-  // const removeSaveMovies = (movieId) => {
-  //   setSavedMovies(prev => {
+  //     console.log> {
   //     const newValue = prev.filter(movie => movie.movieId !== movieId);
   //     setSavedMovies(JSON.stringify(newValue));
   //     console.log(getSavedMovies())
