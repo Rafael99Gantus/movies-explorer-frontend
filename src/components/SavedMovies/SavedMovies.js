@@ -6,12 +6,13 @@ import SearchForm from "../Movies/SearchForm/SearchForm";
 import MoviesCardList from "../Movies/MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import Preloader from "../Movies/Preloader/Preloader.js";
+import api from '../../utils/MainApi.js';
 
 import { useEffect, useState } from "react";
 
 import { CurrentMovieInfo } from '../contexts/CurrentMovieInfo.js';
 
-export default function SavedMovies({ loggedIn, save, removeSaveMovies }) {
+export default function SavedMovies({ loggedIn, save, removeSaveMovies, setSaved, setEl }) {
 
     const movies = React.useContext(CurrentMovieInfo);
 
@@ -25,7 +26,7 @@ export default function SavedMovies({ loggedIn, save, removeSaveMovies }) {
         return savedFilteredMovies ? JSON.parse(savedFilteredMovies) : [];
     })
 
-    const filterMovies = (movies, value, checkbox) => {
+    const filterMovies = (movies, value) => {
         return movies.filter(movie => {
             return movie.nameRU.toLowerCase().includes(value.toLowerCase());
         });
@@ -56,43 +57,54 @@ export default function SavedMovies({ loggedIn, save, removeSaveMovies }) {
     }
 
     useEffect(() => {
-        if (massive === undefined) {
-            setMassive([])
+        localStorage.setItem("save", JSON.stringify(massive))
+        setLoading(true);
+        setErr('');
+        if (checkbox === true && massive) {
+            const shortMovies = massive.filter(function (movie) {
+                return movie.duration <= 40
+            });
+            setMassive(shortMovies);
+        } else {
+            setMassive(massive);
+        }
+        if (massive.length === 0) {
+            localStorage.removeItem("save")
+            setErr('У вас нет сохраненных фильмов');
+        }
+        setLoading(false);
+    }, [checkbox, massive])
+
+    const deleteMovies = (movieId) => { //1
+        api.removeSaveMovies(movieId)
+            .then(() => {
+                const setNewMovies = save.filter((movie) => movie.movieId !== movieId);
+                localStorage.removeItem("save");
+                setSaved(setNewMovies); // +2
+                setMassive(setNewMovies)
+                localStorage.setItem("save", JSON.stringify(setNewMovies)); // +2
+                setEl(true);
+            })
+            .catch((err) => {
+                console.error(`Фильм не удалён ${err}`);
+                setEl(false);
+            });
+        if (massive.length === 0) {
+            setErr("У вас нет сохраненных фильмов");
             return;
         } else {
-            setLoading(true);
-            setErr('');
-            const filterMovies = massive.filter(function (movie) {
-                return movie.nameRU.toLowerCase().trim().includes(value.toLowerCase())
-            });
-            if (checkbox === true && filterMovies) {
-                const shortMovies = filterMovies.filter(function (movie) {
+            setErr("");
+            if (checkbox === true) {
+                const shortMovies = massive.filter(function (movie) {
                     return movie.duration <= 40
                 });
                 setMassive(shortMovies);
+                console.log(shortMovies);
             } else {
-                setMassive(filterMovies);
+                setMassive(massive); // +3
+                console.log(massive);
             }
-            if (massive.length === 0) {
-                setErr('У вас нет сохраненных фильмов')
-            }
-            setLoading(false);
         }
-    }, [checkbox, massive, value])
-
-    const deleteMovies = (movieId) => {
-        removeSaveMovies(movieId);
-        setMassive(prevMovies => {
-            const updatedMovies = prevMovies.filter(movie => movie.movieId !== movieId);
-            if (updatedMovies.length === 0) {
-                setErr("У вас нет сохраненных фильмов");
-                return;
-            } else {
-                setErr("");
-                const filtered = filterMovies(chfngeValue, checkbox, updatedMovies);
-                return filtered;
-            }
-        });
     };
 
     return (

@@ -19,10 +19,6 @@ export default function MoviesCardList({ movies, loading, save, removeSaveMovies
     const width = window.innerWidth;
 
     useEffect(() => {
-        if (movies === undefined) {
-            setResult([]);
-            return;
-        } else {
             if (movies.length + 4 < quantity) {
                 setMore(false);
             }
@@ -50,10 +46,6 @@ export default function MoviesCardList({ movies, loading, save, removeSaveMovies
                 setResult(movies);
                 return;
             }
-        }
-        // 
-        // return () => window.removeEventListener('resize', handleResize);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isLocationMovies, movies, quantity]);
 
     // window.addEventListener('resize', setTimeout(() => {

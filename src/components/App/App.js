@@ -132,18 +132,6 @@ function App() {
       .catch(err => console.log(`Ошибка входа ${err}`));
   }
 
-  // const setSaveMovies = (movie) => {
-  //   setSavedMovies(prev => {
-  //     const newValue = [...prev, movie];
-  //     setSavedMovies(JSON.stringify(newValue))
-  //     console.log> {
-  //     const newValue = prev.filter(movie => movie.movieId !== movieId);
-  //     setSavedMovies(JSON.stringify(newValue));
-  //     console.log(getSavedMovies())
-  //     return newValue;
-  //   })
-  // }
-
   function setSaveMovies(
     country,
     director,
@@ -172,8 +160,7 @@ function App() {
         movieId,
         userId)
         .then((res) => {
-          const statusSave = { ...res, isSaved: true };
-          const setNewMovies = [...save, statusSave];
+          const setNewMovies = [...save, res];
           setSaved(setNewMovies);
           localStorage.setItem("save", JSON.stringify(setNewMovies));
           console.log(save);
@@ -184,31 +171,13 @@ function App() {
     }
   }
 
-  // function setSaveMovies(movie) {
-  //   const userId = localStorage.getItem("userId");
-  //   const token = localStorage.getItem("jwt");
-  //   if (!save.some(saveMovie => saveMovie.movieId === movie.movieId)) {
-  //     return api.postSaveMovies(token, {...movie}, userId)
-  //       .then((res) => {
-  //         const statusSave = { ...res, isSaved: true };
-  //         const setNewMovies = [...save, statusSave];
-  //         setSaved(setNewMovies);
-  //         localStorage.setItem("save", JSON.stringify(setNewMovies));
-  //         console.log(save);
-  //       })
-  //       .catch((err) => {
-  //         console.error(`Фильм не сохранён ${err}`);
-  //       });
-  //   }
-  // }
-
-  function removeSaveMovies(movieId) {
+  function removeSaveMovies(movieId) { //2
     return api.removeSaveMovies(movieId)
       .then(() => {
         const setNewMovies = save.filter((movie) => movie.movieId !== movieId);
-        localStorage.removeItem("save", JSON.stringify(movieId));
-        setSaved(setNewMovies);
-        setSavedMovies(JSON.stringify(setNewMovies));
+        localStorage.removeItem("save");
+        setSaved(setNewMovies); // +2
+        localStorage.setItem("save", JSON.stringify(setNewMovies)); // +2
         setEl(true);
       })
       .catch((err) => {
@@ -234,7 +203,6 @@ function App() {
               setloading={setloading}
               setSaved={setSaved}
               save={save}
-              // setMovieSaved={setMovieSaved}
               removeSaveMovies={removeSaveMovies}
               setSaveMovies={setSaveMovies}
               el={el} />} />;
@@ -247,7 +215,9 @@ function App() {
               removeSaveMovies={removeSaveMovies}
               setloading={setloading}
               setMovie={setMovie}
-              save={save} />} />;
+              save={save} 
+              setSaved={setSaved}
+              setEl={setEl}/>} />;
 
             <Route path="/profile" element={<ProtectedRoute
               component={Profile}
