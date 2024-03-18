@@ -212,6 +212,11 @@
     background-color: rgb(74, 72, 72);
     border-radius: 3px;
     padding: 0;
+    cursor: pointer;
+}
+
+.profile__button-save_disabled:hover{
+    opacity: 70%;
 }
 
 @media (max-width:1110px){

@@ -18,6 +18,12 @@ export default function Profile(props) {
     const emailValidation = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const [edit, setEdit] = useState(false);
 
+    const handleCancelEdit = () => {
+        setEdit(false);
+        setName(currentUser.name);
+        setEmail(currentUser.email);
+    }
+
     const handleEmail = (e) => {
         setEmail(e.target.value);
         validateInput();
@@ -65,6 +71,9 @@ export default function Profile(props) {
 
     const user = name !== currentUser.name || email !== currentUser.email;
 
+    const save="Сохранить";
+    const back = "Отменить"
+
     return (
         <main>
             <Header loggedIn={props.loggedIn} />
@@ -106,7 +115,7 @@ export default function Profile(props) {
                     {!edit ? (<div className="profile__block">
                         <button className="profile__button-edit" onClick={handleEdit} type="button">Редактировать</button>
                         <button className="profile__button-exit" onClick={props.logOut} type="button">Выйти из аккаунта</button>
-                    </div>) : <button className={valid && user ? "profile__button-save" : "profile__button-save_disabled"} onClick={handleSaveEdit} type="submit">Сохранить</button>}
+                    </div>) : <button className={valid && user ? "profile__button-save" : "profile__button-save_disabled"} onClick={valid && user ? handleSaveEdit : handleCancelEdit} type="submit">{valid && user ? save : back}</button>}
 
                     {/* {!edit && valid ? (<div className="profile__block">
                         <button className="profile__button-edit" onClick={handleEdit} type="button">Редактировать</button>
