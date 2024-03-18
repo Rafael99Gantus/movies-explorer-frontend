@@ -1,6 +1,6 @@
 import React from "react";
 import './SearchForm.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from "react-router-dom";
 
 import { CurrentMovieInfo } from '../../contexts/CurrentMovieInfo';
@@ -14,6 +14,12 @@ export default function SearchForm(props) {
 
     const [value, setValue] = useState(props.value);
     const [error, setError] = useState("");
+    const [checkbox, setCheckbox] = useState('');
+
+
+    useEffect(() => {
+        setCheckbox(localStorage.getItem('checkbox'))
+    }, [checkbox])
 
     // function checkCheckbox(filterMovies) {
     //     const checkbox = document.querySelector('.searchfrom__filter_input');
@@ -76,7 +82,7 @@ export default function SearchForm(props) {
                 <div className="searchform__block">
                     <label className="searchform__filter-block" onClick={stop}>
                         <div className="searchform__filter" >
-                            <input isActive={props.checkbox} className="searchfrom__filter_input" type="checkbox" name="Короткометражки" id="checkbox" onClick={props.handleCheckbox}/>
+                            <input checked={props.checkbox} className="searchfrom__filter_input" type="checkbox" name="Короткометражки" id="checkbox" onClick={props.handleCheckbox}/>
                             <span className="searchform__slider"></span>
                         </div>
                         <p className="searchform__text">Короткометражки</p>

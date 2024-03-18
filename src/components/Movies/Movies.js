@@ -33,8 +33,12 @@ export default function Movies(props) {
 
     // const [filteredMovies, setFilteredMovies] = useState([]);
 
+    // const [checkbox, setCheckbox] = useState(() => {
+    //     return localStorage.getItem('checkbox') === 'true';
+    // });
+
     const [checkbox, setCheckbox] = useState(() => {
-        return localStorage.getItem('checkbox') === 'true';
+        return localStorage.getItem('checkbox');
     });
 
     useEffect(() => {
@@ -97,7 +101,7 @@ export default function Movies(props) {
                         const filtered = filterMovies(res, text, check);
                         localStorage.setItem('film', JSON.stringify(res));
                         setFilm(res);
-                        if (checkbox) {
+                        if (check) {
                             const short = filtered.filter(function (movie) {
                                 return movie.duration <= 40
                             })
@@ -120,7 +124,7 @@ export default function Movies(props) {
                     });
             } else {
                 const filtered = filterMovies(film, text, check);
-                if (checkbox) {
+                if (check) {
                     const short = filtered.filter(function (movie) {
                         return movie.duration <= 40
                     })
@@ -140,16 +144,14 @@ export default function Movies(props) {
     }
 
     const handleCheckbox = () => {
-        if(checkbox === false){
-            setCheckbox(true);
-            localStorage.setItem('checkbox', true);
-        }else{
-            setCheckbox(false);
-            localStorage.setItem('checkbox', false);
+        if(checkbox === true){
+            setCheckbox(false)
         }
-        
+        if(checkbox === false){
+            setCheckbox(true)
+        }
         const check = !checkbox
-        setCheckbox(check);
+        localStorage.setItem('checkbox', check);
         if (value) {
             getMovies(value, check);
         }
