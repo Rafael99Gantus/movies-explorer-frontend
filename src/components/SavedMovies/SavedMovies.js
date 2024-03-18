@@ -56,36 +56,42 @@ export default function SavedMovies({ loggedIn, save, removeSaveMovies }) {
     }
 
     useEffect(() => {
-        setLoading(true);
-        setErr('');
-        const filterMovies = massive.filter(function (movie) {
-            return movie.nameRU.toLowerCase().trim().includes(value.toLowerCase())
-        });
-        if (checkbox === true) {
-            const shortMovies = filterMovies.filter(function (movie) {
-                return movie.duration <= 40
-            });
-            setMassive(shortMovies);
+        if (massive === undefined) {
+            setMassive([])
+            return;
         } else {
-            setMassive(filterMovies);
+            setLoading(true);
+            setErr('');
+            const filterMovies = massive.filter(function (movie) {
+                return movie.nameRU.toLowerCase().trim().includes(value.toLowerCase())
+            });
+            if (checkbox === true && filterMovies) {
+                const shortMovies = filterMovies.filter(function (movie) {
+                    return movie.duration <= 40
+                });
+                setMassive(shortMovies);
+            } else {
+                setMassive(filterMovies);
+            }
+            if (massive.length === 0) {
+                setErr('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
+            }
+            setLoading(false);
         }
-        if (massive.length === 0) {
-            setErr('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
-        }
-        setLoading(false);
     }, [checkbox, massive, value])
 
     const deleteMovies = (movieId) => {
         removeSaveMovies(movieId);
         setMassive(prevMovies => {
-            const updatedMovies = prevMovies.filter(movie => movie._id !== movieId);
-            const filtered = filterMovies(chfngeValue, checkbox, updatedMovies);
-            if (filtered.length === 0) {
+            const updatedMovies = prevMovies.filter(movie => movie.movieId !== movieId);
+            if (updatedMovies.length === 0) {
                 setErr("Ничего не найдено");
+                return;
             } else {
                 setErr("");
+                const filtered = filterMovies(chfngeValue, checkbox, updatedMovies);
+                return filtered;
             }
-            return filtered;
         });
     };
 
@@ -97,7 +103,7 @@ export default function SavedMovies({ loggedIn, save, removeSaveMovies }) {
             {err && <p className="movies__err">{err}</p>}
             <MoviesCardList
                 movies={massive}
-                
+
                 loading={loading}
                 removeSaveMovies={deleteMovies}
                 save={save} />

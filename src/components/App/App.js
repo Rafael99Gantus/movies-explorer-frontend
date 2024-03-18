@@ -204,7 +204,7 @@ function App() {
     return api.removeSaveMovies(movieId)
       .then(() => {
         const setNewMovies = save.filter((movie) => movie.movieId !== movieId);
-        // localStorage("save", JSON.stringify(movieId));
+        localStorage.removeItem("save", JSON.stringify(movieId));
         setSaved(setNewMovies);
         setSavedMovies(JSON.stringify(setNewMovies));
       })

@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-export default function MoviesCardList({ movies, loading, save, removeSaveMovies, setSaveMovies }) {
+export default function MoviesCardList({ movies, loading, save, removeSaveMovies, setSaveMovies, setFilteredMovies }) {
 
     const location = useLocation();
 
@@ -19,36 +19,42 @@ export default function MoviesCardList({ movies, loading, save, removeSaveMovies
     const width = window.innerWidth;
 
     useEffect(() => {
-        if (movies.length + 4 < quantity) {
-            setMore(false);
-        }
-        if (isLocationMovies) {
-            if (window.innerWidth > 1160 && more) {
-                setQuantity(12);
-            }
-            if (window.innerWidth <= 1160 && more) {
-                setQuantity(12);
-            }
-            if (window.innerWidth <= 730 && more) {
-                setQuantity(9);
-            }
-            setResult(movies.slice(0, quantity));
+        if (movies === undefined) {
+            setFilteredMovies([]);
+            return;
         } else {
-            if (window.innerWidth > 1160) {
-                setQuantity(12);
+            if (movies.length + 4 < quantity) {
+                setMore(false);
             }
-            if (window.innerWidth <= 1160) {
-                setQuantity(12);
+            if (isLocationMovies) {
+                if (window.innerWidth > 1160 && more) {
+                    setQuantity(12);
+                }
+                if (window.innerWidth <= 1160 && more) {
+                    setQuantity(12);
+                }
+                if (window.innerWidth <= 730 && more) {
+                    setQuantity(9);
+                }
+                setResult(movies.slice(0, quantity));
+            } else {
+                if (window.innerWidth > 1160) {
+                    setQuantity(12);
+                }
+                if (window.innerWidth <= 1160) {
+                    setQuantity(12);
+                }
+                if (window.innerWidth <= 730) {
+                    setQuantity(9);
+                }
+                setResult(movies);
+                return;
             }
-            if (window.innerWidth <= 730) {
-                setQuantity(9);
-            }
-            setResult(movies);
         }
         // 
         // return () => window.removeEventListener('resize', handleResize);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isLocationMovies, movies, quantity, width]);
+    }, [isLocationMovies, movies, quantity]);
 
     // window.addEventListener('resize', setTimeout(() => {
     //     if (isLocationMovies) {
