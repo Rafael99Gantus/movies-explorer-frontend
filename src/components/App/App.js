@@ -215,9 +215,9 @@ function App() {
               removeSaveMovies={removeSaveMovies}
               setloading={setloading}
               setMovie={setMovie}
-              save={save} 
+              save={save}
               setSaved={setSaved}
-              setEl={setEl}/>} />;
+              setEl={setEl} />} />;
 
             <Route path="/profile" element={<ProtectedRoute
               component={Profile}

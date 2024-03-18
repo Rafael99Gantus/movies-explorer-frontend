@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import './Register.css';
-import api from "../../utils/MainApi.js"
 
 export default function Register(props) {
     const navigate = useNavigate();
@@ -43,9 +42,6 @@ export default function Register(props) {
             return
         }
         props.onRegister(name, email, password);
-        // setEmail('');
-        // setName('');
-        // setPassword('');
     }
 
     const validateInput = () => {

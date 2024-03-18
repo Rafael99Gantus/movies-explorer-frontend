@@ -3,15 +3,15 @@ import './Portfolio.css';
 
 export default function Portfolio() {
 
-    function staticWeb(){
+    function staticWeb() {
         window.open('https://github.com/Rafael99Gantus/russian-travel', '_blank');
     }
 
-    function adaptivWeb(){
+    function adaptivWeb() {
         window.open('https://github.com/Rafael99Gantus/mesto', '_blank');
     }
 
-    function web(){
+    function web() {
         window.open('https://github.com/Rafael99Gantus/react-mesto-api-full-gha', '_blank');
     }
 
@@ -20,17 +20,17 @@ export default function Portfolio() {
             <h2 className='portfolio__title'>Портфолио</h2>
             <div className='portfolio__block' onClick={staticWeb}>
                 <p className='portfolio__block-link' >Статичный сайт</p>
-                <div className='portfolio__block-button'/>
+                <div className='portfolio__block-button' />
             </div>
 
             <div className='portfolio__block' onClick={adaptivWeb}>
                 <p className='portfolio__block-link' >Адаптивный сайт</p>
-                <div className='portfolio__block-button'/>
+                <div className='portfolio__block-button' />
             </div>
 
             <div className='portfolio__block-last' onClick={web}>
                 <p className='portfolio__block-link'>Одностраничное приложение</p>
-                <div className='portfolio__block-button'/>
+                <div className='portfolio__block-button' />
             </div>
 
         </section>

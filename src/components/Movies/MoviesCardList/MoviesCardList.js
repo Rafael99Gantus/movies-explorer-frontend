@@ -15,105 +15,37 @@ export default function MoviesCardList({ movies, loading, save, removeSaveMovies
     const [more, setMore] = useState(true)
 
     const isLocationMovies = location.pathname === '/movies';
-    const isLocationSavedMovies = location.pathname === '/saved-movies';
-    const width = window.innerWidth;
 
     useEffect(() => {
-            if (movies.length + 4 < quantity) {
-                setMore(false);
+        if (movies.length + 4 < quantity) {
+            setMore(false);
+        }
+        if (isLocationMovies) {
+            if (window.innerWidth > 1160 && more) {
+                setQuantity(12);
             }
-            if (isLocationMovies) {
-                if (window.innerWidth > 1160 && more) {
-                    setQuantity(12);
-                }
-                if (window.innerWidth <= 1160 && more) {
-                    setQuantity(12);
-                }
-                if (window.innerWidth <= 730 && more) {
-                    setQuantity(9);
-                }
-                setResult(movies.slice(0, quantity));
-            } else {
-                if (window.innerWidth > 1160) {
-                    setQuantity(12);
-                }
-                if (window.innerWidth <= 1160) {
-                    setQuantity(12);
-                }
-                if (window.innerWidth <= 730) {
-                    setQuantity(9);
-                }
-                setResult(movies);
-                return;
+            if (window.innerWidth <= 1160 && more) {
+                setQuantity(12);
             }
+            if (window.innerWidth <= 730 && more) {
+                setQuantity(9);
+            }
+            setResult(movies.slice(0, quantity));
+        } else {
+            if (window.innerWidth > 1160) {
+                setQuantity(12);
+            }
+            if (window.innerWidth <= 1160) {
+                setQuantity(12);
+            }
+            if (window.innerWidth <= 730) {
+                setQuantity(9);
+            }
+            setResult(movies);
+            return;
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isLocationMovies, movies, quantity]);
-
-    // window.addEventListener('resize', setTimeout(() => {
-    //     if (isLocationMovies) {
-    //         if (movies.length + 4 > quantity) {
-    //             if (window.innerWidth > 1160) {
-    //                 setMore(true);
-    //                 setQuantity(12);
-    //                 return;
-    //             }
-    //             if (window.innerWidth <= 1160) {
-    //                 setMore(true);
-    //                 setQuantity(12);
-    //                 return;
-    //             }
-    //             if (window.innerWidth <= 730) {
-    //                 setMore(true);
-    //                 setQuantity(9);
-    //                 return;
-    //             }
-    //         } else {
-    //             if (window.innerWidth > 1160) {
-    //                 setMore(true);
-    //                 setQuantity(15);
-    //                 return;
-    //             }
-    //             if (window.innerWidth <= 1160) {
-    //                 setMore(true);
-    //                 setQuantity(10);
-    //                 return;
-    //             }
-    //             if (window.innerWidth <= 730) {
-    //                 setMore(true);
-    //                 setQuantity(7);
-    //                 return;
-    //             }
-    //         }
-    //     }
-    //     if (isLocationSavedMovies) {
-    //         if (movies.length + 4 > quantity) {
-    //             if (window.innerWidth > 1160) {
-    //                 setQuantity(12);
-    //                 return;
-    //             }
-    //             if (window.innerWidth <= 1160) {
-    //                 setQuantity(12);
-    //                 return;
-    //             }
-    //             if (window.innerWidth <= 730) {
-    //                 setQuantity(9);
-    //                 return;
-    //             }
-    //         } else {
-    //             if (window.innerWidth > 1160) {
-    //                 setQuantity(15);
-    //                 return;
-    //             }
-    //             if (window.innerWidth <= 1160) {
-    //                 setQuantity(14);
-    //                 return;
-    //             }
-    //             if (window.innerWidth <= 730) {
-    //                 setQuantity(11);
-    //                 return;
-    //             }
-    //         }
-    //     }
-    // }, 500));
 
 
     function handleMore() {
@@ -143,11 +75,7 @@ export default function MoviesCardList({ movies, loading, save, removeSaveMovies
                             movie={movie}
                             id={isLocationMovies ? movie.id : movie.movieId}
                             el={el}
-                            // setSaved={props.setSaved}
                             save={save}
-                            // saveMovie={saveMovie}
-
-                            // setMovieSaved={props.setMovieSaved}
                             removeSaveMovies={removeSaveMovies}
                             setSaveMovies={setSaveMovies}
                         />

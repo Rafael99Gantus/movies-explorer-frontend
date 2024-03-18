@@ -1,4 +1,4 @@
-class ApiMov{
+class ApiMov {
     constructor({ url, headers }) {
         this._url = url;
         this._headers = headers;

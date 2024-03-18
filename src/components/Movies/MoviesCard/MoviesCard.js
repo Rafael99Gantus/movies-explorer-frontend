@@ -5,7 +5,6 @@ import saveIcon from '../../../images/save_icon.svg';
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
-import apiMov from '../../../utils/MainApi';
 
 export default function MoviesCard({ movie, save, removeSaveMovies, setSaveMovies, id, el }) {
 
@@ -28,26 +27,6 @@ export default function MoviesCard({ movie, save, removeSaveMovies, setSaveMovie
             setIsSaved(save.some(savedMovie => savedMovie.movieId === movie.id));
         }
     }, [save, movie]);
-
-    // function handleSaved(e) {
-    //     e.preventDefault();
-    //     if (!saveButton) {
-    //         setSaveMovies({
-    //             ...movie,
-    //             movieId: movie.id,
-    //         }).then(() => {
-    //             setSaveButon(true);
-    //         }).catch((err) => {
-    //             console.log(err)
-    //         })
-    // } else {
-    //     const saveMovie = save.some((saved) => { return saved.movieId === movie.id })
-    //     if (saveMovie) {
-    //         removeSaveMovies(saveMovie.id);
-    //         setSaveButon(false);
-    //     }
-    // }
-    // }
 
     const handleSaved = (e) => {
         e.preventDefault();

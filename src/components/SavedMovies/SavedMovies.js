@@ -10,27 +10,16 @@ import api from '../../utils/MainApi.js';
 
 import { useEffect, useState } from "react";
 
-import { CurrentMovieInfo } from '../contexts/CurrentMovieInfo.js';
-
 export default function SavedMovies({ loggedIn, save, removeSaveMovies, setSaved, setEl }) {
-
-    const movies = React.useContext(CurrentMovieInfo);
 
     const [loading, setLoading] = useState(false)
     const [err, setErr] = useState('');
     const [value, setValue] = useState('');
-    const [chfngeValue, setChangeValue] = useState('')
     const [checkbox, setCheckbox] = useState(false);
     const [massive, setMassive] = useState(() => {
         const savedFilteredMovies = localStorage.getItem('save');
         return savedFilteredMovies ? JSON.parse(savedFilteredMovies) : [];
     })
-
-    const filterMovies = (movies, value) => {
-        return movies.filter(movie => {
-            return movie.nameRU.toLowerCase().includes(value.toLowerCase());
-        });
-    };
 
     function handleSearch(text, check) {
         setLoading(true);
@@ -51,7 +40,6 @@ export default function SavedMovies({ loggedIn, save, removeSaveMovies, setSaved
         if (massive.length === 0) {
             setErr('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
         }
-        setChangeValue(text)
         setLoading(false);
         console.log(massive)
     }

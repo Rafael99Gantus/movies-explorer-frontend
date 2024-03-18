@@ -4,11 +4,11 @@ import './Footer.css'
 export default function Footer(props) {
 
 
-    function ya(){
+    function ya() {
         window.open('https://practicum.yandex.ru/', '_blank');
     }
-    
-    function git(){
+
+    function git() {
         window.open('https://github.com/Rafael99Gantus', '_blank');
     }
 

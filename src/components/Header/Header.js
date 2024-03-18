@@ -5,7 +5,7 @@ import "./Header.css"
 import Burger from './Burger/Burger';
 import burgerLogo from '../../images/burger-logo.svg';
 
-export default function Header({loggedIn}) {
+export default function Header({ loggedIn }) {
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -47,7 +47,7 @@ export default function Header({loggedIn}) {
 
     return (
         <>
-            <main className={isLocationMain? "header__main": "header"}>
+            <main className={isLocationMain ? "header__main" : "header"}>
                 <div className="header__logo" onClick={goToMain} />
                 <div className="header__container">
                     {!loggedIn && <div className='header__unloged-panel'>

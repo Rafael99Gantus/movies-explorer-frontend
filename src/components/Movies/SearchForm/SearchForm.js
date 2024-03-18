@@ -3,11 +3,7 @@ import './SearchForm.css';
 import { useState, useEffect } from 'react';
 import { useLocation } from "react-router-dom";
 
-import { CurrentMovieInfo } from '../../contexts/CurrentMovieInfo';
-
 export default function SearchForm(props) {
-
-    const movies = React.useContext(CurrentMovieInfo);
     const location = useLocation();
 
     const isLocationSavedMovies = location.pathname === '/saved-movies';
@@ -20,20 +16,6 @@ export default function SearchForm(props) {
     useEffect(() => {
         setCheckbox(localStorage.getItem('checkbox'))
     }, [checkbox])
-
-    // function checkCheckbox(filterMovies) {
-    //     const checkbox = document.querySelector('.searchfrom__filter_input');
-    //     if(checkbox.checked === true){
-    //         const shortMovies = filterMovies.filter(function (movie) {
-    //             return movie.duration <= 40
-    //         });
-    //         props.setMovie(shortMovies);
-    //         console.log(shortMovies);
-    //     } else {
-    //         props.setMovie(filterMovies);
-    //         console.log(filterMovies);
-    //     }
-    // }
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -82,7 +64,7 @@ export default function SearchForm(props) {
                 <div className="searchform__block">
                     <label className="searchform__filter-block" onClick={stop}>
                         <div className="searchform__filter" >
-                            <input checked={props.checkbox} className="searchfrom__filter_input" type="checkbox" name="Короткометражки" id="checkbox" onClick={props.handleCheckbox}/>
+                            <input checked={props.checkbox} className="searchfrom__filter_input" type="checkbox" name="Короткометражки" id="checkbox" onClick={props.handleCheckbox} />
                             <span className="searchform__slider"></span>
                         </div>
                         <p className="searchform__text">Короткометражки</p>

@@ -62,8 +62,6 @@ export default function Login(props) {
             return;
         }
         props.onLogin(email, password);
-        setEmail('');
-        setPassword('');
     }
 
     return (

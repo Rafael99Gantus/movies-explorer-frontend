@@ -75,7 +75,8 @@ class Api {
         })
     };
 
-    getSaveMovies = (token) => {
+    getSaveMovies = () => {
+        const token = localStorage.getItem("jwt");
         return this._sendRequest(`${this._url}/movies`, {
             method: 'GET',
             headers: {
@@ -100,7 +101,7 @@ class Api {
         thumbnail,
         movieId,
         owner,
-        ) => {
+    ) => {
         const token = localStorage.getItem("jwt");
         return this._sendRequest(`${this._url}/movies`, {
             method: 'POST',
@@ -125,29 +126,6 @@ class Api {
             })
         })
     }
-
-    //         country: movie.country,
-    //         director: movie.director,
-    //         duration: movie.duration,
-    //         year: movie.year,
-    //         description: movie.description,
-    //         image: `https://api.nomoreparties.co${movie.image.url}`,
-    //         trailerLink: movie.trailerLink,
-    //         thumbnail: `https://api.nomoreparties.co${movie.image.url}`,
-    //         movieId: movie.id,
-    //         nameRU: movie.nameRU,
-    //         nameEN: movie.nameEN,
-    //         owner: userId
-    //       };
-    //       return this._sendRequest(`${this._url}/movies`, {
-    //         method: "POST",
-    //         headers: {
-    //           "Content-Type": "application/json",
-    //           'Authorization': token
-    //         },
-    //         body: JSON.stringify(movieData)
-    //       })
-    // }
 
     removeSaveMovies = (moviesId) => {
         const token = localStorage.getItem("jwt");

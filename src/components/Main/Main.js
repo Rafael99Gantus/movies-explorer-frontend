@@ -7,21 +7,21 @@ import AboutMe from './AboutMe/AboutMe';
 import Portfolio from './Portfolio/Portfolio';
 import Footer from "../Footer/Footer.js";
 
-export default function Main({loggedIn}){
+export default function Main({ loggedIn }) {
 
 
 
-    return(
+    return (
         <>
-        <Header loggedIn={loggedIn}/>
-        <main className='main'>
-            <Promo />
-            <AboutProject/>
-            <Techs />
-            <AboutMe />
-            <Portfolio />
-        </main>
-        <Footer />
+            <Header loggedIn={loggedIn} />
+            <main className='main'>
+                <Promo />
+                <AboutProject />
+                <Techs />
+                <AboutMe />
+                <Portfolio />
+            </main>
+            <Footer />
         </>
     )
 }

@@ -7,14 +7,10 @@ import Footer from "../Footer/Footer.js";
 import Preloader from "./Preloader/Preloader.js";
 import { useState } from 'react';
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { CurrentMovieInfo } from '../contexts/CurrentMovieInfo.js';
 
 import apiMov from "../../utils/MoviesApi.js";
 
 export default function Movies(props) {
-    const navigate = useNavigate();
-    const movies = React.useContext(CurrentMovieInfo);
     const [err, setErr] = useState('');
 
     const [film, setFilm] = useState(() => {
@@ -30,12 +26,6 @@ export default function Movies(props) {
         const savedFilteredMovies = localStorage.getItem('filteredMovies');
         return savedFilteredMovies ? JSON.parse(savedFilteredMovies) : [];
     });
-
-    // const [filteredMovies, setFilteredMovies] = useState([]);
-
-    // const [checkbox, setCheckbox] = useState(() => {
-    //     return localStorage.getItem('checkbox') === 'true';
-    // });
 
     const [checkbox, setCheckbox] = useState(() => {
         return localStorage.getItem('checkbox');
@@ -63,41 +53,11 @@ export default function Movies(props) {
         setErr('');
         setCheckbox(check);
         newValue(text);
-        // apiMov.getMovies()
-        // .then((res) => {
-        //     const filterMovies = res.filter(function (movie) {
-        //         return movie.nameRU.toLowerCase().trim().includes(value.toLowerCase())
-        //     });
-        //     console.log(filterMovies);
-        //     if(checkbox === true){
-        //         const shortMovies = filterMovies.filter(function (movie) {
-        //             return movie.duration <= 40
-        //         });
-        //         localStorage.setItem('movies', shortMovies);
-        //         localStorage.setItem('text', value);
-        //         localStorage.setItem('check', checkbox);
-        //         props.setMovie(shortMovies);
-        //         console.log(shortMovies);
-        //     } else {
-        //         localStorage.setItem('movies', filterMovies);
-        //         localStorage.setItem('text', value);
-        //         localStorage.setItem('check', checkbox);
-        //         props.setMovie(filterMovies);
-        //         console.log(filterMovies);
-        //     }
-        // })
-        // .catch((err) => {
-        //     console.log(`Произошла ошибка при фильтрации фильмов ${err.message}`);
-        //     setErr('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
-        // })
-        // .finally(()=>{
-        //     props.setloading(false);
-        // })
         setTimeout(() => {
             if (film.length === 0) {
                 apiMov.getMovies()
                     .then((res) => {
-                        
+
                         const filtered = filterMovies(res, text, check);
                         localStorage.setItem('film', JSON.stringify(res));
                         setFilm(res);
@@ -109,7 +69,7 @@ export default function Movies(props) {
                             if (filtered.length === 0) {
                                 setErr("Ничего не найдено");
                             }
-                        }else{
+                        } else {
                             setFilteredMovies(filtered);
                             if (filtered.length === 0) {
                                 setErr("Ничего не найдено");
@@ -132,7 +92,7 @@ export default function Movies(props) {
                     if (filtered.length === 0) {
                         setErr("Ничего не найдено");
                     }
-                }else{
+                } else {
                     setFilteredMovies(filtered);
                     if (filtered.length === 0) {
                         setErr("Ничего не найдено");
@@ -144,10 +104,10 @@ export default function Movies(props) {
     }
 
     const handleCheckbox = () => {
-        if(checkbox === true){
+        if (checkbox === true) {
             setCheckbox(false)
         }
-        if(checkbox === false){
+        if (checkbox === false) {
             setCheckbox(true)
         }
         const check = !checkbox

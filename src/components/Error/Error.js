@@ -1,14 +1,12 @@
 import React from "react";
 import './Error.css';
-import { useNavigate } from "react-router-dom";
 
-export default function Error(){
-    const navigate = useNavigate();
+export default function Error() {
 
-    function handleBack(){
-        navigate('/');
+    function handleBack() {
+        window.history.back();
     }
-    return(
+    return (
         <main className="error">
             <h1 className="error__title">404</h1>
             <p className="error__text">Страница не найдена</p>
