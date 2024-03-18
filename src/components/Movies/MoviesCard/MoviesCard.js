@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import apiMov from '../../../utils/MainApi';
 
-export default function MoviesCard({ movie, save, removeSaveMovies, setSaveMovies, id }) {
+export default function MoviesCard({ movie, save, removeSaveMovies, setSaveMovies, id, el }) {
 
     const [saveButton, setSaveButon] = useState(false);
     const [isSaved, setIsSaved] = useState(save && movie ? save.some(savedMovie => savedMovie.movieId === movie.id) : false);
@@ -21,7 +21,7 @@ export default function MoviesCard({ movie, save, removeSaveMovies, setSaveMovie
 
     let imageSavedMovie = `${movie.image}`;
 
-   
+
 
     useEffect(() => {
         if (save && movie) {
@@ -72,8 +72,10 @@ export default function MoviesCard({ movie, save, removeSaveMovies, setSaveMovie
         } else {
             const saveMovie = save.some((saved) => { return saved.movieId === movie.id })
             if (saveMovie) {
-                removeSaveMovies(id);
-                setIsSaved(false);
+                removeSaveMovies(id)
+                if (el) {
+                    setIsSaved(false)
+                }
             }
         }
 
@@ -82,8 +84,10 @@ export default function MoviesCard({ movie, save, removeSaveMovies, setSaveMovie
     function handleDelete(e) {
         e.preventDefault();
         console.log('delete movie');
-        removeSaveMovies(movie.movieId);
-        setSaveButon(false);
+        removeSaveMovies(movie.movieId)
+        if (el) {
+            setSaveButon(false);
+        }
     }
 
     return (

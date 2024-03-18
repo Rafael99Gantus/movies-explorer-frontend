@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-export default function MoviesCardList({ movies, loading, save, removeSaveMovies, setSaveMovies, setFilteredMovies }) {
+export default function MoviesCardList({ movies, loading, save, removeSaveMovies, setSaveMovies, setFilteredMovies, el }) {
 
     const location = useLocation();
 
@@ -150,7 +150,7 @@ export default function MoviesCardList({ movies, loading, save, removeSaveMovies
                         <MoviesCard key={isLocationMovies ? movie.id : movie.movieId}
                             movie={movie}
                             id={isLocationMovies ? movie.id : movie.movieId}
-
+                            el={el}
                             // setSaved={props.setSaved}
                             save={save}
                             // saveMovie={saveMovie}

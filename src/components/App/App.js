@@ -31,6 +31,8 @@ function App() {
   const [loading, setloading] = useState(false);
   const [sucsess, setSucsess] = useState(false);
 
+  const [el, setEl] = useState(false)
+
   const isLocationMain = location.pathname === '/';
   const isLocationMovies = location.pathname === '/movies';
   const isLocationSavedMovies = location.pathname === '/saved-movies';
@@ -207,9 +209,11 @@ function App() {
         localStorage.removeItem("save", JSON.stringify(movieId));
         setSaved(setNewMovies);
         setSavedMovies(JSON.stringify(setNewMovies));
+        setEl(true);
       })
       .catch((err) => {
         console.error(`Фильм не удалён ${err}`);
+        setEl(false);
       });
   };
 
@@ -232,7 +236,8 @@ function App() {
               save={save}
               // setMovieSaved={setMovieSaved}
               removeSaveMovies={removeSaveMovies}
-              setSaveMovies={setSaveMovies} />} />;
+              setSaveMovies={setSaveMovies}
+              el={el} />} />;
 
             <Route path="/saved-movies" element={<ProtectedRoute
               component={SavedMovies}

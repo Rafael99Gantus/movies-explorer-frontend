@@ -172,6 +172,7 @@ export default function Movies(props) {
                     setFilteredMovies={setFilteredMovies}
                     removeSaveMovies={props.removeSaveMovies}
                     setSaveMovies={props.setSaveMovies}
+                    el={props.el}
                 />}
 
                 <Footer />
