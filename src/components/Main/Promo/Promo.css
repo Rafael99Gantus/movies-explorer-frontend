@@ -1,0 +1,146 @@
+.promo {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: rgba(7, 48, 66, 1);
+}
+
+.promo__text {
+    background-color: rgba(7, 48, 66, 1);
+}
+
+.promo__big-text {
+    width: 640px;
+    height: 174px;
+    margin: 0 0px 36px 70px;
+    padding-top: 75px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    background-color: rgba(7, 48, 66, 0);
+    color: rgba(255, 255, 255, 1);
+}
+
+.promo__small-text {
+    width: 310px;
+    height: 32px;
+    margin: 0 0 146px 70px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    background-color: rgba(7, 48, 66, 0);
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.promo__info {
+    width: 129px;
+    height: 26px;
+    padding-top: 10px;
+    margin-left: 70px;
+    margin-bottom: 75px;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    background-color: rgba(7, 48, 66, 1);
+    border: 1px solid;
+    border-radius: 3px;
+    border-color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+
+.promo__info:hover {
+    opacity: 70%;
+}
+
+.promo__image {
+    width: 310px;
+    height: 304px;
+    padding-top: 75px;
+    margin: 0 70px 0 0;
+    background: url(../../../images/planet.svg) no-repeat bottom;
+    object-fit: cover;
+}
+
+@media (max-width: 1110px) {
+    .promo {
+        flex-direction: column-reverse;
+
+    }
+
+    .promo__text{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .promo__big-text {
+        text-align: center;
+        width: 680px;
+        height: 100px;
+        margin: 55px auto 22px;
+        padding-top: 0;
+        font-size: 40px;
+        line-height: 50px;
+    }
+
+    .promo__small-text {
+        width: 260px;
+        height: 32px;
+        margin: 0 auto 92px;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 15.73px;
+    }
+
+    .promo__info {
+        margin: 0 auto 76px;
+    }
+
+    .promo__image{
+        margin: 0 auto 0;
+        padding-top: 140px;
+    }
+
+}
+
+@media (max-width: 720px){
+    
+    .promo__big-text {
+        text-align: center;
+        width: 300px;
+        height: 114px;
+        margin: 44px auto 24px;
+        font-size: 29px;
+        line-height: 38px;
+    }
+    
+    .promo__small-text {
+        text-align: center;
+        width: 260px;
+        height: 32px;
+        margin: 0 auto 80px;
+        line-height: 15.73px;
+    }
+    
+    .promo__info {
+        margin: 0 auto 30px;
+    }
+    
+    .promo__image {
+        width: 210px;
+        height: 206px;
+        padding-top: 70px;
+        background-size: contain;
+        object-fit: cover;
+    }
+}

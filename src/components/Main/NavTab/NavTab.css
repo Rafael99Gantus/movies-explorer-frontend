@@ -1,0 +1,130 @@
+.navtab {
+    display: block;
+    /* width: 1280p0; */
+    height: 608px;
+    background-color: rgba(32, 32, 32, 1);
+    border: 1px solid white;
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+.navtab__title {
+    margin: 110px 0 23px 0;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 26.63px;
+    background-color: rgba(32, 32, 32, 1);
+    color: rgba(255, 255, 255, 1);
+}
+
+.navtab__line{
+    height: 0px;
+    margin: 0 0 70px;
+    border: 0.5px solid;
+    border-color: rgba(218, 218, 218, 1);
+}
+
+.navtab__box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 110px;
+    border: 1px solid white;
+}
+
+.navtab__box-about{
+    width: 550px;
+}
+
+.navtab__title-box{
+    margin: 0 0 26px 0;
+    height: 24px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24.2px;
+    background-color: rgba(32, 32, 32, 1);
+    color: rgba(255, 255, 255, 1);
+}
+
+.navtab__text-box{
+    margin: 0;
+    height: 40px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    background-color: rgba(32, 32, 32, 1);
+    color: rgba(255, 255, 255, 1);
+}
+
+.navtab__info {
+    height: 36px;
+    margin: 0 0 14px 0;
+    border: 0.5px solid;
+    border-color: rgba(218, 218, 218, 1);
+    display: flex;
+}
+
+.navtab__info-green{
+    width: 20%;
+    height: 26.5px;
+    margin: 0;
+    padding-top: 9.5px;
+    text-align: center; 
+    background-color: rgba(61, 220, 132, 1);
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: rgba(0, 0, 0, 1);
+}
+
+.navtab__info-black{
+    width: 80%;
+    height: 26.5px;
+    margin: 0;
+    padding-top: 9.5px;
+    text-align: center; 
+    background-color: rgba(48, 48, 48, 1);
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: rgba(255, 255, 255, 1);
+}
+
+.navtab__note-back {
+    width: 20%;
+    height: 26.5px;
+    margin: 0;
+    padding-top: 9.5px;
+    text-align: center; 
+    background-color: rgba(32, 32, 32, 1);
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: rgba(139, 139, 139, 1);
+}
+
+.navtab__note-front {
+    width: 80%;
+    height: 26.5px;
+    margin: 0;
+    padding-top: 9.5px;
+    text-align: center; 
+    background-color: rgba(32, 32, 32, 1);
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: rgba(139, 139, 139, 1);
+}

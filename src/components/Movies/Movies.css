@@ -1,0 +1,18 @@
+.movies{
+    width: 100vh;
+    height: 100%;
+    margin: 0;
+    background-color: rgba(32, 32, 32, 1);
+}
+
+.movies__err{
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: white;
+}
