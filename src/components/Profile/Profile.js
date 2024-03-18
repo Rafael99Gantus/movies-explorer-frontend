@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import './Profile.css';
 import Header from "../Header/Header";
-import {CurrentUserContext} from "../contexts/CurrentUserContext";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 export default function Profile(props) {
 
@@ -71,62 +71,95 @@ export default function Profile(props) {
 
     const user = name !== currentUser.name || email !== currentUser.email;
 
-    const save="Сохранить";
+    const save = "Сохранить";
     const back = "Отменить"
 
     return (
         <main>
             <Header loggedIn={props.loggedIn} />
             <div className="profile">
-            <p className={props.sucsess ? "profile__sucsess_opened" : "profile__sucsess"}>Данные пользователя успешно изменены</p>
+                <p className={props.sucsess ? "profile__sucsess_opened" : "profile__sucsess"}>Данные пользователя успешно изменены</p>
                 <h1 className="profile__name">Привет, {props.user.name}!</h1>
-                <form className="profile__form" onSubmit={handleSaveEdit}>
-                    <label className="profile__input">
-                        Имя
-                        <input
-                            className="profile__input-name"
-                            type="text"
-                            required
-                            placeholder="Введите имя"
-                            minLength="2"
-                            maxLength="30"
-                            disabled={!edit}
-                            onChange={handleName}
-                            value={name}>
-                        </input>
-                    </label>
+                {!edit ?
+                    <form className="profile__form" onSubmit={handleSaveEdit}>
+                        <label className="profile__input">
+                            Имя
+                            <input
+                                className="profile__input-name"
+                                type="text"
+                                required
+                                placeholder="Введите имя"
+                                minLength="2"
+                                maxLength="30"
+                                disabled={!edit}
+                                onChange={handleName}
+                                value={name}>
+                            </input>
+                        </label>
 
-                    <label className="profile__input">
-                        E-mail
-                        <input
-                            className="profile__input-name"
-                            type="email"
-                            required
-                            placeholder="Введите E-mail"
-                            minLength="2"
-                            maxLength="30"
-                            disabled={!edit}
-                            onChange={handleEmail}
-                            value={email}>
-                        </input>
-                    </label>
-                    {nameError && <span className="profile__error">{nameError}</span>}
-                    {emailError && <span className="profile__error">{emailError}</span>}
-                    {!edit ? (<div className="profile__block">
-                        <button className="profile__button-edit" onClick={handleEdit} type="button">Редактировать</button>
-                        <button className="profile__button-exit" onClick={props.logOut} type="button">Выйти из аккаунта</button>
-                    </div>) : <button className={valid && user ? "profile__button-save" : "profile__button-save_disabled"} onClick={valid && user ? handleSaveEdit : handleCancelEdit} type="submit">{valid && user ? save : back}</button>}
+                        <label className="profile__input">
+                            E-mail
+                            <input
+                                className="profile__input-name"
+                                type="email"
+                                required
+                                placeholder="Введите E-mail"
+                                minLength="2"
+                                maxLength="30"
+                                disabled={!edit}
+                                onChange={handleEmail}
+                                value={email}>
+                            </input>
+                        </label>
+                        {nameError && <span className="profile__error">{nameError}</span>}
+                        {emailError && <span className="profile__error">{emailError}</span>}
+                        <div className="profile__block">
+                            <button className="profile__button-edit" onClick={handleEdit} type="button">Редактировать</button>
+                            <button className="profile__button-exit" onClick={props.logOut} type="button">Выйти из аккаунта</button>
+                        </div>
 
-                    {/* {!edit && valid ? (<div className="profile__block">
-                        <button className="profile__button-edit" onClick={handleEdit} type="button">Редактировать</button>
-                        <button className="profile__button-exit" onClick={props.logOut} type="button">Выйти из аккаунта</button>
-                    </div>) : <button className="profile__button-save" onClick={handleSaveEdit} type="submit">Сохранить</button>} */}
+                    </form>
+                    :
+                    <form className="profile__form" onSubmit={handleSaveEdit}>
+                        <label className="profile__input">
+                            Имя
+                            <input
+                                className="profile__input-name"
+                                type="text"
+                                required
+                                placeholder="Введите имя"
+                                minLength="2"
+                                maxLength="30"
+                                disabled={!edit}
+                                onChange={handleName}
+                                value={name}>
+                            </input>
+                        </label>
 
-                    {/* {!edit && !valid ? (<div className="profile__block">
-                        <button className="profile__button-edit_disabled" disabled type="button">Редактировать</button>
-                        <button className="profile__button-exit" onClick={props.logOut} type="button">Выйти из аккаунта</button>
-                    </div>) : <button className="profile__button-save_disabled" disabled type="button">Сохранить</button>} */}
-                </form>
+                        <label className="profile__input">
+                            E-mail
+                            <input
+                                className="profile__input-name"
+                                type="email"
+                                required
+                                placeholder="Введите E-mail"
+                                minLength="2"
+                                maxLength="30"
+                                disabled={!edit}
+                                onChange={handleEmail}
+                                value={email}>
+                            </input>
+                        </label>
+                        {nameError && <span className="profile__error">{nameError}</span>}
+                        {emailError && <span className="profile__error">{emailError}</span>}
+                        {valid && user ?
+                            <button className="profile__button-save" onClick={handleSaveEdit} type="submit">Сохранить</button>
+                            :
+                            <button className="profile__button-save_disabled" disabled >Сохранить</button>}
+
+                    </form>
+
+                }
             </div>
         </main>
     )
