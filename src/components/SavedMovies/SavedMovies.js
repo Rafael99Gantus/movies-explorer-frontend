@@ -66,17 +66,14 @@ export default function SavedMovies({ loggedIn, save, removeSaveMovies }) {
                 return movie.duration <= 40
             });
             setMassive(shortMovies);
-            console.log(shortMovies);
         } else {
             setMassive(filterMovies);
-            console.log(filterMovies);
         }
         if (massive.length === 0) {
             setErr('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
         }
         setLoading(false);
-        console.log(massive)
-    }, [checkbox, massive, setLoading, value])
+    }, [checkbox, massive, value])
 
     const deleteMovies = (movieId) => {
         removeSaveMovies(movieId);
@@ -100,6 +97,7 @@ export default function SavedMovies({ loggedIn, save, removeSaveMovies }) {
             {err && <p className="movies__err">{err}</p>}
             <MoviesCardList
                 movies={massive}
+                
                 loading={loading}
                 removeSaveMovies={deleteMovies}
                 save={save} />

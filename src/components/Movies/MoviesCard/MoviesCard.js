@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import apiMov from '../../../utils/MainApi';
 
-export default function MoviesCard({ movie, save, removeSaveMovies, setSaveMovies }) {
+export default function MoviesCard({ movie, save, removeSaveMovies, setSaveMovies, id }) {
 
     const [saveButton, setSaveButon] = useState(false);
     const [isSaved, setIsSaved] = useState(save && movie ? save.some(savedMovie => savedMovie.movieId === movie.id) : false);
@@ -20,6 +20,8 @@ export default function MoviesCard({ movie, save, removeSaveMovies, setSaveMovie
     let imageMovie = `https://api.nomoreparties.co${movie.image.url}`;
 
     let imageSavedMovie = `${movie.image}`;
+
+   
 
     useEffect(() => {
         if (save && movie) {
@@ -49,7 +51,7 @@ export default function MoviesCard({ movie, save, removeSaveMovies, setSaveMovie
 
     const handleSaved = (e) => {
         e.preventDefault();
-        if (!saveButton) {
+        if (!isSaved) {
             setSaveMovies(
                 movie.country,
                 movie.director,
@@ -61,16 +63,16 @@ export default function MoviesCard({ movie, save, removeSaveMovies, setSaveMovie
                 movie.nameRU,
                 movie.nameEN,
                 `https://api.nomoreparties.co${movie.image.url}`,
-                movie.id
+                id
             ).then(() => {
-                setIsSaved(true);
+                setIsSaved(false);
             }).catch((err) => {
                 console.log(err)
             })
         } else {
             const saveMovie = save.some((saved) => { return saved.movieId === movie.id })
             if (saveMovie) {
-                removeSaveMovies(saveMovie.id);
+                removeSaveMovies(id);
                 setIsSaved(false);
             }
         }

@@ -16,13 +16,11 @@ export default function MoviesCardList({ movies, loading, save, removeSaveMovies
 
     const isLocationMovies = location.pathname === '/movies';
     const isLocationSavedMovies = location.pathname === '/saved-movies';
+    const width = window.innerWidth;
 
     useEffect(() => {
-        if(movies.length + 4 < quantity){
+        if (movies.length + 4 < quantity) {
             setMore(false);
-        }
-        if(movies.length + 4 > quantity){
-            setMore(true);
         }
         if (isLocationMovies) {
             if (window.innerWidth > 1160 && more) {
@@ -47,79 +45,78 @@ export default function MoviesCardList({ movies, loading, save, removeSaveMovies
             }
             setResult(movies);
         }
-        // window.addEventListener('resize', handleResize);
+        // 
         // return () => window.removeEventListener('resize', handleResize);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isLocationMovies, movies, quantity, window.innerWidth]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isLocationMovies, movies, quantity, width]);
 
-    // 
+    // window.addEventListener('resize', setTimeout(() => {
+    //     if (isLocationMovies) {
+    //         if (movies.length + 4 > quantity) {
+    //             if (window.innerWidth > 1160) {
+    //                 setMore(true);
+    //                 setQuantity(12);
+    //                 return;
+    //             }
+    //             if (window.innerWidth <= 1160) {
+    //                 setMore(true);
+    //                 setQuantity(12);
+    //                 return;
+    //             }
+    //             if (window.innerWidth <= 730) {
+    //                 setMore(true);
+    //                 setQuantity(9);
+    //                 return;
+    //             }
+    //         } else {
+    //             if (window.innerWidth > 1160) {
+    //                 setMore(true);
+    //                 setQuantity(15);
+    //                 return;
+    //             }
+    //             if (window.innerWidth <= 1160) {
+    //                 setMore(true);
+    //                 setQuantity(10);
+    //                 return;
+    //             }
+    //             if (window.innerWidth <= 730) {
+    //                 setMore(true);
+    //                 setQuantity(7);
+    //                 return;
+    //             }
+    //         }
+    //     }
+    //     if (isLocationSavedMovies) {
+    //         if (movies.length + 4 > quantity) {
+    //             if (window.innerWidth > 1160) {
+    //                 setQuantity(12);
+    //                 return;
+    //             }
+    //             if (window.innerWidth <= 1160) {
+    //                 setQuantity(12);
+    //                 return;
+    //             }
+    //             if (window.innerWidth <= 730) {
+    //                 setQuantity(9);
+    //                 return;
+    //             }
+    //         } else {
+    //             if (window.innerWidth > 1160) {
+    //                 setQuantity(15);
+    //                 return;
+    //             }
+    //             if (window.innerWidth <= 1160) {
+    //                 setQuantity(14);
+    //                 return;
+    //             }
+    //             if (window.innerWidth <= 730) {
+    //                 setQuantity(11);
+    //                 return;
+    //             }
+    //         }
+    //     }
+    // }, 500));
 
-    function handleResize() {
-        if (isLocationMovies) {
-            if (movies.length + 4 > quantity) {
-                if (window.innerWidth > 1160) {
-                    setMore(true);
-                    setQuantity(12);
-                    return;
-                }
-                if (window.innerWidth <= 1160) {
-                    setMore(true);
-                    setQuantity(12);
-                    return;
-                }
-                if (window.innerWidth <= 730) {
-                    setMore(true);
-                    setQuantity(9);
-                    return;
-                }
-            } else {
-                if (window.innerWidth > 1160) {
-                    setMore(true);
-                    setQuantity(15);
-                    return;
-                }
-                if (window.innerWidth <= 1160) {
-                    setMore(true);
-                    setQuantity(10);
-                    return;
-                }
-                if (window.innerWidth <= 730) {
-                    setMore(true);
-                    setQuantity(7);
-                    return;
-                }
-            }
-        }
-        if (isLocationSavedMovies) {
-            if (movies.length + 4 > quantity) {
-                if (window.innerWidth > 1160) {
-                    setQuantity(12);
-                    return;
-                }
-                if (window.innerWidth <= 1160) {
-                    setQuantity(12);
-                    return;
-                }
-                if (window.innerWidth <= 730) {
-                    setQuantity(9);
-                    return;
-                }
-            } else {
-                if (window.innerWidth > 1160) {
-                    setQuantity(15);
-                    return;
-                }
-                if (window.innerWidth <= 1160) {
-                    setQuantity(14);
-                    return;
-                }
-                if (window.innerWidth <= 730) {
-                    setQuantity(11);
-                    return;
-                }
-            }
-        }
-    }
 
     function handleMore() {
         if (window.innerWidth > 1160) {
@@ -146,7 +143,8 @@ export default function MoviesCardList({ movies, loading, save, removeSaveMovies
                     return (
                         <MoviesCard key={isLocationMovies ? movie.id : movie.movieId}
                             movie={movie}
-                            
+                            id={isLocationMovies ? movie.id : movie.movieId}
+
                             // setSaved={props.setSaved}
                             save={save}
                             // saveMovie={saveMovie}

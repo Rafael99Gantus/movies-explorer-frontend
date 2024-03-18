@@ -16,7 +16,7 @@ import './App.css';
 
 import api from "../../utils/MainApi.js";
 import { getToken, setToken, removeToken } from "../../utils/token.js";
-import { setSavedMovies, getSavedMovies } from '../../utils/savedMovies.js'
+import { setSavedMovies, removeSavedMovies } from '../../utils/savedMovies.js'
 
 
 function App() {
@@ -203,7 +203,8 @@ function App() {
   function removeSaveMovies(movieId) {
     return api.removeSaveMovies(movieId)
       .then(() => {
-        const setNewMovies = save.filter((movie) => movie._id !== movieId);
+        const setNewMovies = save.filter((movie) => movie.movieId !== movieId);
+        // localStorage("save", JSON.stringify(movieId));
         setSaved(setNewMovies);
         setSavedMovies(JSON.stringify(setNewMovies));
       })
