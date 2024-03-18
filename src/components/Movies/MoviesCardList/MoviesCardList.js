@@ -20,7 +20,7 @@ export default function MoviesCardList({ movies, loading, save, removeSaveMovies
 
     useEffect(() => {
         if (movies === undefined) {
-            setFilteredMovies([]);
+            setResult([]);
             return;
         } else {
             if (movies.length + 4 < quantity) {

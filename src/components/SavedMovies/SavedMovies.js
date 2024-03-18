@@ -74,7 +74,7 @@ export default function SavedMovies({ loggedIn, save, removeSaveMovies }) {
                 setMassive(filterMovies);
             }
             if (massive.length === 0) {
-                setErr('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
+                setErr('У вас нет сохраненных фильмов')
             }
             setLoading(false);
         }
@@ -85,7 +85,7 @@ export default function SavedMovies({ loggedIn, save, removeSaveMovies }) {
         setMassive(prevMovies => {
             const updatedMovies = prevMovies.filter(movie => movie.movieId !== movieId);
             if (updatedMovies.length === 0) {
-                setErr("Ничего не найдено");
+                setErr("У вас нет сохраненных фильмов");
                 return;
             } else {
                 setErr("");
